@@ -1,25 +1,21 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo_sncf from "@assets/logos/logo_sncf.png";
-import Gd_Salles_transparent from "@assets/logos/Gd_Salles_transparent.png";
+import logoSncf from "@assets/logos/logoSncf.png";
+import GdSallesTransparent from "@assets/logos/GdSallesTransparent.png";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div
-      className=" mx-auto mb-4 pr-6 flex items-center justify-between border-b border-whiteSimple-100
-     py-3 bg-dark-100
-    "
-    >
-      <div className="w-[8rem] rounded-full">
-        <NavLink to="/">
-          <img src={logo_sncf} alt="logo_sncf" />
+    <div className="mx-auto mb-4 pr-6 flex items-center justify-between border-b border-whiteSimple-100 py-3 bg-dark-100">
+      <div className="w-[8rem] rounded-full xl:w-[12rem]">
+        <NavLink to="/Home">
+          <img src={logoSncf} alt="logoSncf" />
         </NavLink>
       </div>
-      <div className="w-[12rem] rounded-full">
-        <NavLink to="/">
-          <img src={Gd_Salles_transparent} alt="Gd_Salles_transparent" />
+      <div className="w-[12rem] rounded-full xl:w-[16rem]">
+        <NavLink to="/Home">
+          <img src={GdSallesTransparent} alt="GdSallesTransparent" />
         </NavLink>
       </div>
       <nav>
@@ -28,9 +24,9 @@ export default function Header() {
             className="HAMBURGER-ICON space-y-2"
             onClick={() => setIsNavOpen((prev) => !prev)}
           >
-            <span className="block h-0.5 w-8 animate-pulse bg-blueDuck-100" />
-            <span className="block h-0.5 w-8 animate-pulse bg-blueDuck-100" />
-            <span className="block h-0.5 w-8 animate-pulse bg-blueDuck-100" />
+            <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
+            <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
+            <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
           </div>
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
@@ -39,7 +35,7 @@ export default function Header() {
               onClick={() => setIsNavOpen(false)}
             >
               <svg
-                className="h-8 w-8 text-blueDuck-100"
+                className="h-8 w-8 lg:w-[4rem] lg:h-[4rem] text-blueDuck-100"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -69,7 +65,7 @@ export default function Header() {
                 className="border-b  text-blueDuck-100 my-8 "
                 onClick={() => setIsNavOpen(false)}
               >
-                <NavLink to="/">Mon profil</NavLink>
+                <NavLink to="/Home">Mon profil</NavLink>
               </li>
             </ul>
           </div>
