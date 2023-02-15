@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 function RoomsFiltered() {
   /*
@@ -8,7 +9,7 @@ function RoomsFiltered() {
   const [end, setEnd] = React.useState("");
   const [locationid, setLocationid] = React.useState();
   */
-
+  const navigate = useNavigate();
   const start = "";
   const end = "";
   const locationid = "";
@@ -16,7 +17,6 @@ function RoomsFiltered() {
   const baseUrl = "../../src/assets/rooms/";
 
   React.useEffect(() => {
-    // setIsLoading(true);
     async function fetchData() {
       await fetch(
         `http://localhost:5000/filtered?start=${start}&end=${end}&location=${locationid}`
@@ -27,18 +27,14 @@ function RoomsFiltered() {
         .then((jsonData) => {
           setRooms(jsonData);
         })
-        .catch((problem) => {
-          // remplacer ici par => setErrorState("Une erreur est survenue !");
-          console.warn(`API filters error : ${problem}`);
-          /* setIsLoading(false);     <img
-            className="w-full rounded object-contain"
-            src={`${baseUrl}${value.url_picture}`}
-            alt={value.name}
-          /> */
+        .catch(() => {
+          navigate("/error");
         });
     }
+    // setIsLoading(true);
     fetchData();
-  }, [start, end, locationid]);
+    /* setIsLoading(false);   */
+  }, [navigate, start, end, locationid]);
 
   return (
     <div className="container my-12 mx-auto px-4 md:px-12">
@@ -49,14 +45,23 @@ function RoomsFiltered() {
             key={value.id}
           >
             <article className="overflow-hidden rounded-lg shadow-lg">
-              <a href="/">
-                <img
-                  alt={value.name}
-                  className="block h-auto w-full"
-                  src={`${baseUrl}${value.url_picture}`}
-                />
-              </a>
-
+              <div className="w-full h-fit group">
+                <div className="relative overflow-hidden">
+                  <img
+                    className="h-auto w-full object-cover"
+                    src={`${baseUrl}${value.url_picture}`}
+                    alt={value.name}
+                  />
+                  <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <button
+                      className="bg-greySimple-100 bg-opacity-50 text-whiteSimple-100 py-2 px-4 "
+                      type="button"
+                    >
+                      Plus de détails
+                    </button>
+                  </div>
+                </div>
+              </div>
               <header className="flex items-center justify-between leading-tight p-2 md:p-4">
                 <h1 className="text-lg">
                   <a
@@ -82,7 +87,7 @@ function RoomsFiltered() {
                   className="no-underline text-dark-100 hover:text-red-dark"
                   href="/"
                 >
-                  <span className="text-dark-100 font-normal">
+                  <span className="text-white font-normal">
                     <button
                       type="button"
                       className="bg-blueDuck-100  px-4 py-2 rounded-lg "
