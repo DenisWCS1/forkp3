@@ -1,32 +1,31 @@
-import Home from "./pages/Home";
+import Modal from "@components/Modals.jsx/Modal";
+import ModalBtns from "@components/Modals.jsx/ModalBtns";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="  border-t-pink-500 border-8 flex flex-row">
-      <p className="bg-orange-700 text-5xl mr-6 my-5">
-        J'utilise le CSS de base de TAILWIND
-      </p>
-      <p className="bg-dark-100 text-5xl mr-6 my-5">J'utilise le CSS Perso</p>
-      <p className="bg-blueBlack-100 text-5xl mr-6 my-5">
-        J'utilise le CSS Perso
-      </p>
-      <p className="bg-blueDuck-100 text-5xl mr-6 my-5">
-        J'utilise le CSS Perso
-      </p>
-      <p className="bg-blueSimple-100 text-5xl mr-6 my-5">
-        J'utilise le CSS Perso
-      </p>
-      <p className="bg-turquoise-100 text-5xl mr-6 my-5">
-        J'utilise le CSS Perso
-      </p>
-      <p className="bg-greySimple-100 text-5xl mr-6 my-5">
-        J'utilise le CSS Perso
-      </p>
-      <p className="bg-whiteSimple-100 text-5xl mr-6 my-5">
-        J'utilise le CSS Perso
-      </p>
+  const [showModal, setShowModal] = useState(false);
+  const [showModalBtns, setShowModalBtns] = useState(false);
 
-      <Home />
+  return (
+    <div>
+      <button type="button" onClick={() => setShowModal(true)}>
+        Je suis le bouton modal
+        {/* bouton pour tester la logique Modal */}
+      </button>
+      <button type="button" onClick={() => setShowModalBtns(true)}>
+        Je suis le bouton modal Bouton
+        {/* bouton pour tester la logique Modal */}
+      </button>
+      <Modal
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+        message="Votre réservation a bien été prise en compte, un email de confirmation vient de vous être envoyé"
+      />
+      <ModalBtns
+        isVisible={showModalBtns}
+        onClose={() => setShowModalBtns(false)}
+        message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
+      />
     </div>
   );
 }
