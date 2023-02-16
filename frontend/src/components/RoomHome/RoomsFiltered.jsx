@@ -56,7 +56,6 @@ function RoomsFiltered() {
                   <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <button
                       className="bg-greySimple-100 bg-opacity-50 text-whiteSimple-100 py-2 px-4 "
-
                       type="button"
                     >
                       Plus de détails
@@ -90,9 +89,7 @@ function RoomsFiltered() {
                   className="no-underline text-dark-100 hover:text-red-dark"
                   href="/"
                 >
-
                   <span className="text-white font-normal">
-
                     <button
                       type="button"
                       className="bg-blueDuck-100  px-4 py-2 rounded-lg "
