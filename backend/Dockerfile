@@ -1,5 +1,5 @@
 # Dockerfile backend
-FROM node:16.19
+FROM Node:16.19-bullseye-slim
 
 WORKDIR /usr/src/app
 
