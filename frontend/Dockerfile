@@ -11,7 +11,7 @@ RUN npm install
 RUN npm run build
 
 # production environment
-FROM nginx:1.15
+FROM nginx:1.22.1
 COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 COPY ./frontend/default.conf /etc/nginx/conf.d/
 EXPOSE 3000
