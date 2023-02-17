@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import ErrorPage from "@components/error/Error";
 
+import Footer from "@components/Footer/Footer";
+
 function App() {
   return (
     <div>
@@ -10,7 +12,7 @@ function App() {
         <Route exact path="/" element={<RoomsFiltered />} />
         <Route path="/error" element={<ErrorPage />} />
       </Routes>
-      {/* Add <footer /> here */}
+      <Footer />
     </div>
   );
 }

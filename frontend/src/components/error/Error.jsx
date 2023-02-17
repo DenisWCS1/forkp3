@@ -1,16 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
+import error from "../../assets/error/404.png";
 
 function Error() {
   const navigate = useNavigate();
   return (
     <main className="flex items-center justify-center w-full min-h-screen py-8 text-gray-900 page md:py-16 ">
       <div className="relative flex flex-col items-center w-full gap-8 px-8 md:px-18 xl:px-40 md:gap-16">
-        <h1 className="text-9xl md:text-[300px] w-full select-none  text-center font-black  text-gray-400 dark:text-[#373A40]  ">
+        <h1 className="text-9xl md:text-[200px] w-full select-none  text-center font-black  text-gray-400 dark:text-[#373A40]  ">
           404
         </h1>
+        <img to="/error" src={error} alt="404" />
         <p className="text-3xl font-bold capitalize">
           You have discovered a secret place
         </p>
+
         <p className="text-2xl font-medium break-words text-dull">
           Unfortunately, this is only a 404 page. You may have mistyped the
           address, or the page has been moved to another URL.

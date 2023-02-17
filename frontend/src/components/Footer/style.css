@@ -1,0 +1,22 @@
+.copyright p {
+  padding: 0.5rem;
+  color: #f1eeee;
+  text-align: center;
+}
+
+.separatorFooter {
+  width: 200px;
+  height: 48px;
+}
+
+@media screen and (max-width: 480px) {
+  .copyright p {
+    width: 180px;
+    height: 60px;
+    color: #f1eeee;
+  }
+  .separatorFooter {
+    width: 180px;
+    height: 48px;
+  }
+}
