@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useState} from "react";
-import home from "@pages/Home";
+import Home from "@pages/Home";
 import Header from "@components/Header/Header";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Modal from "@components/Modals.jsx/Modal";
@@ -8,9 +8,9 @@ import ModalBtns from "@components/Modals.jsx/ModalBtns";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import "./App.css";
+
 const [showModal, setShowModal] = useState(false);
 const [showModalBtns, setShowModalBtns] = useState(false);
- 
 function App() {
   return (
     <div>
@@ -20,11 +20,10 @@ function App() {
         <Route path="/error" element={<ErrorPage />} />
       </Routes>
       <Footer />
-       {/* Modales exemples */}
+      {/* Modales exemples */}
        <button type="button" onClick={() => setShowModal(true)}>
         Je suis le bouton modal
-
-      <Home />
+        <Home />
         {/* bouton pour tester la logique Modal */}
       </button>
       <button type="button" onClick={() => setShowModalBtns(true)}>
