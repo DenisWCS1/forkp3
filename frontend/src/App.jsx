@@ -21,8 +21,8 @@ function App() {
       </Routes>
       <Footer />
       {/* Modales exemples */}
-       <button type="button" onClick={() => setShowModal(true)}>
-       Je suis le bouton modal
+      <button type="button" onClick={() => setShowModal(true)}>
+      Je suis le bouton modal
         <Home />
         {/* bouton pour tester la logique Modal */}
       </button>
