@@ -4,10 +4,11 @@ import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Modal from "@components/Modals.jsx/Modal";
 import ModalBtns from "@components/Modals.jsx/ModalBtns";
 import ErrorPage from "@components/error/Error";
-import "./App.css";
-
 import Footer from "@components/Footer/Footer";
-
+import "./App.css";
+const [showModal, setShowModal] = useState(false);
+ const [showModalBtns, setShowModalBtns] = useState(false);
+ 
 function App() {
   return (
     <div>
@@ -20,6 +21,9 @@ function App() {
       {/* Modales exemples */}
        <button type="button" onClick={() => setShowModal(true)}>
         Je suis le bouton modal
+
+
+      <Home />
         {/* bouton pour tester la logique Modal */}
       </button>
       <button type="button" onClick={() => setShowModalBtns(true)}>
