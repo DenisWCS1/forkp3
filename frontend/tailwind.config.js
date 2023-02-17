@@ -20,7 +20,7 @@ module.exports = {
           100: "#8DE8FE",
         },
         greySimple: {
-          100: "#565584",
+          100: "#D9D9D9",
         },
         whiteSimple: {
           100: "#f1eeee",

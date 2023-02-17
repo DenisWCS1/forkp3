@@ -1,10 +1,10 @@
 const express = require("express");
-
+const cors = require("cors");
 const { hashPassword, verifyToken } = require("./controllers/auth");
 require("dotenv").config();
 
 const router = express.Router();
-
+router.use(cors());
 const userControllers = require("./controllers/userControllers");
 const roomControllers = require("./controllers/roomControllers");
 const locationControllers = require("./controllers/locationControllers");

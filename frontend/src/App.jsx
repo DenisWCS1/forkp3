@@ -1,14 +1,24 @@
+import { Routes, Route } from "react-router-dom";
+import Header from "@components/Header/Header";
+import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Modal from "@components/Modals.jsx/Modal";
 import ModalBtns from "@components/Modals.jsx/ModalBtns";
-import { useState } from "react";
+import ErrorPage from "@components/error/Error";
+import "./App.css";
+
+import Footer from "@components/Footer/Footer";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const [showModalBtns, setShowModalBtns] = useState(false);
-
   return (
     <div>
-      <button type="button" onClick={() => setShowModal(true)}>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<RoomsFiltered />} />
+        <Route path="/error" element={<ErrorPage />} />
+      </Routes>
+      <Footer />
+      {/* Modales exemples */}
+       <button type="button" onClick={() => setShowModal(true)}>
         Je suis le bouton modal
         {/* bouton pour tester la logique Modal */}
       </button>
