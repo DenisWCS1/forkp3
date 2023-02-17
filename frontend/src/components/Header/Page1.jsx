@@ -4,8 +4,7 @@ function Page1() {
   return (
     <div>
       <h1>Bonjour</h1>
-      <h1>Bienvenu</h1>
-      <h1>fesdfsd</h1>
+      <h1>Bienvenue</h1>      
     </div>
   );
 }
