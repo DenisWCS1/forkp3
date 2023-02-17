@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState} form "react";
+import { useState} from "react";
 import home from "@pages/Home";
 import Header from "@components/Header/Header";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
