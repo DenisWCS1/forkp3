@@ -45,10 +45,6 @@ router.put("/reservation/:id", reservationControllers.edit);
 router.post("/reservation", reservationControllers.add);
 router.delete("/reservation/:id", reservationControllers.destroy);
 
-router.get("/myReservations", myReservationsControllers.browse);
 router.get("/myReservations/:id", myReservationsControllers.readmy);
-router.put("./myReservations/:id", myReservationsControllers.edit);
-router.post("/myReservations", myReservationsControllers.add);
-router.delete("/myReservations/:id", myReservationsControllers.destroy);
 
 module.exports = router;

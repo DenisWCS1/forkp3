@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useMemo } from "react";
 import Header from "@components/Header/Header";
-// import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
+import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Myreservations from "@components/MyReservations/MyReservations";
 // import Modal from "@components/Modals/Modal";
 // import ModalBtns from "@components/Modals/ModalBtns";
@@ -27,9 +27,9 @@ function App() {
       <SharedContext.Provider value={contextValues}>
         <Header />
         <Routes>
-          <Route exact path="/" element={<Myreservations />} />
-          {/* <Route exact path="/" element={<RoomsFiltered />} /> */}
-          <Route path="/error" element={<ErrorPage />} />
+          <Route exact path="/" element={<RoomsFiltered />} />
+          <Route path="/MesReservations" element={<Myreservations />} />
+          <Route path="/erreur" element={<ErrorPage />} />
         </Routes>
       </SharedContext.Provider>
 

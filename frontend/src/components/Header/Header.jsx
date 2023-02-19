@@ -9,12 +9,12 @@ export default function Header() {
   return (
     <div className="mx-auto mb-4 pr-6 flex items-center justify-between border-b border-whiteSimple-100 py-3 bg-dark-100 w-full">
       <div className="w-[8rem] rounded-full xl:w-[12rem]">
-        <NavLink to="/Home">
+        <NavLink to="/">
           <img src={logoSncf} alt="logoSncf" />
         </NavLink>
       </div>
       <div className="w-[12rem] rounded-full xl:w-[16rem]">
-        <NavLink to="/Home">
+        <NavLink to="/">
           <img src={GdSallesTransparent} alt="GdSallesTransparent" />
         </NavLink>
       </div>
@@ -55,7 +55,7 @@ export default function Header() {
                 className="border-b  text-blueDuck-100 my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
               >
-                <NavLink to="/Home">Se Connecter / S'inscrire</NavLink>
+                <NavLink to="/">Accueil</NavLink>
               </li>
               <li
                 role="presentation"
@@ -63,14 +63,22 @@ export default function Header() {
              my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
               >
-                <NavLink to="/">Mes Réservations</NavLink>
+                <NavLink to="/MesReservations">Mes Réservations</NavLink>
               </li>
               <li
                 role="presentation"
                 className="border-b  text-blueDuck-100 my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
               >
-                <NavLink to="/Home">Mon profil</NavLink>
+                <NavLink to="login">Se Connecter / S'inscrire</NavLink>
+              </li>
+
+              <li
+                role="presentation"
+                className="border-b  text-blueDuck-100 my-8 "
+                onMouseDown={() => setIsNavOpen(false)}
+              >
+                <NavLink to="/">Mon profil</NavLink>
               </li>
             </ul>
           </div>

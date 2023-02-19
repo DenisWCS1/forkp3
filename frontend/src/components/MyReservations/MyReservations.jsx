@@ -1,58 +1,36 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import Modal from "@components/Modals/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import SharedContext from "../../contexts/Sharedcontext";
+import { useNavigate } from "react-router-dom";
+import Configfile from "@config/Config";
 
-const salles = [
-  {
-    id: 1,
-    localisation: "Nantes",
-    nom: "Acheneau",
-    debut: "10/07/2023 9:00",
-    fin: "10/07/2023 12:00",
-  },
-  {
-    id: 2,
-    localisation: "Angers",
-    nom: "La Fayette",
-    debut: "20/07/2023 14:00",
-    fin: "20/07/2023 16:30",
-  },
-  {
-    id: 3,
-    localisation: "Nantes",
-    nom: "Loire",
-    debut: "30/09/2023 11:00",
-    fin: "30/09/2023 17:30",
-  },
-  {
-    id: 4,
-    localisation: "Le Mans",
-    nom: "Gare",
-    debut: "30/09/2023 11:00",
-    fin: "30/09/2023 17:30",
-  },
-  {
-    id: 5,
-    localisation: "Le Mans",
-    nom: "Gare",
-    debut: "30/09/2023 11:00",
-    fin: "30/09/2023 17:30",
-  },
-  {
-    id: 6,
-    localisation: "Le Mans",
-    nom: "Gare",
-    debut: "30/09/2023 11:00",
-    fin: "30/09/2023 17:30",
-  },
-  // More people...
-];
+import moment from "moment";
+import SharedContext from "../../contexts/Sharedcontext";
 
 function Myreservations() {
   const { showModal, setShowModal } = useContext(SharedContext);
-
+  // Temporaly waiting for login feature  const [userid, setUserid] = useState();
+  const [myresas, setMyresas] = useState([]);
+  const navigate = useNavigate();
+  const userid = 7; // Temporaly waiting for login feature
+  useEffect(() => {
+    async function fetchData() {
+      await fetch(`${Configfile.apiUrl}/myReservations/${userid}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((jsonData) => {
+          setMyresas(jsonData);
+        })
+        .catch(() => {
+          navigate("/erreur");
+        });
+    }
+    // setIsLoading(true);
+    fetchData();
+    /* setIsLoading(false);   */
+  }, [userid]);
   return (
     <>
       <div className="text-center text-2xl font-bold mb-5">
@@ -78,36 +56,39 @@ function Myreservations() {
             </th>
           </tr>
         </thead>
-
         <tbody className="block md:table-row-group">
-          {salles.map((salle) => (
+          {myresas.map((myresa) => (
             <tr
               className=" border border-grey-500 md:border-none block md:table-row transition duration-300 ease-in-out hover:bg-gray-100"
-              key={salle.id}
+              key={myresa.id}
             >
               <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                 <span className="inline-block w-1/3 md:hidden text-sm  text-gray-900">
                   Salle
                 </span>
-                {salle.nom}
+                {myresa.nom}
               </td>
               <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                 <span className="inline-block w-1/3 md:hidden text-sm text-gray-900 font-light">
                   Localisation
                 </span>
-                {salle.localisation}
+                {myresa.localisation}
               </td>
               <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                 <span className="inline-block w-1/3 md:hidden text-gray-900 font-light">
                   Début
                 </span>
-                {salle.debut}
+                {moment(myresa.start, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+                  "DD/MM/YYYY à HH:mm:ss"
+                )}
               </td>
               <td className="p-2 md:border md:border-grey-500 text-left block md:table-cell">
                 <span className="inline-block w-1/3 md:hidden text-gray-900 font-light">
                   Fin
                 </span>
-                {salle.fin}
+                {moment(myresa.end, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+                  "DD/MM/YYYY à HH:mm:ss"
+                )}
               </td>
               <td className="p-2 md:border md:border-grey-500 text-center block md:table-cell">
                 <span className="inline-block w-1/3 md:hidden text-gray-900 font-light">
