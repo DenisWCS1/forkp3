@@ -3,7 +3,7 @@ import Modal from "@components/Modals/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Configfile from "@config/Config";
+import Configfile from "@config/Configfile";
 
 import moment from "moment";
 import SharedContext from "../../contexts/Sharedcontext";
