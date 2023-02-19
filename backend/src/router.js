@@ -46,7 +46,7 @@ router.post("/reservation", reservationControllers.add);
 router.delete("/reservation/:id", reservationControllers.destroy);
 
 router.get("/myReservations", myReservationsControllers.browse);
-router.get("/myReservations/:id", myReservationsControllers.read);
+router.get("/myReservations/:id", myReservationsControllers.readmy);
 router.put("./myReservations/:id", myReservationsControllers.edit);
 router.post("/myReservations", myReservationsControllers.add);
 router.delete("/myReservations/:id", myReservationsControllers.destroy);

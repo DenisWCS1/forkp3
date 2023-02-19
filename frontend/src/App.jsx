@@ -1,34 +1,47 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import Home from "@pages/Home";
+import { useState, useMemo } from "react";
 import Header from "@components/Header/Header";
-import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
-import Modal from "@components/Modals.jsx/Modal";
-import ModalBtns from "@components/Modals.jsx/ModalBtns";
+// import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
+import Myreservations from "@components/MyReservations/MyReservations";
+// import Modal from "@components/Modals/Modal";
+// import ModalBtns from "@components/Modals/ModalBtns";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
+import SharedContext from "./contexts/Sharedcontext";
 import "./App.css";
 
-const [showModal, setShowModal] = useState(false);
-const [showModalBtns, setShowModalBtns] = useState(false);
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [showModalBtns, setShowModalBtns] = useState(false);
+  const contextValues = useMemo(
+    () => ({
+      showModal,
+      setShowModal,
+      showModalBtns,
+      setShowModalBtns,
+    }),
+    [showModal, showModalBtns]
+  );
   return (
-    <div>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<RoomsFiltered />} />
-        <Route path="/error" element={<ErrorPage />} />
-      </Routes>
+    <div className="flex flex-col h-screen">
+      <SharedContext.Provider value={contextValues}>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Myreservations />} />
+          {/* <Route exact path="/" element={<RoomsFiltered />} /> */}
+          <Route path="/error" element={<ErrorPage />} />
+        </Routes>
+      </SharedContext.Provider>
+
       <Footer />
-      {/* Modales exemples */}
+
+      {/* Modales exemples 
       <button type="button" onClick={() => setShowModal(true)}>
         Je suis le bouton modal
         <Home />
-        {/* bouton pour tester la logique Modal */}
       </button>
       <button type="button" onClick={() => setShowModalBtns(true)}>
         Je suis le bouton modal Bouton
-        {/* bouton pour tester la logique Modal */}
       </button>
       <Modal
         isVisible={showModal}
@@ -39,7 +52,7 @@ function App() {
         isVisible={showModalBtns}
         onClose={() => setShowModalBtns(false)}
         message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
-      />
+      /> */}
     </div>
   );
 }

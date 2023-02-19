@@ -7,7 +7,7 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="mx-auto mb-4 pr-6 flex items-center justify-between border-b border-whiteSimple-100 py-3 bg-dark-100">
+    <div className="mx-auto mb-4 pr-6 flex items-center justify-between border-b border-whiteSimple-100 py-3 bg-dark-100 w-full">
       <div className="w-[8rem] rounded-full xl:w-[12rem]">
         <NavLink to="/Home">
           <img src={logoSncf} alt="logoSncf" />
@@ -21,8 +21,9 @@ export default function Header() {
       <nav>
         <section className="MOBILE-MENU flex flex-end">
           <div
+            role="presentation"
             className="HAMBURGER-ICON space-y-2"
-            onClick={() => setIsNavOpen((prev) => !prev)}
+            onMouseDown={() => setIsNavOpen((prev) => !prev)}
           >
             <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
             <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
@@ -31,8 +32,9 @@ export default function Header() {
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <div
+              role="presentation"
               className="absolute top-0 right-0 px-6 py-6"
-              onClick={() => setIsNavOpen(false)}
+              onMouseDown={() => setIsNavOpen(false)}
             >
               <svg
                 className="h-8 w-8 lg:w-[4rem] lg:h-[4rem] text-blueDuck-100"
@@ -49,21 +51,24 @@ export default function Header() {
             </div>
             <ul className="flex flex-col items-center justify-between min-h-[250px] sm:flex">
               <li
+                role="presentation"
                 className="border-b  text-blueDuck-100 my-8 "
-                onClick={() => setIsNavOpen(false)}
+                onMouseDown={() => setIsNavOpen(false)}
               >
                 <NavLink to="/Home">Se Connecter / S'inscrire</NavLink>
               </li>
               <li
+                role="presentation"
                 className="border-b text-blueDuck-100
              my-8 "
-                onClick={() => setIsNavOpen(false)}
+                onMouseDown={() => setIsNavOpen(false)}
               >
                 <NavLink to="/">Mes Réservations</NavLink>
               </li>
               <li
+                role="presentation"
                 className="border-b  text-blueDuck-100 my-8 "
-                onClick={() => setIsNavOpen(false)}
+                onMouseDown={() => setIsNavOpen(false)}
               >
                 <NavLink to="/Home">Mon profil</NavLink>
               </li>

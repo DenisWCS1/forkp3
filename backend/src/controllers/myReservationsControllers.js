@@ -14,7 +14,7 @@ const browse = (req, res) => {
     });
 };
 
-const read = (req, res) => {
+const readmy = (req, res) => {
   models.myReservations
     .findmy(req.params.id)
     .then(([rows]) => {
@@ -86,7 +86,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  read,
+  readmy,
   edit,
   add,
   destroy,
