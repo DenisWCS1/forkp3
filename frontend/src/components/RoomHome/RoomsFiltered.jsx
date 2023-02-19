@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Configfile from "@config/Config";
+import Configfile from "@config/Configfile";
 
 function RoomsFiltered() {
   /*
@@ -20,8 +20,7 @@ function RoomsFiltered() {
   React.useEffect(() => {
     async function fetchData() {
       await fetch(
-        `${Configfile.apiUrl}/filte
-        ed?start=${start}&end=${end}&location=${locationid}`
+        `${Configfile.apiUrl}/filtered?start=${start}&end=${end}&location=${locationid}`
       )
         .then((response) => {
           return response.json();
