@@ -7,7 +7,7 @@ import Modal from "@components/Modals/Modal";
 import ModalBtns from "@components/Modals/ModalBtns";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
-import PropTypes from "prop-types";
+
 import "./App.css";
 
 function App() {

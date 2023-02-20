@@ -23,7 +23,7 @@ export default function Header() {
           <div
             className="HAMBURGER-ICON space-y-2"
             onMouseDown={() => setIsNavOpen((prev) => !prev)}
-            role="menu"
+            role="presentation"
           >
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
@@ -34,13 +34,13 @@ export default function Header() {
             <div
               className="absolute top-0 right-0 px-6 py-6"
               onMouseDown={() => setIsNavOpen(false)}
-              role="menu"
+              role="presentation"
             />
             <ul className="flex flex-col items-center justify-between min-h-[250px] sm:flex">
               <li
                 className="border-b border-dotted border-opacity-20 font-semibold  text-turquoise-100 my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
-                role="menu"
+                role="presentation"
               >
                 <NavLink to="/Home">Se Connecter / S'inscrire</NavLink>
               </li>
@@ -48,14 +48,14 @@ export default function Header() {
                 className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100
              my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
-                role="menu"
+                role="presentation"
               >
                 <NavLink to="/">Mes Réservations</NavLink>
               </li>
               <li
                 className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100 my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
-                role="menu"
+                role="presentation"
               >
                 <NavLink to="/Home">Mon profil</NavLink>
               </li>
