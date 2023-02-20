@@ -77,8 +77,7 @@ export default function Header() {
                 role="presentation"
                 className="border-b  text-blueDuck-100 my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
-              >
-                <NavLink to="/">Mon profil</NavLink>
+              >               
               </li>
             </ul>
           </div>
