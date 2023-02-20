@@ -7,6 +7,7 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
+
     <div className="mx-auto mb-4 pr-6 flex items-center justify-between  py-3 max-h-16 bg-dark-100">
       <div className=" flex items-center justify-between lg:justify-evenly">
         <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/Home">
@@ -28,10 +29,12 @@ export default function Header() {
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
+
           </div>
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <div
+
               className="absolute top-0 right-0 px-6 py-6"
               onMouseDown={() => setIsNavOpen(false)}
               role="presentation"
@@ -58,6 +61,7 @@ export default function Header() {
                 role="presentation"
               >
                 <NavLink to="/Home">Mon profil</NavLink>
+
               </li>
             </ul>
           </div>

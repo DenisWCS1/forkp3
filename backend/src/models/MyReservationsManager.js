@@ -7,18 +7,16 @@ class MyReservationsManager extends AbstractManager {
 
   findmy(id) {
     return this.database.query(
-      `select user.firstname, user.lastname, room.name, start_datetime, end_datetime 
-      FROM ${this.table} 
-      INNER JOIN room ON room.id = fk_room 
-      INNER JOIN user ON user.id = fk_user
-      WHERE fk_user = ?`,
-
+      `select tb.id, location.city_name AS localisation, room.name AS nom, tb.start_datetime AS start, tb.end_datetime AS end
+      FROM ${this.table} AS tb
+      INNER JOIN room 
+      ON room.id = tb.fk_room
+      INNER JOIN location
+      ON room.fk_location = location.id
+      WHERE fk_user = ?
+      order by  tb.start_datetime`,
       [id]
     );
-  }
-
-  delete(id) {
-    return this.database.query(`delete ${this.table} set where id = ?`, [id]);
   }
 }
 
