@@ -2,25 +2,33 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logoSncf from "@assets/logos/logoSncf.png";
 import GdSallesTransparent from "@assets/logos/GdSallesTransparent.png";
+import {
+  faPen,
+  faBook,
+  faUserAstronaut,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-
-    <div className="mx-auto mb-4 pr-6 flex items-center justify-between  py-3 max-h-16 bg-dark-100">
+    <div className="mx-auto mb-4 pr-6 rounded-b-lg flex items-center justify-between  py-3 max-h-16 bg-dark-100">
       <div className=" flex items-center justify-between lg:justify-evenly">
-        <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/Home">
+        <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/">
           <img src={logoSncf} alt="logoSncf" />
         </NavLink>
-        <NavLink className="w-[7rem] rounded-full lg:w-[11rem]" to="/Home">
+        <NavLink className="w-[7rem] rounded-full lg:w-[11rem]" to="/">
           <img src={GdSallesTransparent} alt="GdSallesTransparent" />
         </NavLink>
       </div>
 
       <nav>
         {/* Mobile-Menu */}
-        <section className="flex flex-end">
+        <section className="flex flex-end ">
+          <div className="UserConnected pr-1  font-semibold text-turquoise-100">
+            "Candice DOE"
+          </div>
           <div
             className="HAMBURGER-ICON space-y-2"
             onMouseDown={() => setIsNavOpen((prev) => !prev)}
@@ -29,12 +37,10 @@ export default function Header() {
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
-
           </div>
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <div
-
               className="absolute top-0 right-0 px-6 py-6"
               onMouseDown={() => setIsNavOpen(false)}
               role="presentation"
@@ -45,6 +51,7 @@ export default function Header() {
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
+                <FontAwesomeIcon icon={faPen} className="pr-2" />
                 <NavLink to="/Home">Se Connecter / S'inscrire</NavLink>
               </li>
               <li
@@ -53,6 +60,7 @@ export default function Header() {
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
+                <FontAwesomeIcon icon={faBook} className="pr-2" />
                 <NavLink to="/">Mes Réservations</NavLink>
               </li>
               <li
@@ -60,8 +68,8 @@ export default function Header() {
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
+                <FontAwesomeIcon icon={faUserAstronaut} className="pr-2" />
                 <NavLink to="/Home">Mon profil</NavLink>
-
               </li>
             </ul>
           </div>
