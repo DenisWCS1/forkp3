@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useMemo } from "react";
 import Header from "@components/Header/Header";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
+
 import Myreservations from "@components/MyReservations/MyReservations";
 // import Modal from "@components/Modals/Modal";
 // import ModalBtns from "@components/Modals/ModalBtns";
@@ -13,6 +14,7 @@ import "./App.css";
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [showModalBtns, setShowModalBtns] = useState(false);
+
   const contextValues = useMemo(
     () => ({
       showModal,
@@ -22,13 +24,14 @@ function App() {
     }),
     [showModal, showModalBtns]
   );
+
   return (
     <div className="flex flex-col h-screen">
       <SharedContext.Provider value={contextValues}>
         <Header />
         <Routes>
           <Route exact path="/" element={<RoomsFiltered />} />
-          <Route path="/MesReservations" element={<Myreservations />} />
+          <Route exact path="/MesReservations" element={<Myreservations />} />
           <Route path="/erreur" element={<ErrorPage />} />
         </Routes>
       </SharedContext.Provider>

@@ -7,77 +7,61 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="mx-auto mb-4 pr-6 flex items-center justify-between border-b border-whiteSimple-100 py-3 bg-dark-100 w-full">
-      <div className="w-[8rem] rounded-full xl:w-[12rem]">
-        <NavLink to="/">
+
+    <div className="mx-auto mb-4 pr-6 flex items-center justify-between  py-3 max-h-16 bg-dark-100">
+      <div className=" flex items-center justify-between lg:justify-evenly">
+        <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/Home">
           <img src={logoSncf} alt="logoSncf" />
         </NavLink>
-      </div>
-      <div className="w-[12rem] rounded-full xl:w-[16rem]">
-        <NavLink to="/">
+        <NavLink className="w-[7rem] rounded-full lg:w-[11rem]" to="/Home">
           <img src={GdSallesTransparent} alt="GdSallesTransparent" />
         </NavLink>
       </div>
+
       <nav>
-        <section className="MOBILE-MENU flex flex-end">
+        {/* Mobile-Menu */}
+        <section className="flex flex-end">
           <div
-            role="presentation"
             className="HAMBURGER-ICON space-y-2"
             onMouseDown={() => setIsNavOpen((prev) => !prev)}
+            role="presentation"
           >
-            <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
-            <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
-            <span className="block h-0.5 w-8 lg:w-[4rem] lg:h-[0.250rem] animate-pulse bg-blueDuck-100" />
+            <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
+            <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
+            <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
+
           </div>
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <div
-              role="presentation"
+
               className="absolute top-0 right-0 px-6 py-6"
               onMouseDown={() => setIsNavOpen(false)}
-            >
-              <svg
-                className="h-8 w-8 lg:w-[4rem] lg:h-[4rem] text-blueDuck-100"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </div>
+              role="presentation"
+            />
             <ul className="flex flex-col items-center justify-between min-h-[250px] sm:flex">
               <li
-                role="presentation"
-                className="border-b  text-blueDuck-100 my-8 "
+                className="border-b border-dotted border-opacity-20 font-semibold  text-turquoise-100 my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
+                role="presentation"
               >
-                <NavLink to="/">Accueil</NavLink>
+                <NavLink to="/Home">Se Connecter / S'inscrire</NavLink>
               </li>
               <li
-                role="presentation"
-                className="border-b text-blueDuck-100
+                className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100
              my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
+                role="presentation"
               >
-                <NavLink to="/MesReservations">Mes Réservations</NavLink>
+                <NavLink to="/">Mes Réservations</NavLink>
               </li>
               <li
-                role="presentation"
-                className="border-b  text-blueDuck-100 my-8 "
+                className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100 my-8 "
                 onMouseDown={() => setIsNavOpen(false)}
+                role="presentation"
               >
-                <NavLink to="login">Se Connecter / S'inscrire</NavLink>
-              </li>
+                <NavLink to="/Home">Mon profil</NavLink>
 
-              <li
-                role="presentation"
-                className="border-b  text-blueDuck-100 my-8 "
-                onMouseDown={() => setIsNavOpen(false)}
-              >               
               </li>
             </ul>
           </div>
