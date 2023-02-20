@@ -3,15 +3,16 @@ import { useState } from "react";
 import Home from "@pages/Home";
 import Header from "@components/Header/Header";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
-import Modal from "@components/Modals.jsx/Modal";
-import ModalBtns from "@components/Modals.jsx/ModalBtns";
+import Modal from "@components/Modals/Modal";
+import ModalBtns from "@components/Modals/ModalBtns";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
+import PropTypes from "prop-types";
 import "./App.css";
 
-const [showModal, setShowModal] = useState(false);
-const [showModalBtns, setShowModalBtns] = useState(false);
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [showModalBtns, setShowModalBtns] = useState(false);
   return (
     <div>
       <Header />
