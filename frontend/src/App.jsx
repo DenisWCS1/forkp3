@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useMemo } from "react";
 import Header from "@components/Header/Header";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
-
 import Myreservations from "@components/MyReservations/MyReservations";
 // import Modal from "@components/Modals/Modal";
 // import ModalBtns from "@components/Modals/ModalBtns";
@@ -36,10 +35,12 @@ function App() {
             <Route path="/erreur" element={<ErrorPage />} />
           </Routes>
         </SharedContext.Provider>
+
         <div>
           <Footer />
 
           {/* Modales exemples 
+
       <button type="button" onClick={() => setShowModal(true)}>
         Je suis le bouton modal
         <Home />
@@ -57,7 +58,9 @@ function App() {
         onClose={() => setShowModalBtns(false)}
         message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
       /> */}
+
         </div>
+
       </div>
     </div>
   );

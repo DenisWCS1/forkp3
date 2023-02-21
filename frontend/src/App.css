@@ -4,8 +4,8 @@
 .showMenuNav {
   display: block;
   position: absolute;
-  width: 45%;
-  height: 45vh;
+  width: 45vh;
+  height: 55vh;
   top: 4rem;
   right: 0;
   background-color: #0c131f;
@@ -14,11 +14,15 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  border-bottom-right-radius: 1rem/* 8px */;
+  border-bottom-left-radius: 1rem/* 8px */;
 }
 
 @media screen and (min-width: 1280px) {
   .showMenuNav {
-    width: 30%;
+    width: 45vh;
     height: 50vh;
+    border-bottom-right-radius: 1rem/* 8px */;
+    border-bottom-left-radius: 1rem/* 8px */;
   }
 }

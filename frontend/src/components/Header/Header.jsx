@@ -2,6 +2,12 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logoSncf from "@assets/logos/logoSncf.png";
 import GdSallesTransparent from "@assets/logos/GdSallesTransparent.png";
+import {
+  faPen,
+  faBook,
+  faUserAstronaut,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -9,17 +15,20 @@ export default function Header() {
   return (
     <div className="mx-auto mb-4 pr-6 flex items-center justify-between  py-3 max-h-16 bg-dark-100">
       <div className=" flex items-center justify-between lg:justify-evenly">
-        <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/Home">
+        <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/">
           <img src={logoSncf} alt="logoSncf" />
         </NavLink>
-        <NavLink className="w-[7rem] rounded-full lg:w-[11rem]" to="/Home">
+        <NavLink className="w-[7rem] rounded-full lg:w-[11rem]" to="/">
           <img src={GdSallesTransparent} alt="GdSallesTransparent" />
         </NavLink>
       </div>
 
       <nav>
         {/* Mobile-Menu */}
-        <section className="flex flex-end">
+        <section className="flex flex-end ">
+          <div className="UserConnected pr-8  font-semibold text-turquoise-100">
+            "Candice DOE"
+          </div>
           <div
             className="HAMBURGER-ICON space-y-2"
             onMouseDown={() => setIsNavOpen((prev) => !prev)}
@@ -38,25 +47,29 @@ export default function Header() {
             />
             <ul className="flex flex-col items-center justify-between min-h-[250px] sm:flex">
               <li
-                className="border-b border-dotted border-opacity-20 font-semibold  text-turquoise-100 my-8 "
+                className="font-semibold text-turquoise-100 my-8 pb-6"
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
-                <NavLink to="/Home">Se Connecter / S'inscrire</NavLink>
+                <FontAwesomeIcon icon={faPen} className="pr-2" />
+                <NavLink to="/">Se connecter / S'inscrire</NavLink>
               </li>
+              <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
               <li
-                className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100
-             my-8 "
+                className="font-semibold text-turquoise-100 my-8 pb-6"
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
-                <NavLink to="/">Mes Réservations</NavLink>
+                <FontAwesomeIcon icon={faBook} className="pr-2" />
+                <NavLink to="/MesReservations">Mes réservations</NavLink>
               </li>
+              <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
               <li
-                className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100 my-8 "
+                className="font-semibold text-turquoise-100 my-8 pb-6"
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
+                <FontAwesomeIcon icon={faUserAstronaut} className="pr-2" />
                 <NavLink to="/Home">Mon profil</NavLink>
               </li>
             </ul>
