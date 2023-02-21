@@ -36,9 +36,11 @@ function App() {
           </Routes>
         </SharedContext.Provider>
 
-        <Footer />
+        <div>
+          <Footer />
 
-        {/* Modales exemples 
+          {/* Modales exemples 
+
       <button type="button" onClick={() => setShowModal(true)}>
         Je suis le bouton modal
         <Home />
@@ -56,6 +58,9 @@ function App() {
         onClose={() => setShowModalBtns(false)}
         message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
       /> */}
+
+        </div>
+
       </div>
     </div>
   );

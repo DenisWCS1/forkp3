@@ -48,12 +48,13 @@ function RoomsFiltered() {
             <article className="overflow-hidden rounded-lg shadow-lg">
               <div className="w-full h-fit group">
                 <div className="relative overflow-hidden">
-                  <img
-                    className="h-auto w-full object-cover"
-                    src={`${baseUrl}${value.url_picture}`}
-                    alt={value.name}
-                  />
-
+                  <div>
+                    <img
+                      className="h-48 w-full object-cover"
+                      src={`${baseUrl}${value.url_picture}`}
+                      alt={value.name}
+                    />
+                  </div>
                   <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <button
                       className="bg-greySimple-100 bg-opacity-50 text-whiteSimple-100 py-2 px-4 "
