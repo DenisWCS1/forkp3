@@ -7,7 +7,6 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-
     <div className="mx-auto mb-4 pr-6 flex items-center justify-between  py-3 max-h-16 bg-dark-100">
       <div className=" flex items-center justify-between lg:justify-evenly">
         <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/Home">
@@ -21,11 +20,7 @@ export default function Header() {
       <nav>
         {/* Mobile-Menu */}
         <section className="flex flex-end">
-          <div
-            className="HAMBURGER-ICON space-y-2"
-            onMouseDown={() => setIsNavOpen((prev) => !prev)}
-            role="presentation"
-          >
+          <div className="HAMBURGER-ICON space-y-2" onMouseDown={() => setIsNavOpen((prev) => !prev)} role="presentation">
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
