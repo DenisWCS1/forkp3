@@ -20,15 +20,19 @@ export default function Header() {
       <nav>
         {/* Mobile-Menu */}
         <section className="flex flex-end">
-          <div className="HAMBURGER-ICON space-y-2" onMouseDown={() => setIsNavOpen((prev) => !prev)} role="presentation">
-          <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
-          <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
-          <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
+          <div
+            className="HAMBURGER-ICON space-y-2"
+            onMouseDown={() => setIsNavOpen((prev) => !prev)}
+            role="presentation"
+          >
+            <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
+            <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
+            <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
           </div>
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <div
-            className="absolute top-0 right-0 px-6 py-6"
+              className="absolute top-0 right-0 px-6 py-6"
               onMouseDown={() => setIsNavOpen(false)}
               role="presentation"
             />
@@ -54,7 +58,7 @@ export default function Header() {
                 role="presentation"
               >
                 <NavLink to="/Home">Mon profil</NavLink>
-                </li>
+              </li>
             </ul>
           </div>
         </section>
