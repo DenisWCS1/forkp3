@@ -14,15 +14,15 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom-right-radius: 1rem/* 8px */;
-  border-bottom-left-radius: 1rem/* 8px */;
+  border-bottom-right-radius: 1rem /* 8px */;
+  border-bottom-left-radius: 1rem /* 8px */;
 }
 
 @media screen and (min-width: 1280px) {
   .showMenuNav {
     width: 45vh;
     height: 50vh;
-    border-bottom-right-radius: 1rem/* 8px */;
-    border-bottom-left-radius: 1rem/* 8px */;
+    border-bottom-right-radius: 1rem /* 8px */;
+    border-bottom-left-radius: 1rem /* 8px */;
   }
 }
