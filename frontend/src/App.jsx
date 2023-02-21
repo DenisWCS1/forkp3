@@ -26,19 +26,20 @@ function App() {
   );
 
   return (
-    <div className="flex flex-col h-screen">
-      <SharedContext.Provider value={contextValues}>
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<RoomsFiltered />} />
-          <Route exact path="/MesReservations" element={<Myreservations />} />
-          <Route path="/erreur" element={<ErrorPage />} />
-        </Routes>
-      </SharedContext.Provider>
+    <div>
+      <Header />
+      <div className="flex flex-col h-screen">
+        <SharedContext.Provider value={contextValues}>
+          <Routes>
+            <Route exact path="/" element={<RoomsFiltered />} />
+            <Route exact path="/MesReservations" element={<Myreservations />} />
+            <Route path="/erreur" element={<ErrorPage />} />
+          </Routes>
+        </SharedContext.Provider>
+        <div>
+          <Footer />
 
-      <Footer />
-
-      {/* Modales exemples 
+          {/* Modales exemples 
       <button type="button" onClick={() => setShowModal(true)}>
         Je suis le bouton modal
         <Home />
@@ -56,6 +57,8 @@ function App() {
         onClose={() => setShowModalBtns(false)}
         message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
       /> */}
+        </div>
+      </div>
     </div>
   );
 }
