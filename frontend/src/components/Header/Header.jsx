@@ -13,7 +13,7 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="mx-auto mb-4 pr-6 rounded-b-lg flex items-center justify-between  py-3 max-h-16 bg-dark-100">
+    <div className="mx-auto mb-4 pr-6 flex items-center justify-between  py-3 max-h-16 bg-dark-100">
       <div className=" flex items-center justify-between lg:justify-evenly">
         <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/">
           <img src={logoSncf} alt="logoSncf" />
@@ -26,7 +26,7 @@ export default function Header() {
       <nav>
         {/* Mobile-Menu */}
         <section className="flex flex-end ">
-          <div className="UserConnected pr-1  font-semibold text-turquoise-100">
+          <div className="UserConnected pr-8  font-semibold text-turquoise-100">
             "Candice DOE"
           </div>
           <div
@@ -47,24 +47,25 @@ export default function Header() {
             />
             <ul className="flex flex-col items-center justify-between min-h-[250px] sm:flex">
               <li
-                className="border-b border-dotted border-opacity-20 font-semibold  text-turquoise-100 my-8 "
+                className="font-semibold text-turquoise-100 my-8 pb-6"
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
                 <FontAwesomeIcon icon={faPen} className="pr-2" />
-                <NavLink to="/Home">Se Connecter / S'inscrire</NavLink>
+                <NavLink to="/">Se connecter / S'inscrire</NavLink>
               </li>
+              <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
               <li
-                className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100
-             my-8 "
+                className="font-semibold text-turquoise-100 my-8 pb-6"
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >
                 <FontAwesomeIcon icon={faBook} className="pr-2" />
-                <NavLink to="/">Mes Réservations</NavLink>
+                <NavLink to="/MesReservations">Mes réservations</NavLink>
               </li>
+              <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
               <li
-                className="border-b border-dotted border-opacity-20 font-semibold text-turquoise-100 my-8 "
+                className="font-semibold text-turquoise-100 my-8 pb-6"
                 onMouseDown={() => setIsNavOpen(false)}
                 role="presentation"
               >

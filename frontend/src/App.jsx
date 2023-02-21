@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useMemo } from "react";
 import Header from "@components/Header/Header";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
-
 import Myreservations from "@components/MyReservations/MyReservations";
 // import Modal from "@components/Modals/Modal";
 // import ModalBtns from "@components/Modals/ModalBtns";
