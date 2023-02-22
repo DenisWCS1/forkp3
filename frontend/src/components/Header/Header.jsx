@@ -74,7 +74,6 @@ export default function Header() {
               >
                 <FontAwesomeIcon icon={faUserAstronaut} className="pr-2" />
                 <NavLink to="/Home">Mon profil</NavLink>
-
               </button>
             </ul>
           </div>

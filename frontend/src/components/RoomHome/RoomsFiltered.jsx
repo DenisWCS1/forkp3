@@ -18,8 +18,8 @@ function RoomsFiltered() {
   const baseUrl = "../../src/assets/rooms/";
 
   React.useEffect(() => {
-    async function fetchData() {
-      await fetch(
+    function fetchData() {
+      fetch(
         `${Configfile.apiUrl}/filtered?start=${start}&end=${end}&location=${locationid}`
       )
         .then((response) => {

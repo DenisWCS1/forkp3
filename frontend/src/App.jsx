@@ -18,7 +18,6 @@ function App() {
     <div>
       <Header />
       <div className="flex flex-col h-screen">
-
         <Routes>
           <Route exact path="/" element={<RoomsFiltered />} />
           <Route
@@ -47,7 +46,6 @@ function App() {
           onClose={() => setShowModalBtns(false)}
           message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
         /> */}
-
       </div>
     </div>
   );
