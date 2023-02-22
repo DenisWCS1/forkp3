@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import Configfile from "@config/Configfile";
 
 import moment from "moment";
+
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Myreservations({ setShowModal, setshowMessage }) {
   const [myresas, setMyresas] = useState([]);
@@ -13,7 +14,7 @@ function Myreservations({ setShowModal, setshowMessage }) {
   const userid = 7; // Temporaly waiting for login feature
   useEffect(() => {
     async function fetchData() {
-      await fetch(`${Configfile.apiUrl}/myReservations/${userid}`)
+      await fetch(`${baseUrl}/myReservations/${userid}`)
         .then((response) => {
           return response.json();
         })

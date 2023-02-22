@@ -2,8 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Configfile from "@config/Configfile";
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function RoomsFiltered() {
   /*
   const [start, setStart] = React.useState("");
@@ -15,12 +15,11 @@ function RoomsFiltered() {
   const end = "";
   const locationid = "";
   const [rooms, setRooms] = React.useState([]);
-  const baseUrl = "../../src/assets/rooms/";
 
   React.useEffect(() => {
     async function fetchData() {
       await fetch(
-        `${Configfile.apiUrl}/filtered?start=${start}&end=${end}&location=${locationid}`
+        `${baseUrl}/filtered?start=${start}&end=${end}&location=${locationid}`
       )
         .then((response) => {
           return response.json();
