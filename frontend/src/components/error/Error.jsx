@@ -8,15 +8,15 @@ function Error() {
     <div className="min-w-full border-collapse block md:table flex-1 ">
       <div className="relative flex flex-col items-center w-full gap-8 px-8 md:px-18 xl:px-40 ">
         <h1 className="text-8xl md:text-[150px] w-full select-none text-center font-black  text-gray-400 dark:text-[#373A40]  ">
-          4XX
+          404
         </h1>
-        <img to="/error" src={error} alt="4XX" />
+        <img to="/error" src={error} alt="404" />
         <p className=" font-bold capitalize text-center text mb-0 xl:text-3xl ">
           VOUS AVEZ DÉCOUVERT UN PASSAGE SECRET
         </p>
         <p className=" font-medium break-words text-dull text-center xl:text-2xl sm:text-3xl">
-          Malheureusement, ce n'est qu'une page 4XX. Vous avez peut-être mal
-          tapé le adresse, ou la page a été déplacée vers une autre URL.
+          Malheureusement, ce n'est qu'une page 404. Vous avez peut-être mal
+          tapé l'adresse, ou la page a été déplacée vers une autre URL.
           Malheureusement vous ne pouvez pas avoir plus d'indication sur le type
           d'erreur.
         </p>

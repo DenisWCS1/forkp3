@@ -20,6 +20,7 @@ function RoomsFiltered() {
     async function fetchData() {
       await fetch(
         `${baseUrl}/filtered?start=${start}&end=${end}&location=${locationid}`
+
       )
         .then((response) => {
           return response.json();
