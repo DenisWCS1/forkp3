@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import PropTypes from "prop-types";
-import Cookies from "js-cookie";
+import { Cookies } from "js-cookie";
+// import PropTypes from "prop-types";
 
 function Login() {
   const [inputValue, setInputValue] = useState({
@@ -54,7 +54,7 @@ function Login() {
           className="shadow-2xl w-full justify-center mb-auto  bg-greySimple-100 p-8 px-8"
         >
           <div className="flex flex-col text-dark-100 py-2">
-            <label>Adresse Email</label>
+            <label htmlFor="Adresse Email">Adresse Email</label>
             <input
               className="rounded-lg bg-whiteSimple-100 mt-2 p-2"
               type="text"
@@ -65,7 +65,7 @@ function Login() {
             />
           </div>
           <div className="flex flex-col text-dark-100 py-2">
-            <label>Mot de passe</label>
+            <label htmlFor="Mot de passe">Mot de passe</label>
             <input
               className="rounded-lg bg-whiteSimple-100 mt-2 p-2"
               type="password"
@@ -76,9 +76,9 @@ function Login() {
             />
           </div>
 
-          <Link className="flex justify-between text-gray-400 py-2">
+          <NavLink className="flex justify-between text-gray-400 py-2">
             Mot de passe oublié ?
-          </Link>
+          </NavLink>
 
           <button
             type="submit"
@@ -93,7 +93,7 @@ function Login() {
           <p className="flex items-center mt-4">Pas encore inscrit ? </p>
           <br />
           <div className="flex justify-between">
-            <Link className="flex items-center">Inscrivez vous</Link>
+            <NavLink className="flex items-center">Inscrivez vous</NavLink>
           </div>
         </form>
       </div>
@@ -101,7 +101,7 @@ function Login() {
   );
 }
 
-Login.propTypes = {
-  setToken: PropTypes.func,
-};
+// Login.propTypes = {
+//   setToken: PropTypes.func,
+// };
 export default Login;
