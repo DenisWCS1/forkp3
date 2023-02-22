@@ -1,16 +1,13 @@
-import { useContext, useState, useEffect } from "react";
-import Modal from "@components/Modals/Modal";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import Configfile from "@config/Configfile";
 
 import moment from "moment";
-import SharedContext from "../../contexts/Sharedcontext";
 
-function Myreservations() {
-  const { showModal, setShowModal } = useContext(SharedContext);
-  // Temporaly waiting for login feature  const [userid, setUserid] = useState();
+function Myreservations({ setShowModal, setshowMessage }) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
   const userid = 7; // Temporaly waiting for login feature
@@ -97,7 +94,10 @@ function Myreservations() {
                 <button
                   type="button"
                   onClick={() => {
-                    setShowModal(true);
+                    return (
+                      setShowModal(true),
+                      setshowMessage("Disponible dans la V3")
+                    );
                   }}
                   className="text-blue-400 text-lg font-bold  mr-1 "
                 >
@@ -117,13 +117,11 @@ function Myreservations() {
           ))}
         </tbody>
       </table>
-      <Modal
-        isVisible={showModal}
-        onClose={() => setShowModal(false)}
-        message="Disponible dans la V2 ?"
-      />
     </>
   );
 }
-
+Myreservations.propTypes = {
+  setShowModal: PropTypes.func.isRequired,
+  setshowMessage: PropTypes.func.isRequired,
+};
 export default Myreservations;
