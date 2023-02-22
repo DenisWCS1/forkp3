@@ -87,119 +87,119 @@ VALUES
 		'Valerie',
 		'Doe',
 		'valerie.doe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Candice',
 		'Doe',
 		'candice.doe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Jules',
 		'Doe',
 		'jules.doe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Fortun',
 		'Houle',
 		'fortun.houle@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Leone',
 		'Sergio',
 		'leone.sergio@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Ella',
 		'Short',
 		'ella.short@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Claire',
 		'Ranclaud',
 		'claire.ranclaud@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Marion',
 		'Ney',
 		'marion.ney@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Denis',
 		'Dogger',
 		'denis.dogger@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'David',
 		'Kouign_aman',
 		'david.kouing_aman@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Alban',
 		'Puh_Blik',
 		'alban.puh_blik@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Anthony',
 		'Kea',
 		'anthony.kea@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'David',
 		'ExcessivementLofe',
 		'david.excessivementLofe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Monica',
 		'Belelouchy',
 		'monica.belelouchy@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Erica',
 		'Hernandez',
 		'erica.hernandez@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Ahmed',
 		'Sahim',
 		'ahmed.sahim@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Apu ',
 		'Nahasa',
 		'apu.kea@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	('Jo', 'Holt', 'jo.holt@yopmail.com', '0', 'user'),
@@ -207,84 +207,84 @@ VALUES
 		'Guistino',
 		'Ladaguini',
 		'guistino.ladaguini@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Rodrigo',
 		'Amador',
 		'rodrigo.amador@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Claudette',
 		'Morineau',
 		'claudette.morineau@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Birgit',
 		'Hançer',
 		'birgit.hançer@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Elov',
 		'Bilir',
 		'elov.billir@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Youssef',
 		'Ixcell',
 		'youssef.ixcell@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Camila',
 		'Da SIva',
 		'camila.dasilva@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Al',
 		'Kleeber',
 		'al.kleeber@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Osborne',
 		'Quigley',
 		'osborne.quigley@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Anastasya',
 		'Jonet',
 		'anastasya.jonet@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Dimitri',
 		'Solid-Snake',
 		'dimitri.solid_snake@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Nikitas',
 		'Salahkis',
 		'nikitas.salahkis.kea@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	);
 

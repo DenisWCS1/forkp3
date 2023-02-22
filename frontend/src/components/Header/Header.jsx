@@ -51,7 +51,7 @@ export default function Header() {
                 className="font-semibold text-turquoise-100 my-8 pb-6"
               >
                 <FontAwesomeIcon icon={faPen} className="pr-2" />
-                <NavLink to="/">Se connecter/S'inscrire</NavLink>
+                <NavLink to="/login">Se connecter/S'inscrire</NavLink>
               </button>
               <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
 
@@ -60,7 +60,7 @@ export default function Header() {
                 type="button"
                 className="font-semibold text-turquoise-100 my-8 pb-6"
               >
-                <NavLink to="/MesReservations">
+                <NavLink to="/mesreservations">
                   <FontAwesomeIcon icon={faBook} className="pr-2" />
                   Mes réservations
                 </NavLink>
