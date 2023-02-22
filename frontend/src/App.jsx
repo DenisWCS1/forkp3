@@ -58,9 +58,7 @@ function App() {
         onClose={() => setShowModalBtns(false)}
         message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
       /> */}
-
         </div>
-
       </div>
     </div>
   );

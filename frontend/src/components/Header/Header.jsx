@@ -42,36 +42,39 @@ export default function Header() {
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <div
               className="absolute top-0 right-0 px-6 py-6"
-              onMouseDown={() => setIsNavOpen(false)}
               role="presentation"
             />
             <ul className="flex flex-col items-center justify-between min-h-[250px] sm:flex">
-              <li
+              <button
+                onClick={() => setIsNavOpen(false)}
+                type="button"
                 className="font-semibold text-turquoise-100 my-8 pb-6"
-                onMouseDown={() => setIsNavOpen(false)}
-                role="presentation"
               >
                 <FontAwesomeIcon icon={faPen} className="pr-2" />
-                <NavLink to="/">Se connecter / S'inscrire</NavLink>
-              </li>
+                <NavLink to="/">Se connecter/S'inscrire</NavLink>
+              </button>
               <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
-              <li
+
+              <button
+                onClick={() => setIsNavOpen(false)}
+                type="button"
                 className="font-semibold text-turquoise-100 my-8 pb-6"
-                onMouseDown={() => setIsNavOpen(false)}
-                role="presentation"
               >
-                <FontAwesomeIcon icon={faBook} className="pr-2" />
-                <NavLink to="/MesReservations">Mes réservations</NavLink>
-              </li>
+                <NavLink to="/MesReservations">
+                  <FontAwesomeIcon icon={faBook} className="pr-2" />
+                  Mes réservations
+                </NavLink>
+              </button>
               <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
-              <li
+
+              <button
+                onClick={() => setIsNavOpen(false)}
+                type="button"
                 className="font-semibold text-turquoise-100 my-8 pb-6"
-                onMouseDown={() => setIsNavOpen(false)}
-                role="presentation"
               >
                 <FontAwesomeIcon icon={faUserAstronaut} className="pr-2" />
                 <NavLink to="/Home">Mon profil</NavLink>
-              </li>
+              </button>
             </ul>
           </div>
         </section>
