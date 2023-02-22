@@ -311,15 +311,15 @@ VALUES
 INSERT INTO
 	`room` (capacity, fk_location, name, plan, url_picture)
 VALUES
-	(50, 1, 'Loire', 'map', 'salle1.png'),
-	(34, 1, 'Sarthe', 'map', 'salle2.png'),
-	(29, 2, 'Acheneau', 'map', 'salle10.jpg'),
-	(56, 2, 'Divatte', 'map', 'salle4.jpg'),
-	(35, 3, 'Sèvre', 'map', 'salle5.jpg'),
-	(44, 3, 'Le Brivet', 'map', 'salle6.jpg'),
-	(67, 1, 'Maine', 'map', 'salle7.jpg'),
-	(68, 2, 'Namnettes', 'map', 'salle8.jpg'),
-	(39, 3, 'Zen', 'map', 'salle9.jpg');
+	(50, 1, 'Loire', 'map', '/rooms/salle1.png'),
+	(34, 1, 'Sarthe', 'map', '/rooms/salle2.png'),
+	(29, 2, 'Acheneau', 'map', '/rooms/salle10.jpg'),
+	(56, 2, 'Divatte', 'map', '/rooms/salle4.jpg'),
+	(35, 3, 'Sèvre', 'map', '/rooms/salle5.jpg'),
+	(44, 3, 'Le Brivet', 'map', '/rooms/salle6.jpg'),
+	(67, 1, 'Maine', 'map', '/rooms/salle7.jpg'),
+	(68, 2, 'Namnettes', 'map', '/rooms/salle8.jpg'),
+	(39, 3, 'Zen', 'map', '/rooms/salle9.jpg');
 
 INSERT INTO
 	room_material
