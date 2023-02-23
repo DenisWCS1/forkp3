@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { Cookies } from "js-cookie";
+import Cookies from "js-cookie";
+
 // import PropTypes from "prop-types";
 
 function Login() {
