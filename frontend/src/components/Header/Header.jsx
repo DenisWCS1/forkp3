@@ -60,7 +60,7 @@ export default function Header() {
                 type="button"
                 className="font-semibold text-turquoise-100 my-8 pb-6"
               >
-                <NavLink to="/mesreservations">
+                <NavLink to="/MesReservations">
                   <FontAwesomeIcon icon={faBook} className="pr-2" />
                   Mes réservations
                 </NavLink>
