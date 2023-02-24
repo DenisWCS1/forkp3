@@ -20,7 +20,6 @@ function Login() {
   };
 
   const handleSubmit = (e) => {
-    console.log(process.env.NODE_ENV);
     e.preventDefault();
     fetch("http://localhost:5000/user/login", {
       method: "POST",
@@ -46,8 +45,8 @@ function Login() {
         });
         window.location.href = "/Home";
       })
-      .catch((error) => {
-        setError(error.message);
+      .catch((err) => {
+        setError(err.message);
       });
   };
 
