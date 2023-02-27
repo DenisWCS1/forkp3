@@ -17,9 +17,7 @@ router.get("/user", userControllers.browse);
 router.get("/user/:id", userControllers.read);
 router.put("/user/:id", userControllers.edit);
 router.post("/user", userControllers.add);
-
 router.post("/user/login", userControllers.login);
-
 router.post("/user/register", hashPassword, userControllers.register);
 router.delete("/user/:id", userControllers.destroy);
 

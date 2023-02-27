@@ -2,26 +2,28 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "@components/Header/Header";
 import Login from "@components/Login/Login";
+import Register from "@components/Register/Register";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
-// import ModalBtns from "@components/Modals/ModalBtns";
 import "./App.css";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setshowMessage] = useState("");
   // const [showModalBtns, setShowModalBtns] = useState(false);
-
+  // const [isLogged, setIsLogged] = useState(false);
   return (
     <div>
       <Header />
+      {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
       <div className="flex flex-col h-screen">
         <Routes>
           <Route exact path="/" element={<RoomsFiltered />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
           <Route
             exact
             path="/mesreservations"
