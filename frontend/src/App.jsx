@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "@components/Header/Header";
+import Login from "@components/Login/Login";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
@@ -20,6 +21,7 @@ function App() {
       <div className="flex flex-col h-screen">
         <Routes>
           <Route exact path="/" element={<RoomsFiltered />} />
+          <Route exact path="/login" element={<Login />} />
           <Route
             exact
             path="/mesreservations"
