@@ -2,10 +2,10 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Configfile from "@config/Configfile";
 import moment from "moment";
 import RoomFilter from "@components/RoomHome/RoomFilter";
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function RoomsFiltered() {
   const navigate = useNavigate();
   const [started, setStarted] = React.useState(new Date());
@@ -13,11 +13,11 @@ function RoomsFiltered() {
   const [locationid, setLocationid] = React.useState();
 
   const [rooms, setRooms] = React.useState([]);
-  const baseUrl = "../../src/assets/rooms/";
 
   React.useEffect(() => {
+
     fetch(
-      `${Configfile.apiUrl}/filtered?start=${moment(
+      `${baseUrl}/filtered?start=${moment(
         started,
         "YYYY-MM-DDTHH:mm:ss.SSSZ"
       ).format("DD-MM-YYYY HH:mm:ss")}&end=${moment(

@@ -1,22 +1,20 @@
-import { useContext, useState, useEffect } from "react";
-import Modal from "@components/Modals/Modal";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Configfile from "@config/Configfile";
+import PropTypes from "prop-types";
 
 import moment from "moment";
-import SharedContext from "../../contexts/Sharedcontext";
 
-function Myreservations() {
-  const { showModal, setShowModal } = useContext(SharedContext);
-  // Temporaly waiting for login feature  const [userid, setUserid] = useState();
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
+function Myreservations({ setShowModal, setshowMessage }) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
   const userid = 7; // Temporaly waiting for login feature
   useEffect(() => {
     async function fetchData() {
-      await fetch(`${Configfile.apiUrl}/myReservations/${userid}`)
+      await fetch(`${baseUrl}/myReservations/${userid}`)
         .then((response) => {
           return response.json();
         })
@@ -97,7 +95,10 @@ function Myreservations() {
                 <button
                   type="button"
                   onClick={() => {
-                    setShowModal(true);
+                    return (
+                      setShowModal(true),
+                      setshowMessage("Disponible dans la V3")
+                    );
                   }}
                   className="text-blue-400 text-lg font-bold  mr-1 "
                 >
@@ -117,13 +118,11 @@ function Myreservations() {
           ))}
         </tbody>
       </table>
-      <Modal
-        isVisible={showModal}
-        onClose={() => setShowModal(false)}
-        message="Disponible dans la V2 ?"
-      />
     </>
   );
 }
-
+Myreservations.propTypes = {
+  setShowModal: PropTypes.func.isRequired,
+  setshowMessage: PropTypes.func.isRequired,
+};
 export default Myreservations;

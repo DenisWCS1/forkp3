@@ -17,6 +17,7 @@ CREATE TABLE
 		`capacity` INT NOT NULL,
 		`fk_location` INT NOT NULL,
 		`name` varchar(45) NOT NULL,
+		`adress` varchar(100) NOT NULL,
 		`plan` varchar(255) NOT NULL,
 		`url_picture` varchar(255) NOT NULL,
 		`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -87,119 +88,119 @@ VALUES
 		'Valerie',
 		'Doe',
 		'valerie.doe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Candice',
 		'Doe',
 		'candice.doe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Jules',
 		'Doe',
 		'jules.doe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Fortun',
 		'Houle',
 		'fortun.houle@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Leone',
 		'Sergio',
 		'leone.sergio@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Ella',
 		'Short',
 		'ella.short@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Claire',
 		'Ranclaud',
 		'claire.ranclaud@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Marion',
 		'Ney',
 		'marion.ney@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Denis',
 		'Dogger',
 		'denis.dogger@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'David',
 		'Kouign_aman',
 		'david.kouing_aman@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Alban',
 		'Puh_Blik',
 		'alban.puh_blik@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Anthony',
 		'Kea',
 		'anthony.kea@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'David',
 		'ExcessivementLofe',
 		'david.excessivementLofe@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Monica',
 		'Belelouchy',
 		'monica.belelouchy@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Erica',
 		'Hernandez',
 		'erica.hernandez@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Ahmed',
 		'Sahim',
 		'ahmed.sahim@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Apu ',
 		'Nahasa',
 		'apu.kea@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	('Jo', 'Holt', 'jo.holt@yopmail.com', '0', 'user'),
@@ -207,84 +208,84 @@ VALUES
 		'Guistino',
 		'Ladaguini',
 		'guistino.ladaguini@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Rodrigo',
 		'Amador',
 		'rodrigo.amador@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Claudette',
 		'Morineau',
 		'claudette.morineau@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Birgit',
 		'Hançer',
 		'birgit.hançer@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Elov',
 		'Bilir',
 		'elov.billir@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Youssef',
 		'Ixcell',
 		'youssef.ixcell@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Camila',
 		'Da SIva',
 		'camila.dasilva@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Al',
 		'Kleeber',
 		'al.kleeber@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Osborne',
 		'Quigley',
 		'osborne.quigley@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Anastasya',
 		'Jonet',
 		'anastasya.jonet@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Dimitri',
 		'Solid-Snake',
 		'dimitri.solid_snake@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
 	(
 		'Nikitas',
 		'Salahkis',
 		'nikitas.salahkis.kea@yopmail.com',
-		'0',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	);
 
@@ -309,188 +310,118 @@ VALUES
 	('Vidéo projecteur');
 
 INSERT INTO
-	`room` (capacity, fk_location, name, plan, url_picture)
-VALUES
-	(50, 1, 'Loire', 'map', '/rooms/salle1.png'),
-	(34, 1, 'Sarthe', 'map', '/rooms/salle2.png'),
-	(29, 2, 'Acheneau', 'map', '/rooms/salle10.jpg'),
-	(56, 2, 'Divatte', 'map', '/rooms/salle4.jpg'),
-	(35, 3, 'Sèvre', 'map', '/rooms/salle5.jpg'),
-	(44, 3, 'Le Brivet', 'map', '/rooms/salle6.jpg'),
-	(67, 1, 'Maine', 'map', '/rooms/salle7.jpg'),
-	(68, 2, 'Namnettes', 'map', '/rooms/salle8.jpg'),
-	(39, 3, 'Zen', 'map', '/rooms/salle9.jpg');
+
+	`room` (capacity, fk_location, name, adress, plan, url_picture)
+
+VALUES 
+	(50,1,'Loire','9 avenue Carnot, 44000 Nantes','map','/rooms/salle1.png'),
+	(34,1,'Sarthe','24 Bd de Berlin, 44000 Nantes','map','/rooms/salle2.png'),
+	(29,2,'Acheneau','1 Esplanade de la Gare, 49100 Angers','map','/rooms/salle10.jpg'),
+	(56,2,'Divatte','88 Pl la fayette, 49000 Angers','map','/rooms/salle4.jpg'),
+	(35,3,'Sèvre','30 Bd Robert Jarry, 72000 Le Mans','map','/rooms/salle5.jpg'),
+	(44,3,'Le Brivet','Chemin aux boeufs, 72100 Le Mans','map','/rooms/salle6.jpg'),
+	(67,1,'Maine',"21 Bd Ernest d'Alby, 44000 Nantes",'map','/rooms/salle7.jpg'),
+	(68,2,'Namnettes','15 rue des 2 haies, 49100 Angers','map','/rooms/salle8.jpg'),
+	(39,3,'Zen','2 Pl St Michel, 72000 Le Mans','map','/rooms/salle9.jpg');
 
 INSERT INTO
-	room_material
+	`room_material` (fk_room, fk_material)
 VALUES
+	(		
+		1,
+		1
+	),
+	(		
+		1,
+		2
+	),
 	(
 		1,
-		1,
-		1,
-		'2023-02-08 14:53:13',
-		'2023-02-08 15:53:13'
+		3
 	),
 	(
 		2,
-		1,
+		1
+	),
+	(
 		2,
-		'2023-02-08 14:53:13',
-		'2023-02-08 15:53:13'
+		8
+	),
+	(
+		2,
+		6
 	),
 	(
 		3,
-		1,
+		1
+	),
+	(
 		3,
-		'2023-02-08 14:53:13',
-		'2023-02-08 15:53:13'
+		2
+	),
+	(
+		3,
+		4
+	),
+	(
+		3,
+		6
 	),
 	(
 		4,
-		2,
-		1,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
+		1
 	),
 	(
-		5,
-		2,
-		8,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
-	),
-	(
-		6,
-		2,
-		6,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
-	),
-	(
-		7,
-		3,
-		1,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
-	),
-	(
-		8,
-		3,
-		2,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
-	),
-	(
-		9,
-		3,
 		4,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
+		8
 	),
 	(
-		10,
-		3,
-		6,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
-	),
-	(
-		11,
-		4,
-		1,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
-	),
-	(
-		12,
-		4,
-		8,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
-	),
-	(
-		13,
 		5,
-		8,
-		'2023-02-08 21:10:33',
-		'2023-02-08 22:10:33'
+		8
 	),
 	(
-		14,
 		5,
-		7,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		7
 	),
 	(
-		15,
 		5,
-		3,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		3
 	),
 	(
-		16,
 		5,
-		6,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		6
 	),
 	(
-		17,
 		7,
-		1,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		1
 	),
 	(
-		18,
 		7,
-		4,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		4
 	),
 	(
-		19,
 		7,
-		5,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		5
 	),
 	(
-		20,
 		7,
-		6,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		6
 	),
 	(
-		21,
 		8,
-		2,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		2
 	),
 	(
-		22,
 		8,
-		3,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		3
 	),
 	(
-		23,
 		8,
-		6,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		6
 	),
 	(
-		24,
 		8,
-		8,
-		'2023-02-09 08:43:26',
-		'2023-02-09 09:43:26'
+		8
 	);
 
 INSERT INTO

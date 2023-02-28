@@ -47,4 +47,6 @@ router.delete("/reservation/:id", reservationControllers.destroy);
 
 router.get("/myReservations/:id", myReservationsControllers.readmy);
 
+router.use("/rooms", express.static("public/rooms"));
+
 module.exports = router;
