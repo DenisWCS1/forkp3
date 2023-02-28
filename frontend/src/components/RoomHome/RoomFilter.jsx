@@ -7,6 +7,7 @@ import ReactDatePicker, {
 import "react-datepicker/dist/react-datepicker.css";
 import fr from "date-fns/locale/fr";
 import Loupe from "../../assets/logos/loupe.png";
+
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 registerLocale("fr", fr);
