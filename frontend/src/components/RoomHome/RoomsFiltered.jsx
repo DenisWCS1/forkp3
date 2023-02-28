@@ -15,7 +15,6 @@ function RoomsFiltered() {
   const [rooms, setRooms] = React.useState([]);
 
   React.useEffect(() => {
-
     fetch(
       `${baseUrl}/filtered?start=${moment(
         started,
