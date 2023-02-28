@@ -26,7 +26,7 @@ function App() {
   );
 
   return (
-    <div>
+    <div className="">
       <Header />
       <div className="flex flex-col h-screen">
         <SharedContext.Provider value={contextValues}>

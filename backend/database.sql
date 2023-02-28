@@ -309,23 +309,17 @@ VALUES
 	('Vidéo projecteur');
 
 INSERT INTO
-	room (
-		`fk_location`,
-		`capacity`,
-		`name`,
-		`plan`,
-		`url_picture`
-	)
+	`room` (capacity, fk_location, name, plan, url_picture)
 VALUES
-	(1, 50, 'Loire', 'map', 'url_picture'),
-	(1, 34, 'Sarthe', 'map', 'url_picture'),
-	(2, 29, 'Acheneau', 'map', 'url_picture'),
-	(2, 56, 'Divatte', 'map', 'url_picture'),
-	(3, 35, 'Sèvre', 'map', 'url_picture'),
-	(3, 44, 'Le Brivet', 'map', 'url_picture'),
-	(1, 67, 'Maine', 'map', 'url_picture'),
-	(2, 68, 'Namnettes', 'map', 'url_picture'),
-	(3, 39, 'Zen', 'map', 'url_picture');
+	(50, 1, 'Loire', 'map', '/rooms/salle1.png'),
+	(34, 1, 'Sarthe', 'map', '/rooms/salle2.png'),
+	(29, 2, 'Acheneau', 'map', '/rooms/salle10.jpg'),
+	(56, 2, 'Divatte', 'map', '/rooms/salle4.jpg'),
+	(35, 3, 'Sèvre', 'map', '/rooms/salle5.jpg'),
+	(44, 3, 'Le Brivet', 'map', '/rooms/salle6.jpg'),
+	(67, 1, 'Maine', 'map', '/rooms/salle7.jpg'),
+	(68, 2, 'Namnettes', 'map', '/rooms/salle8.jpg'),
+	(39, 3, 'Zen', 'map', '/rooms/salle9.jpg');
 
 INSERT INTO
 	room_material
@@ -4361,15 +4355,3 @@ VALUES
 		'2023-05-30 12:00:00'
 	);
 
-INSERT INTO
-	`room` (capacity, fk_location, name, plan, url_picture)
-VALUES
-	(50, 1, 'Loire', 'map', 'salle1.png'),
-	(34, 1, 'Sarthe', 'map', 'salle2.png'),
-	(29, 2, 'Acheneau', 'map', 'salle10.jpg'),
-	(56, 2, 'Divatte', 'map', 'salle4.jpg'),
-	(35, 3, 'Sèvre', 'map', 'salle5.jpg'),
-	(44, 3, 'Le Brivet', 'map', 'salle6.jpg'),
-	(67, 1, 'Maine', 'map', 'salle7.jpg'),
-	(68, 2, 'Namnettes', 'map', 'salle8.jpg'),
-	(39, 3, 'Zen', 'map', 'salle9.jpg');
