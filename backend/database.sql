@@ -310,6 +310,7 @@ VALUES
 	('Vidéo projecteur');
 
 INSERT INTO
+
 	`room` (capacity, fk_location, name, adress, plan, url_picture)
 
 VALUES 
@@ -322,7 +323,6 @@ VALUES
 	(67,1,'Maine',"21 Bd Ernest d'Alby, 44000 Nantes",'map','/rooms/salle7.jpg'),
 	(68,2,'Namnettes','15 rue des 2 haies, 49100 Angers','map','/rooms/salle8.jpg'),
 	(39,3,'Zen','2 Pl St Michel, 72000 Le Mans','map','/rooms/salle9.jpg');
-	
 
 INSERT INTO
 	`room_material` (fk_room, fk_material)

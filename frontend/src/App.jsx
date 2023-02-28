@@ -16,7 +16,7 @@ function App() {
   // const [showModalBtns, setShowModalBtns] = useState(false);
 
   return (
-    <div>
+    <div className="">
       <Header />
       <div className="flex flex-col h-screen">
         <Routes>
