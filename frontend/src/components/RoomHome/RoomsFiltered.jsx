@@ -44,11 +44,11 @@ function RoomsFiltered() {
     <div className="">
       <div className="container my-12 mx-auto px-4 md:px-12">
         <RoomFilter
-          setStart={setStarted}
-          setEnd={setEnded}
+          setStarted={setStarted}
+          setEnded={setEnded}
           setLocationid={setLocationid}
-          start={started}
-          end={ended}
+          started={started}
+          ended={ended}
         />
         <div className="flex flex-wrap -mx-1 lg:-mx-4 mt-10 ">
           {rooms.map((value) => (

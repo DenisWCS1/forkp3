@@ -12,13 +12,19 @@ import Loupe from "../../assets/logos/loupe.png";
 registerLocale("fr", fr);
 setDefaultLocale("fr");
 
-function RoomFilter({ setStarted, setEnded, setLocationid, started, ended }) {
+function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
   const [allLocation, setAllLocation] = useState([]);
 
   const handleChange = (e) => {
     setStarted(started);
     setEnded(ended);
     setLocationid(e.target.value);
+  };
+
+  const reset = () => {
+    setStarted(0);
+    setEnded(0);
+    setLocationid();
   };
 
   useEffect(() => {
@@ -32,11 +38,12 @@ function RoomFilter({ setStarted, setEnded, setLocationid, started, ended }) {
   }, []);
 
   return (
-    <div className="flex flex-col rounded-lg bg-dark-100 border-b sm:flex-row">
+    <div className="grid justify-items-center rounded-lg bg-dark-100 border-b sm:flex flex-row">
       <div className="flex flex-col ml-5 w-64 h-20 text-white">
         <p> Début :</p>
         <ReactDatePicker
           className="bg-blueDuck-100 text-white px-4 py-2 rounded-lg"
+          id="start"
           selected={started}
           onChange={(str) => setStarted(str)}
           showTimeSelect
@@ -48,6 +55,7 @@ function RoomFilter({ setStarted, setEnded, setLocationid, started, ended }) {
         <p> Fin :</p>
         <ReactDatePicker
           className="bg-blueDuck-100 text-white px-4 py-2 rounded-lg"
+          id="end"
           selected={ended}
           onChange={(end) => setEnded(end)}
           showTimeSelect
@@ -55,30 +63,37 @@ function RoomFilter({ setStarted, setEnded, setLocationid, started, ended }) {
           dateFormat="dd-MM-yyyy HH:mm:ss"
         />
       </div>
-      <div className="loupe flex flex-row ml-44 justify-center text-white px-6 py-2">
+      <div className="grid grid-cols-6 gap-4">
         <img
-          className=" text-white text-lg sm:w-full h-16 object-cover object-center block"
+          className="col-start-1 col-end-6 text-white text-lg w-12 sm:w-20 h-16 object-cover object-center block"
           src={Loupe}
           alt="loupe"
         />
-        <p className="mr-10 mt-3 w-55 sm:px-6 py-2 ">Localisation:</p>
+      </div>
+      <div className="flex flex-col px-4 py-2 text-white sm:mt-4">
+        <p className="">Localisation:</p>
+      </div>
 
-        <select
-          name="loc"
-          id="loc"
-          onChange={handleChange}
-          className="Localisation bg-blueDuck-100 text-white mr-20 max-h-[40px] mt-3.5 px-6 py-2 rounded-lg sm:ml-10px-10-py-2-mr-20"
+      <select
+        name="loc"
+        onChange={handleChange}
+        id="loc"
+        className="Localisation bg-blueDuck-100 text-white text-center flex flex-col w-60 h-10 rounded-lg sm:mt-5 px-0 py-2"
+      >
+        {allLocation.map((location) => (
+          <option key={location.id} className="text-white" value={location.id}>
+            {location.city_name}
+          </option>
+        ))}
+      </select>
+      <div className="flex flex-col px-2 py-5 w-64 h-20">
+        <button
+          type="button"
+          className="button bg-blueDuck-100 text-white rounded-lg sm:px-2 py-2"
+          onClick={reset}
         >
-          {allLocation.map((location) => (
-            <option
-              key={location.id}
-              className="text-white"
-              value={location.id}
-            >
-              {location.city_name}
-            </option>
-          ))}
-        </select>
+          Reset
+        </button>
       </div>
     </div>
   );
