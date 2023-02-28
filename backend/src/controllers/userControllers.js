@@ -1,6 +1,7 @@
 // this is the controller file
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
+const { body, validationResult } = require("express-validator");
 const models = require("../models");
 
 const browse = (req, res) => {
@@ -105,6 +106,30 @@ const login = (req, res) => {
     });
 };
 
+const validateUser = [
+  body("firstname")
+    .isLength({ min: 3 })
+    .withMessage("Un prénom doit contenir au moins 3 caractères"),
+  body("lastname")
+    .isLength({ min: 3 })
+    .withMessage("Un nom doit contenir au moins 3 caractères"),
+  body("email").isEmail(),
+  body("password")
+    .isLength({ min: 9 })
+    .matches(/\d/)
+    .withMessage(
+      "Un mot de passe doit contenir au moins 9 caractères, dont au moins un chiffre"
+    ),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(422).json({ validationErrors: errors.array() });
+    } else {
+      next();
+    }
+  },
+];
+
 const register = (req, res) => {
   const user = req.body;
   models.user
@@ -140,5 +165,6 @@ module.exports = {
   add,
   login,
   register,
+  validateUser,
   destroy,
 };

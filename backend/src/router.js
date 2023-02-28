@@ -5,6 +5,12 @@ require("dotenv").config();
 
 const router = express.Router();
 router.use(cors());
+
+// const {
+//   validate,
+//   registerValidationRules,
+// } = require("./controllers/userControllers");
+
 const userControllers = require("./controllers/userControllers");
 const roomControllers = require("./controllers/roomControllers");
 const locationControllers = require("./controllers/locationControllers");
@@ -16,9 +22,16 @@ const myReservationsControllers = require("./controllers/myReservationsControlle
 router.get("/user", userControllers.browse);
 router.get("/user/:id", userControllers.read);
 router.put("/user/:id", userControllers.edit);
-router.post("/user", userControllers.add);
+// router.post("/user", userControllers.add);
 router.post("/user/login", userControllers.login);
-router.post("/user/register", hashPassword, userControllers.register);
+// router.post("/user/register", hashPassword, userControllers.register);
+
+router.post(
+  "/user",
+  userControllers.validateUser,
+  hashPassword,
+  userControllers.register
+);
 router.delete("/user/:id", userControllers.destroy);
 
 router.get("/filtered", roomControllers.filtered);

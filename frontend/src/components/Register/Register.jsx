@@ -1,28 +1,19 @@
 import { useState } from "react";
-import Cookies from "js-cookie";
-// Form.propTypes = propTypes;
-
 // //import { useForm } from 'react-hook-form';
 
 function Register() {
   // const [registerError, setRegisterError] = useState(null);
+
   const [inputRegisterValue, setIinputRegisterValue] = useState({
     firstname: "",
     lastname: "",
     email: "",
     password: "",
   });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setIinputRegisterValue({
-      ...inputRegisterValue,
-      [name]: value,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/user/register", {
+    fetch("http://localhost:5000/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,20 +27,16 @@ function Register() {
         return response.json();
       })
 
-      .then((data) => {
-        Cookies.set("token", data.token, {
-          expires: 1,
-          // secure: process.env.NODE_ENV === "production",
-          secure: true,
-          sameSite: "strict",
-          // HttpOnly: true,
-        });
-        window.location.href = "/Home";
-        // setIsLogged(true);
+      .catch((err) => {
+        console.error(err);
       });
-    // .catch((err) => {
-    //   setRegisterError(err.message);
-    // });
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setIinputRegisterValue({
+      ...inputRegisterValue,
+      [name]: value,
+    });
   };
 
   return (
