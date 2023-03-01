@@ -113,10 +113,9 @@ const validateUser = [
   body("lastname")
     .isLength({ min: 3 })
     .withMessage("Un nom doit contenir au moins 3 caractères"),
-  body("email").isEmail(),
+  body("email").notEmpty().withMessage("un email est obligatoire"),
   body("password")
     .isLength({ min: 9 })
-    .matches(/\d/)
     .withMessage(
       "Un mot de passe doit contenir au moins 9 caractères, dont au moins un chiffre"
     ),
@@ -135,7 +134,8 @@ const register = (req, res) => {
   models.user
     .insert(user)
     .then(([result]) => {
-      res.location(`/user/register/${result.insertId}`).sendStatus(201);
+      console.info(result);
+      res.sendStatus(201);
     })
     .catch(() => {
       res.status(401).send("Email déjà enregistré");

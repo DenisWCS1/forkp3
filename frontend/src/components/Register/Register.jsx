@@ -1,36 +1,15 @@
 import { useState } from "react";
-// //import { useForm } from 'react-hook-form';
 
 function Register() {
-  // const [registerError, setRegisterError] = useState(null);
-
+  // astuce pour éviter de toujours rentrer url http etc
+  const baseUrl = import.meta.env.VITE_BACKEND_URL;
+  //
   const [inputRegisterValue, setIinputRegisterValue] = useState({
     firstname: "",
     lastname: "",
     email: "",
     password: "",
   });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch("http://localhost:5000/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputRegisterValue),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Données saisies incorrectes");
-        }
-        return response.json();
-      })
-
-      .catch((err) => {
-        console.error(err);
-      });
-  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setIinputRegisterValue({
@@ -38,7 +17,41 @@ function Register() {
       [name]: value,
     });
   };
-
+  // je déclare de cette façon car mes erreur sont renvoyés en tableau d'objet.
+  const [errors, setErrors] = useState([]);
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    fetch(`${baseUrl}/user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputRegisterValue),
+    })
+      // ici je vérifie le type de la "réponse , si la réponse n'est pas un json, on envoi une error"
+      .then((r) => {
+        const contentType = r.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          throw new TypeError("Oops, we haven't got JSON!");
+        }
+        // si tt va bien , la response est renvoyé en format json
+        return r.json();
+      })
+      // si le statut de reponse n'est pas ok , je mets a jour mes erreurs en allant
+      // chercher la reponse.tableau d'ojets des erreurs
+      .then((r) => {
+        if (!r.ok) {
+          setErrors(r.validationErrors);
+          // envoi d'un rejet de promesse car la requête http est incorrect (contenu etc)
+          return Promise.reject(new Error("erroors http"));
+        }
+        // ici cela permet de déterminer qu'il n'y pas de connection internet
+        return console.warn("error network");
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
   return (
     <div>
       <div className="flex justify-center items-center h-screen ">
@@ -90,7 +103,12 @@ function Register() {
                 onChange={handleChange}
               />
             </div>
-            <p className="text-red-500 font-semibold animate-bounce" />
+            <ul className="text-red-500 font-semibold">
+              {errors.map((error) => (
+                <li>{error.msg}</li>
+              ))}
+            </ul>
+
             <button
               className="w-full my-5 py-2 bg-teal-500 shadow-lg text-white font-semibold rounded-lg"
               type="submit"
