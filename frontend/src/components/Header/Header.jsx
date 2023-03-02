@@ -28,6 +28,7 @@ export default function Header() {
         <section className="flex flex-end ">
           <div className="UserConnected pr-8  font-semibold text-turquoise-100">
             "Candice DOE"
+            {/* {isLogged ? user.firsrtname && user.lastname : null} */}
           </div>
           <div
             className="HAMBURGER-ICON space-y-2"
@@ -51,7 +52,14 @@ export default function Header() {
                 className="font-semibold text-turquoise-100 my-8 pb-6"
               >
                 <FontAwesomeIcon icon={faPen} className="pr-2" />
-                <NavLink to="/login">Se connecter/S'inscrire</NavLink>
+                {/* {isLogged ? (
+                  <NavLink to="/">Se Déconnecter</NavLink>
+                ) : (
+                  <NavLink to="/register">S'inscrire</NavLink>
+                )} */}
+                <NavLink to="/login">Se connecter</NavLink>
+                <br />
+                <NavLink to="/register">S'inscrire</NavLink>
               </button>
               <span className="block opacity-40 h-0.5 w-[200px]  rounded bg-turquoise-100" />
 

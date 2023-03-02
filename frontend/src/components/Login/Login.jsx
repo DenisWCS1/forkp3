@@ -1,14 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Cookies from "js-cookie";
-
-// import PropTypes from "prop-types";
 
 function Login() {
+  const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
+
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -21,7 +21,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/user/login", {
+    fetch(`${baseUrl}/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,16 +34,9 @@ function Login() {
         }
         return response.json();
       })
-
-      .then((data) => {
-        Cookies.set("token", data.token, {
-          expires: 1,
-          // secure: process.env.NODE_ENV === "production",
-          secure: true,
-          sameSite: "strict",
-          // HttpOnly: true,
-        });
-        window.location.href = "/Home";
+      .then(() => {
+        alert(`Bienvenue, Candice Doe.`);
+        navigate("/");
       })
       .catch((err) => {
         setError(err.message);
