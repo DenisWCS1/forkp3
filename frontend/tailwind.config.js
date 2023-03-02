@@ -29,9 +29,6 @@ module.exports = {
       fontFamily: {},
     },
   },
-  screen: {
-    sm: "480px",
-  },
 
   plugins: [],
 };
