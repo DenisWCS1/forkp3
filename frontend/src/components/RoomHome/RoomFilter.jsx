@@ -13,7 +13,14 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 registerLocale("fr", fr);
 setDefaultLocale("fr");
 
-function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
+function RoomFilter({
+  started,
+  ended,
+  setStarted,
+  setEnded,
+  setLocationid,
+  locationid,
+}) {
   const [allLocation, setAllLocation] = useState([]);
 
   const handleChange = (e) => {
@@ -23,11 +30,10 @@ function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
   };
 
   const reset = () => {
-    setStarted(0);
-    setEnded(0);
-    setLocationid();
+    setStarted(new Date());
+    setEnded(new Date());
+    setLocationid("");
   };
-
   useEffect(() => {
     fetch(`${baseUrl}/location`)
       .then((response) => {
@@ -36,10 +42,10 @@ function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
       .then((jsonData) => {
         setAllLocation(jsonData);
       });
-  }, []);
+  }, [locationid]);
 
   return (
-    <div className="grid justify-items-center rounded-lg bg-dark-100 border-b sm:flex flex-row">
+    <div className="grid justify-items-center rounded-lg bg-dark-100 border-b sm:flex flex-row justify-center">
       <div className="flex flex-col ml-5 w-64 h-20 text-white">
         <p> Début :</p>
         <ReactDatePicker
@@ -65,9 +71,9 @@ function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
           dateFormat="dd-MM-yyyy HH:mm:ss"
         />
       </div>
-      <div className="grid grid-cols-6 gap-4">
+      <div className="grid grid-cols-6 gap-4 sm:pl-3.5">
         <img
-          className="col-start-1 col-end-6 text-white text-lg w-12 sm:w-20 h-16 object-cover object-center block"
+          className="col-start-1 col-end-6 text-white text-lg w-12 sm:w-20 h-16 mt-2 object-cover object-center block"
           src={Loupe}
           alt="loupe"
         />
@@ -78,17 +84,21 @@ function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
 
       <select
         name="loc"
+        defaultValue={allLocation}
         onChange={handleChange}
         id="loc"
         className="Localisation bg-blueDuck-100 text-white text-center flex flex-col w-60 h-10 rounded-lg sm:mt-5 px-0 py-2"
       >
+        {/* <option className="text_white" selected value="">
+          {defaultValue}
+        </option> */}
         {allLocation.map((location) => (
           <option key={location.id} className="text-white" value={location.id}>
             {location.city_name}
           </option>
         ))}
       </select>
-      <div className="flex flex-col px-2 py-5 w-64 h-20">
+      <div className="flex flex-col px-2 py-5 w-64 h-20 sm:pl-10">
         <button
           type="button"
           className="button bg-blueDuck-100 text-white rounded-lg sm:px-2 py-2"
@@ -101,10 +111,11 @@ function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
   );
 }
 RoomFilter.propTypes = {
-  ended: PropTypes.func.isRequired,
+  ended: PropTypes.instanceOf(Date).isRequired,
   setEnded: PropTypes.func.isRequired,
   setLocationid: PropTypes.func.isRequired,
   setStarted: PropTypes.func.isRequired,
-  started: PropTypes.func.isRequired,
+  started: PropTypes.instanceOf(Date).isRequired,
+  locationid: PropTypes.number.isRequired,
 };
 export default RoomFilter;
