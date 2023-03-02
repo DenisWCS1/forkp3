@@ -134,8 +134,7 @@ const register = (req, res) => {
   models.user
     .insert(user)
     .then(([result]) => {
-      console.info(result);
-      res.sendStatus(201);
+      res.location(`/user/register/${result.insertId}`).sendStatus(201);
     })
     .catch(() => {
       res.status(401).send("Email déjà enregistré");
