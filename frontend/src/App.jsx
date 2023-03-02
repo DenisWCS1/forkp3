@@ -14,9 +14,11 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setshowMessage] = useState("");
   // const [showModalBtns, setShowModalBtns] = useState(false);
+
   // const [isLogged, setIsLogged] = useState(false);
+
   return (
-    <div>
+    <div className="">
       <Header />
       {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
       <div className="flex flex-col h-screen">

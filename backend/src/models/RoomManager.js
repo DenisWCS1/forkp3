@@ -16,8 +16,8 @@ class RoomManager extends AbstractManager {
             SELECT room.id FROM room 
             INNER JOIN reservation as r
             ON room.id = r.fk_room  where 
-            (r.start_datetime  BETWEEN STR_TO_DATE(?, "%d-%m-%Y %H:%i:%s") AND STR_TO_DATE(?, "%d-%m-%Y %H:%i:%s")) AND
-            (r.end_datetime  BETWEEN STR_TO_DATE(?, "%d-%m-%Y %H:%i:%s") AND STR_TO_DATE(?, "%d-%m-%Y %H:%i:%s"))
+            (r.start_datetime  BETWEEN STR_TO_DATE(?, '%d-%m-%Y %H:%i:%s') AND STR_TO_DATE(?, '%d-%m-%Y %H:%i:%s')) AND
+            (r.end_datetime  BETWEEN STR_TO_DATE(?, '%d-%m-%Y %H:%i:%s') AND STR_TO_DATE(?, '%d-%m-%Y %H:%i:%s'))
             GROUP BY room.id)
           order by room.id asc`;
 
