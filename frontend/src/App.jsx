@@ -8,6 +8,7 @@ import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
+import Charter from "@components/Charter/Charter";
 
 // import ModalBtns from "@components/Modals/ModalBtns";
 
@@ -24,11 +25,12 @@ function App() {
     <div className="">
       <Header />
       {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col min-h-[calc100vh]h-screen">
         <Routes>
           <Route exact path="/" element={<RoomsFiltered />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/charter" element={<Charter />} />
           <Route
             exact
             path="/mesreservations"
@@ -43,7 +45,9 @@ function App() {
           <Route path="/erreur" element={<ErrorPage />} />
           {/* remplacer par une étoile ici */}
         </Routes>
+
         <Footer />
+
         <Modal
           isVisible={showModal}
           onClose={() => setShowModal(false)}
