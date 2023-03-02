@@ -1,5 +1,5 @@
 const express = require("express");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const { hashPassword, verifyToken } = require("./controllers/auth");
 require("dotenv").config();
