@@ -7,6 +7,7 @@ import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
+
 // import ModalBtns from "@components/Modals/ModalBtns";
 import "./App.css";
 

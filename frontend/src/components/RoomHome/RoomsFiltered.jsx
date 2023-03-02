@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,8 @@ function RoomsFiltered() {
 
   const [rooms, setRooms] = React.useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  React.useEffect(() => {
+
+  useEffect(() => {
     setIsLoading(true);
     fetch(
       `${baseUrl}/filtered?start=${moment(
@@ -53,6 +54,7 @@ function RoomsFiltered() {
           setLocationid={setLocationid}
           started={started}
           ended={ended}
+          locationid={locationid}
         />
         {isLoading ? (
           <div className="flex flex-col justify-around items-center py-8">
