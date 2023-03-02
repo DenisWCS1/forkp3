@@ -14,7 +14,6 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setshowMessage] = useState("");
   // const [showModalBtns, setShowModalBtns] = useState(false);
-
   return (
     <div className="">
       <Header />

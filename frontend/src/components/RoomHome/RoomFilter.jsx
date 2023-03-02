@@ -52,6 +52,7 @@ function RoomFilter({ started, ended, setStarted, setEnded, setLocationid }) {
           dateFormat="dd-MM-yyyy HH:mm:ss"
         />
       </div>
+
       <div className="text-white ml-5 w-64 mb-5">
         <p> Fin :</p>
         <ReactDatePicker
