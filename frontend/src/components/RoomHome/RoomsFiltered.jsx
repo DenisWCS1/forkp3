@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function RoomsFiltered() {
@@ -54,14 +54,16 @@ function RoomsFiltered() {
                       alt={value.name}
                     />
                   </div>
-                  <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <button
-                      className="bg-greySimple-100 bg-opacity-50 text-whiteSimple-100 py-2 px-4 "
-                      type="button"
-                    >
-                      Plus de détails
-                    </button>
-                  </div>
+                  <NavLink to="/RoomDetails">
+                    <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <button
+                        className="bg-greySimple-100 bg-opacity-50 text-whiteSimple-100 py-2 px-4 "
+                        type="button"
+                      >
+                        Plus de détails
+                      </button>
+                    </div>
+                  </NavLink>
                 </div>
               </div>
 

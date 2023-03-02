@@ -37,7 +37,7 @@ router.put("/material/:id", materialControllers.edit);
 router.post("/material", materialControllers.add);
 router.delete("/material/:id", materialControllers.destroy);
 
-router.get("/room_material", roomMaterialControllers.detail);
+router.get("/room_material/:id", roomMaterialControllers.detail);
 
 router.get("/reservation", reservationControllers.browse);
 router.get("/reservation/:id", reservationControllers.read);

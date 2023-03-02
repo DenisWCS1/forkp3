@@ -8,6 +8,7 @@ import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
 // import ModalBtns from "@components/Modals/ModalBtns";
 import "./App.css";
+import RoomDetails from "@components/RoomDetails/RoomDetails";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -17,8 +18,10 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="flex flex-col h-screen">
+
+      <div className="flex flex-col h-screen ">
         <Routes>
+          <Route path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/" element={<RoomsFiltered />} />
           <Route
             exact
