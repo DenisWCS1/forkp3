@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
 import { useNavigate } from "react-router-dom";
+
 import moment from "moment";
 import RoomFilter from "@components/RoomHome/RoomFilter";
 import Loading from "@assets/logos/loading.gif";

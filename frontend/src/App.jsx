@@ -13,6 +13,7 @@ import Charter from "@components/Charter/Charter";
 // import ModalBtns from "@components/Modals/ModalBtns";
 
 import "./App.css";
+import RoomDetails from "@components/RoomDetails/RoomDetails";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -24,9 +25,10 @@ function App() {
   return (
     <div className="">
       <Header />
-      {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
-      <div className="flex flex-col min-h-[calc100vh]h-screen">
+
+      <div className="flex flex-col h-screen ">
         <Routes>
+          <Route path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/" element={<RoomsFiltered />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
