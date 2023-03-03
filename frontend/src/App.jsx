@@ -1,12 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "@components/Header/Header";
+import Login from "@components/Login/Login";
+import Register from "@components/Register/Register";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
+import Charter from "@components/Charter/Charter";
+
 // import ModalBtns from "@components/Modals/ModalBtns";
+
 import "./App.css";
 import RoomDetails from "@components/RoomDetails/RoomDetails";
 
@@ -15,14 +20,20 @@ function App() {
   const [showMessage, setshowMessage] = useState("");
   // const [showModalBtns, setShowModalBtns] = useState(false);
 
+  // const [isLogged, setIsLogged] = useState(false);
+
   return (
-    <div>
+    <div className="">
       <Header />
 
       <div className="flex flex-col h-screen ">
+
         <Routes>
           <Route path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/" element={<RoomsFiltered />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/charter" element={<Charter />} />
           <Route
             exact
             path="/mesreservations"
@@ -37,7 +48,9 @@ function App() {
           <Route path="/erreur" element={<ErrorPage />} />
           {/* remplacer par une étoile ici */}
         </Routes>
+
         <Footer />
+
         <Modal
           isVisible={showModal}
           onClose={() => setShowModal(false)}
