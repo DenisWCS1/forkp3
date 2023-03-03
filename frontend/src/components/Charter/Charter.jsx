@@ -2,8 +2,8 @@ import React from "react";
 
 function Charter() {
   return (
-    <div className="text-justify font-semibold bg-dark-100 text-blueDuck-100 text-2xl m-10 p-10">
-      <h1 className="text-white text-4xl">Introduction : </h1>
+    <div className="text-justify font-semibold bg-dark-100 text-blueDuck-100 text-1xl m-10 p-10">
+      <h1 className="text-white text-3xl">Introduction : </h1>
       <br />
 
       <h2 className="text-center">

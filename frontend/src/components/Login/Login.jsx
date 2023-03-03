@@ -45,7 +45,7 @@ function Login() {
 
   return (
     <div>
-      <div className="flex justify-center items-center h-screen ">
+      <div className="flex justify-center items-center p-2 pt-24 sm:p-20 ">
         {/* <div className="hidden sm:block" /> */}
 
         <div className=" flex flex-col items-center text-center w-3/4 max-w-[450px]">

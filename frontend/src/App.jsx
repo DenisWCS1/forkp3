@@ -26,12 +26,12 @@ function App() {
     <div className="">
       <Header />
 
-      <div className="flex flex-col h-screen ">
+      <div className="flex flex-col">
         <Routes>
-          <Route path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/" element={<RoomsFiltered />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/charter" element={<Charter />} />
           <Route
             exact
@@ -47,9 +47,9 @@ function App() {
           <Route path="/erreur" element={<ErrorPage />} />
           {/* remplacer par une étoile ici */}
         </Routes>
-
-        <Footer />
-
+        <div className="fixed bottom-0 w-full">
+          <Footer />
+        </div>
         <Modal
           isVisible={showModal}
           onClose={() => setShowModal(false)}
