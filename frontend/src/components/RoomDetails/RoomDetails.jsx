@@ -50,20 +50,20 @@ function RoomDetails() {
                 alt={elem.name}
               />
             </div>
-            <div className=" flex-wrap sm:flex sm:justify-between  bg-blueDuck-100 h-[4.5rem] mb-2 border-b-[2px]  items-center font-normal text-whiteSimple-100 ">
+            <div className=" flex-wrap mb-2 sm:flex sm:justify-between  bg-blueDuck-100 h-[4.5rem] border-b-[2px]  items-center font-normal text-whiteSimple-100 ">
               <div className="flex items-baseline">
                 <h3 className="ml-5 mr-5 sm:text-[1.7rem] ">{elem.name}</h3>
                 <div>
                   <h3 className="sm:text-[1.2rem]">{elem.adress}</h3>
                 </div>
               </div>
-              <div className="ml-5 mr-5 sm:text-[1.7rem]">
+              <div className="mr-5 sm:text-[1.7rem] ml-80">
                 Places : {elem.capacity}
               </div>
             </div>
           </div>
           <div>
-            <div className="flex flex-wrap justify-around bg-dark-100 mt-5 mb-5">
+            <div className="flex flex-wrap justify-around bg-dark-100 mt-5 mb-14">
               <div className="">
                 <MapContainer2
                   latitude={latitude}
@@ -74,7 +74,7 @@ function RoomDetails() {
               </div>
 
               <div className="text-whiteSimple-100 sm:text-2xl">
-                <h3 className="sm:mb-5">Équipements de la salle</h3>
+                <h3 className="mb-10 sm:mb-5">Équipements de la salle :</h3>
                 <ul className="text-whiteSimple-100 ">
                   {elem.material.map((value) => (
                     <li key={value}>-{value}</li>

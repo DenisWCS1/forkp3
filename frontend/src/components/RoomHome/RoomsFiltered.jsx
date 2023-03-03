@@ -134,6 +134,7 @@ function RoomsFiltered() {
           </div>
         )}
       </div>
+      <div className="h-28" />
     </div>
   );
 }
