@@ -315,7 +315,6 @@ INSERT INTO
 
 	`room` (capacity, fk_location, name, adress, plan, url_picture, lat, lng)
 
-
 	VALUES 
 		(50,1,'Loire','9 avenue Carnot, 44000 Nantes','map','/rooms/salle1.png', 45.355353, -2.565650),
 		(34,1,'Sarthe','24 Bd de Berlin, 44000 Nantes','map','/rooms/salle2.png', 47.216780, -1.536550),
