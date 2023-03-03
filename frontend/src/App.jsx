@@ -27,7 +27,6 @@ function App() {
       <Header />
 
       <div className="flex flex-col h-screen ">
-
         <Routes>
           <Route path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/" element={<RoomsFiltered />} />
