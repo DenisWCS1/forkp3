@@ -15,7 +15,7 @@ function RoomDetails() {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch(`${baseUrl}/room_material/2`)
+      await fetch(`${baseUrl}/room_material/3`)
         .then((response) => {
           return response.json();
         })
