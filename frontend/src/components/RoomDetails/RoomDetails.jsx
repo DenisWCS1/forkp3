@@ -22,7 +22,7 @@ function RoomDetails() {
         .then((jsonData) => {
           setDetailState(jsonData);
           setLatitude(jsonData[0].lat);
-          setLongitude(jsonData[0].long);
+          setLongitude(jsonData[0].lng);
           setAdress(jsonData[0].adress);
           setName(jsonData[0].name);
         })

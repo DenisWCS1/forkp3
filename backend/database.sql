@@ -23,7 +23,7 @@ CREATE TABLE
 		`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 		`lat` decimal(25,6) DEFAULT NULL,
-  		`long` decimal(25,6) DEFAULT NULL,
+  		`lng` decimal(25,6) DEFAULT NULL,
 		PRIMARY KEY (`id`)
 	);
 
@@ -313,19 +313,19 @@ VALUES
 
 INSERT INTO
 
-	`room` (capacity, fk_location, name, adress, plan, url_picture, lat, long)
+	`room` (capacity, fk_location, name, adress, plan, url_picture, lat, lng)
 
 
 	VALUES 
-		(1,50,1,'Loire','9 avenue Carnot, 44000 Nantes','map','/rooms/salle1.png','2023-02-23 09:40:56','2023-02-26 22:22:17',45.355353,-2.565650),
-		(2,34,1,'Sarthe','24 Bd de Berlin, 44000 Nantes','map','/rooms/salle2.png','2023-02-23 09:40:56','2023-02-26 22:30:29',47.216780,-1.536550),
-		(3,29,2,'Acheneau','1 Esplanade de la Gare, 49100 Angers','map','/rooms/salle10.jpg','2023-02-23 09:40:56','2023-02-26 22:30:29',47.464860,-0.555750),
-		(4,56,2,'Divatte','88 Pl la fayette, 49000 Angers','map','/rooms/salle4.jpg','2023-02-23 09:40:56','2023-02-26 22:30:29',47.462550,-0.553610),
-		(5,35,3,'Sèvre','30 Bd Robert Jarry, 72000 Le Mans','map','/rooms/salle5.jpg','2023-02-23 09:40:56','2023-02-26 22:30:29',48.995880,0.187830),
-		(6,44,3,'Le Brivet','Chemin aux boeufs, 72100 Le Mans','map','/rooms/salle6.jpg','2023-02-23 09:40:56','2023-02-26 22:30:29',48.954050,0.219860),
-		(7,67,1,'Maine',"21 Bd Ernest d'Alby 44000 Nantes",'map','/rooms/salle7.jpg','2023-02-23 09:40:56','2023-02-26 22:30:29',47.226600,-1.528660),
-		(8,68,2,'Namnettes','15 rue des 2 haies, 49100 Angers','map','/rooms/salle8.jpg','2023-02-23 09:40:56','2023-02-26 22:30:29',47.471760,-0.552460),
-		(9,39,3,'Zen','2 Pl St Michel, 72000 Le Mans','map','/rooms/salle9.jpg','2023-02-23 09:40:56','2023-02-26 22:30:29',48.009150,0.197920);
+		(50,1,'Loire','9 avenue Carnot, 44000 Nantes','map','/rooms/salle1.png', 45.355353, -2.565650),
+		(34,1,'Sarthe','24 Bd de Berlin, 44000 Nantes','map','/rooms/salle2.png', 47.216780, -1.536550),
+		(29,2,'Acheneau','1 Esplanade de la Gare, 49100 Angers','map','/rooms/salle10.jpg', 47.464860, -0.555750),
+		(56,2,'Divatte','88 Pl la fayette, 49000 Angers','map','/rooms/salle4.jpg', 47.462550, -0.553610),
+		(35,3,'Sèvre','30 Bd Robert Jarry, 72000 Le Mans','map','/rooms/salle5.jpg', 48.995880, 0.187830),
+		(44,3,'Le Brivet','Chemin aux boeufs, 72100 Le Mans','map','/rooms/salle6.jpg', 48.954050, 0.219860),
+		(67,1,'Maine',"21 Bd Ernest d'Alby 44000 Nantes",'map','/rooms/salle7.jpg', 47.226600, -1.528660),
+		(68,2,'Namnettes','15 rue des 2 haies, 49100 Angers','map','/rooms/salle8.jpg', 47.471760, -0.552460),
+		(39,3,'Zen','2 Pl St Michel, 72000 Le Mans','map','/rooms/salle9.jpg', 48.009150, 0.197920);
 
 INSERT INTO
 	`room_material` (fk_room, fk_material)
