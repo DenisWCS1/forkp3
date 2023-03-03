@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import moment from "moment";
 import RoomFilter from "@components/RoomHome/RoomFilter";
@@ -48,7 +48,6 @@ function RoomsFiltered() {
   }, [navigate, started, ended, locationid]);
 
   return (
-
     <div className="">
       <div className="">
         <RoomFilter
