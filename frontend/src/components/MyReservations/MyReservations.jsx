@@ -15,7 +15,7 @@ function Myreservations({ setShowModal, setshowMessage }) {
   const { user, token } = useContext(SharedContext);
   useEffect(() => {
     async function fetchData() {
-      await fetch(`${baseUrl}/myReservations/${user}`, {
+      await fetch(`${baseUrl}/myReservations/${user.id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
