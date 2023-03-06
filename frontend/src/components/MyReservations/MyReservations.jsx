@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import SharedContext from "@assets/Context/sharedContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -11,10 +12,16 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function Myreservations({ setShowModal, setshowMessage }) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
-  const userid = 7; // Temporaly waiting for login feature
+  const { user, setUser, setToken, token } = useContext(SharedContext);
   useEffect(() => {
     async function fetchData() {
-      await fetch(`${baseUrl}/myReservations/${userid}`)
+      await fetch(`${baseUrl}/myReservations/${user}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
         .then((response) => {
           return response.json();
         })
@@ -28,7 +35,7 @@ function Myreservations({ setShowModal, setshowMessage }) {
     // setIsLoading(true);
     fetchData();
     /* setIsLoading(false);   */
-  }, [userid]);
+  }, [user]);
   return (
     <>
       <div className="text-center text-2xl font-bold mb-5">

@@ -36,9 +36,9 @@ const verifyToken = (req, res, next) => {
     }
 
     req.payload = jwt.verify(token, process.env.JWT_SECRET);
-
     next();
   } catch (err) {
+    console.error(err);
     res.sendStatus(401);
   }
 };

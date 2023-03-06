@@ -33,6 +33,22 @@ const read = (req, res) => {
     });
 };
 
+const me = (req, res) => {
+  models.user
+    .find(req.payload.sub)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const user = req.body;
 
@@ -80,14 +96,15 @@ const login = (req, res) => {
           .verify(user[0].password, password)
           .then((isVerified) => {
             if (isVerified) {
-              const payload = {
-                sub: user[0].id,
-                iat: new Date().getTime() / 1000,
-              };
-              const token = jwt.sign(payload, process.env.JWT_SECRET, {
-                expiresIn: "1h",
-              });
-              res.json({ token });
+              const token = jwt.sign(
+                {
+                  sub: user[0].id,
+                  iat: new Date().getTime() / 1000,
+                },
+                process.env.JWT_SECRET
+              );
+
+              res.status(200).json({ token });
             } else {
               res.sendStatus(401);
             }
@@ -164,6 +181,7 @@ module.exports = {
   add,
   login,
   register,
+  me,
   validateUser,
   destroy,
 };

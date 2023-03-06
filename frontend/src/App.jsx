@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Header from "@components/Header/Header";
 import Login from "@components/Login/Login";
 import Register from "@components/Register/Register";
@@ -9,50 +9,89 @@ import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
 import "./App.css";
+import SharedContext from "@assets/Context/sharedContext";
 
 function App() {
+  const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setshowMessage] = useState("");
-  // const [showModalBtns, setShowModalBtns] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState();
 
-  // const [isLogged, setIsLogged] = useState(false);
+  const contextValues = useMemo(
+    () => ({
+      token,
+      setToken,
+      user,
+      setUser,
+      baseUrl,
+      setShowModal,
+      showMessage,
+      setshowMessage,
+    }),
+    [token, user, baseUrl, showMessage, baseUrl]
+  );
 
+  useEffect(() => {
+    if (token) {
+      fetch(`${baseUrl}/me`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((userData) => setUser(userData))
+        .catch((err) => {
+          console.warn(err);
+          setToken();
+          localStorage.removeItem("token");
+        });
+    }
+  }, [token]);
   return (
     <div className="">
-      <Header />
-      {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
-      <div className="flex flex-col h-screen">
-        <Routes>
-          <Route exact path="/" element={<RoomsFiltered />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route
-            exact
-            path="/mesreservations"
-            element={
-              <Myreservations
-                isVisible={showModal}
-                setShowModal={setShowModal}
-                setshowMessage={setshowMessage}
-              />
-            }
+      <SharedContext.Provider value={contextValues}>
+        <Header />
+        {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
+        <div className="flex flex-col h-screen">
+          <Routes>
+            <Route exact path="/" element={<RoomsFiltered />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route
+              exact
+              path="/mesreservations"
+              element={
+                user ? (
+                  <Myreservations
+                    isVisible={showModal}
+                    setShowModal={setShowModal}
+                    setshowMessage={setshowMessage}
+                  />
+                ) : (
+                  <Login />
+                )
+              }
+            />
+            <Route path="/erreur" element={<ErrorPage />} />
+            {/* remplacer par une étoile ici */}
+          </Routes>
+          <Footer />
+          <Modal
+            isVisible={showModal}
+            onClose={() => setShowModal(false)}
+            message={showMessage}
           />
-          <Route path="/erreur" element={<ErrorPage />} />
-          {/* remplacer par une étoile ici */}
-        </Routes>
-        <Footer />
-        <Modal
-          isVisible={showModal}
-          onClose={() => setShowModal(false)}
-          message={showMessage}
-        />
-        {/*
+          {/*
         <ModalBtns
           isVisible={showModalBtns}
           onClose={() => setShowModalBtns(false)}
           message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
         /> */}
-      </div>
+        </div>
+      </SharedContext.Provider>
     </div>
   );
 }
