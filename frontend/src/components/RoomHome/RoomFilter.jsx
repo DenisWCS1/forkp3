@@ -32,7 +32,7 @@ function RoomFilter({
   const reset = () => {
     setStarted(new Date());
     setEnded(new Date());
-    setLocationid(0);
+    setLocationid(1);
   };
   useEffect(() => {
     fetch(`${baseUrl}/location`)

@@ -51,9 +51,6 @@ const me = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body;
-
-  // TODO validations (length, format...)
-
   user.id = parseInt(req.params.id, 10);
 
   models.user
@@ -73,8 +70,6 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const user = req.body;
-  // TODO validations (length, format...)
-
   models.user
     .insert(user)
     .then(([result]) => {
@@ -114,7 +109,7 @@ const login = (req, res) => {
             res.sendStatus(500);
           });
       } else {
-        res.status(404);
+        res.status(401).send("Mot de passe ou email incorrect");
       }
     })
     .catch((err) => {

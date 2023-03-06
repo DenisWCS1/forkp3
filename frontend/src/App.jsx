@@ -75,13 +75,18 @@ function App() {
               exact
               path="/profile"
               element={
-                <UserProfile
-                  isVisible={showModalBtns}
-                  setShowModalBtns={setShowModalBtns}
-                  setShowModal={setShowModal}
-                  setshowMessage={setshowMessage}
-                  setOnConfirm={setOnConfirm}
-                />
+                user ? (
+                  <UserProfile
+                    isVisible={showModalBtns}
+                    setShowModalBtns={setShowModalBtns}
+                    setShowModal={setShowModal}
+                    setshowMessage={setshowMessage}
+                    setOnConfirm={setOnConfirm}
+                    onConfirm={onConfirm}
+                  />
+                ) : (
+                  <Login />
+                )
               }
             />
             <Route

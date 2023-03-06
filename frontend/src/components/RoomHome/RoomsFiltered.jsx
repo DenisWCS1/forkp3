@@ -13,11 +13,11 @@ import Loading from "@assets/logos/loading.gif";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function RoomsFiltered() {
   const navigate = useNavigate();
-  const [started, setStarted] = React.useState(new Date());
-  const [ended, setEnded] = React.useState(new Date());
-  const [locationid, setLocationid] = React.useState(null);
+  const [started, setStarted] = useState(new Date());
+  const [ended, setEnded] = useState(new Date());
+  const [locationid, setLocationid] = useState(1);
 
-  const [rooms, setRooms] = React.useState([]);
+  const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
