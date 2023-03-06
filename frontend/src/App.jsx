@@ -8,11 +8,16 @@ import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
+
+import Charter from "@components/Charter/Charter";
+import Team from "@components/Team/Team";
+// import ModalBtns from "@components/Modals/ModalBtns";
+import "./App.css";
+
+
 import RoomDetails from "@components/RoomDetails/RoomDetails";
 import SharedContext from "@assets/Context/sharedContext";
 import "./App.css";
-
-//  import Charter from "@components/Charter/Charter";
 //  import ModalBtns from "@components/Modals/ModalBtns";
 
 function App() {
@@ -56,6 +61,7 @@ function App() {
   }, [token]);
   return (
     <div className="">
+
       <SharedContext.Provider value={contextValues}>
         <Header />
         {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
@@ -65,6 +71,8 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/RoomDetails" element={<RoomDetails />} />
+            <Route exact path="/charter" element={<Charter />} />
+            <Route exact path="/Team" element={<Team />} />
             <Route
               exact
               path="/mesreservations"
@@ -83,6 +91,7 @@ function App() {
             <Route path="/erreur" element={<ErrorPage />} />
             {/* remplacer par une étoile ici */}
           </Routes>
+          <div className="fixed bottom-0 w-full">
           <Footer />
           <Modal
             isVisible={showModal}
