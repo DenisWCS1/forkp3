@@ -72,7 +72,7 @@ function Login() {
 
               <input
                 className="rounded-lg bg-whiteSimple-100 mt-2 p-2"
-                type="text"
+                type="email"
                 name="email"
                 value={inputValue.email}
                 onChange={handleChange}

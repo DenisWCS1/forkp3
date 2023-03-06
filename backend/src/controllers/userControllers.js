@@ -109,7 +109,7 @@ const login = (req, res) => {
             res.sendStatus(500);
           });
       } else {
-        res.status(404);
+        res.status(401).send("Mot de passe ou email incorrect");
       }
     })
     .catch((err) => {

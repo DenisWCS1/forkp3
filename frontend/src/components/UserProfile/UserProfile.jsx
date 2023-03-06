@@ -104,6 +104,12 @@ function UserProfileView({
         console.error(error);
       });
   };
+  const backToHome = () => {
+    setReturnHome(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 200);
+  };
   // Fonction pour éviter l'utilisation de la fonction au render du composant
   const confirmDelete = () => {
     return () => {
@@ -111,11 +117,10 @@ function UserProfileView({
     };
   };
 
-  const backToHome = () => {
-    setReturnHome(true);
-    setTimeout(() => {
-      navigate("/");
-    }, 8000);
+  const confirmBacktohome = () => {
+    return () => {
+      backToHome();
+    };
   };
 
   return (
@@ -235,7 +240,7 @@ function UserProfileView({
           <div className="px-2">
             <button
               type="button"
-              onClick={backToHome()}
+              onClick={confirmBacktohome()}
               className="bg-blueDuck-100 hover:bg-blueSimple-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Retour à l'accueil

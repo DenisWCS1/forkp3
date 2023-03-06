@@ -51,7 +51,9 @@ ModalBtns.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   message: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
-  onConfirm: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func,
 };
-
+ModalBtns.defaultProps = {
+  onConfirm: () => {},
+};
 export default ModalBtns;
