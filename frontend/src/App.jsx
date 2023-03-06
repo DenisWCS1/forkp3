@@ -18,7 +18,6 @@ import SharedContext from "@assets/Context/sharedContext";
 
 import RoomDetails from "@components/RoomDetails/RoomDetails";
 
-
 function App() {
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [showModal, setShowModal] = useState(false);
@@ -60,7 +59,6 @@ function App() {
   }, [token]);
   return (
     <div className="">
-
       <SharedContext.Provider value={contextValues}>
         <Header />
         {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
