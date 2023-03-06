@@ -8,12 +8,12 @@ import {
 } from "@react-google-maps/api";
 
 const apiKeyEnv = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
-
+const libraries = ["geometry", "drawing"];
 function MapContainer2({ latitude, longitude, adress, name }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKeyEnv,
-    libraries: ["geometry", "drawing"],
+    libraries,
   });
 
   const [mapContainerStyle, setMapContainerStyle] = useState({
@@ -22,18 +22,16 @@ function MapContainer2({ latitude, longitude, adress, name }) {
     borderRadius: 8,
   });
 
-  const [infoWindowVisible, setInfoWindowVisible] = useState(false);
-  console.info(infoWindowVisible);
-
-  const handleMarkerMouseOver = () => {
-    setInfoWindowVisible(true);
-  };
+  const [infoWindowVisible, setInfoWindowVisible] = useState(true);
 
   const center = {
     lat: Number(latitude),
     lng: Number(longitude),
   };
-
+  const marker = {
+    lat: Number(latitude),
+    lng: Number(longitude),
+  };
   useEffect(() => {
     function updateSize() {
       setMapContainerStyle({
@@ -57,13 +55,18 @@ function MapContainer2({ latitude, longitude, adress, name }) {
           center={center}
           zoom={14}
         >
-          <MarkerF position={center} onMouseOver={handleMarkerMouseOver}>
+          <MarkerF
+            position={center}
+            opacity={1}
+            onMouseUp={() => setInfoWindowVisible(!infoWindowVisible)}
+          >
             <InfoWindow
-              position={center}
+              position={marker}
               onCloseClick={() => setInfoWindowVisible(false)}
+              visible={infoWindowVisible}
             >
               <div className="text-[15px]">
-                {name}
+                <div>{name}</div>
                 <div>{adress}</div>
               </div>
             </InfoWindow>
