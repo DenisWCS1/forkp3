@@ -15,9 +15,6 @@ const roomMaterialControllers = require("./controllers/room_materialControllers"
 const reservationControllers = require("./controllers/reservationControllers");
 const myReservationsControllers = require("./controllers/myReservationsControllers");
 
-router.get("/user", userControllers.browse);
-router.get("/user/:id", userControllers.read);
-router.put("/user/:id", userControllers.edit);
 router.post("/user/login", userControllers.login);
 router.post("/me", verifyToken, userControllers.me); // route pour récupérer data user connecté
 router.post(
@@ -26,15 +23,13 @@ router.post(
   hashPassword,
   userControllers.register
 );
-router.delete("/user/:id", userControllers.destroy);
-router.put("/user/:id", userControllers.edit);
 
 router.get("/filtered", roomControllers.filtered);
 
 router.get("/location", locationControllers.browse);
 router.get("/location/:id", locationControllers.read);
 router.put("/location/:id", locationControllers.edit);
-router.post("/location", verifyToken, locationControllers.add);
+
 router.delete("/location/:id", locationControllers.destroy);
 
 router.get("/material", materialControllers.browse);
@@ -50,11 +45,25 @@ router.get("/reservation/:id", reservationControllers.read);
 router.put("/reservation/:id", reservationControllers.edit);
 router.post("/reservation", reservationControllers.add);
 router.delete("/reservation/:id", reservationControllers.destroy);
+
+// ** protected routes **
+
+// user
+router.get("/user", verifyToken, userControllers.browse);
+router.delete("/user/:id", verifyToken, userControllers.destroy);
+router.put("/user/:id", verifyToken, userControllers.edit);
+// location
+router.post("/location", verifyToken, locationControllers.add);
+
+// My reservations
 router.get(
   "/myReservations/:id",
   verifyToken,
   myReservationsControllers.readmy
 );
+
+//* * Static routes **
+router.use("/rooms", express.static("public/rooms"));
 
 router.use(
   session({
@@ -63,7 +72,5 @@ router.use(
     saveUninitialized: true,
   })
 );
-
-router.use("/rooms", express.static("public/rooms"));
 
 module.exports = router;

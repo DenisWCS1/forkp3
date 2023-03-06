@@ -21,7 +21,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setshowMessage] = useState("");
   const [showModalBtns, setShowModalBtns] = useState(false);
-  const [onConfirm, setOnConfirm] = useState();
+  const [onConfirm, setOnConfirm] = useState(() => {});
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState();
 
@@ -75,13 +75,17 @@ function App() {
               exact
               path="/profile"
               element={
-                <UserProfile
-                  isVisible={showModalBtns}
-                  setShowModalBtns={setShowModalBtns}
-                  setShowModal={setShowModal}
-                  setshowMessage={setshowMessage}
-                  setOnConfirm={setOnConfirm}
-                />
+                user ? (
+                  <UserProfile
+                    isVisible={showModalBtns}
+                    setShowModalBtns={setShowModalBtns}
+                    setShowModal={setShowModal}
+                    setshowMessage={setshowMessage}
+                    setOnConfirm={setOnConfirm}
+                  />
+                ) : (
+                  <Login />
+                )
               }
             />
             <Route

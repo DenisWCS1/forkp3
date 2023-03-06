@@ -32,9 +32,8 @@ function Myreservations({ setShowModal, setshowMessage }) {
           navigate("/erreur");
         });
     }
-    // setIsLoading(true);
+
     fetchData();
-    /* setIsLoading(false);   */
   }, [user]);
   return (
     <>

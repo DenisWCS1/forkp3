@@ -1,30 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import SharedContext from "@assets/Context/sharedContext";
+
 // penser à logout
-function UserProfile({
+function UserProfileView({
   setShowModalBtns,
   setOnConfirm,
   setshowMessage,
   setShowModal,
 }) {
+  const [returnHome, setReturnHome] = useState(false);
+  const baseUrl = import.meta.env.VITE_BACKEND_URL;
+  const { user, token, setUser, setToken } = useContext(SharedContext);
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    id: null,
-    firstname: "",
-    lastname: "",
-    email: "",
-    created_at: "",
-    updated_at: "",
-  });
-
+  // Function pour mettre à jour l'utilisateur dans le bandeau
   useEffect(() => {
-    fetch("http://localhost:5000/user/7")
-      .then((response) => response.json())
-      .then((data) => setUser(data));
-  }, []);
+    if (token) {
+      fetch(`${baseUrl}/me`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((userData) => setUser(userData))
+        .catch((err) => {
+          console.warn(err);
+          setToken();
+          localStorage.removeItem("token");
+        });
+    }
+  }, [returnHome]);
 
+  // Function récupération des champs à la frappe
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser((prevUser) => ({
@@ -32,19 +43,30 @@ function UserProfile({
       [name]: value,
     }));
   };
+  // Fonction pour éviter l'utilisation de la fonction au render du composant
   const confirmReturn = () => {
     return () => {
       setShowModalBtns(false);
       navigate("/");
     };
   };
+  // Function supprimer un utilisateur dans la bdd, le déconnecté et supprimer le token
   const handleDelete = () => {
-    fetch(`http://localhost:5000/user/${user.id}`, { method: "DELETE" })
+    fetch(`${baseUrl}/user/${user.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         if (response.ok) {
           setShowModalBtns(false);
           setShowModal(true);
-          setshowMessage("votre profil à bien été supprimé ?");
+          localStorage.removeItem("token");
+          setToken();
+          setUser();
+          setshowMessage("votre profil à bien été supprimé");
           navigate("/");
         } else {
           throw new Error("Impossible de supprimer votre profil");
@@ -54,18 +76,21 @@ function UserProfile({
         console.error(error);
       });
   };
-
+  // Function mettre à jour l'utilisateur dans la bdd
   const handleEdit = () => {
-    fetch(`http://localhost:5000/user/${user.id}`, {
+    fetch(`${baseUrl}/user/${user.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
+
       body: JSON.stringify(user),
     })
       .then((response) => {
         if (response.ok) {
           setShowModalBtns(true);
+
           setOnConfirm(() => confirmReturn());
           setshowMessage(
             `Votre profil à bien été modifié.
@@ -79,10 +104,18 @@ function UserProfile({
         console.error(error);
       });
   };
+  // Fonction pour éviter l'utilisation de la fonction au render du composant
   const confirmDelete = () => {
     return () => {
       handleDelete();
     };
+  };
+
+  const backToHome = () => {
+    setReturnHome(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 8000);
   };
 
   return (
@@ -136,38 +169,40 @@ function UserProfile({
         </div>
         <div className="mb-4">
           <label
-            htmlFor="createat"
+            htmlFor="created_at"
             className="block text-gray-700 font-bold mb-2"
           >
             Créer le
           </label>
           <input
-            type="createat"
-            id="createat"
-            name="createat"
+            type="datetime"
+            id="created_at"
+            name="created_at"
             className="  rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
             readOnly
             value={moment(user.created_at, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
-              "DD/MM/YYYY à HH:mm:ss"
+              "DD/MM/YYYY HH:mm:ss"
             )}
+            onChange={handleInputChange}
           />
         </div>
         <div className="mb-4">
           <label
-            htmlFor="updateat"
+            htmlFor="updated_at"
             className="block text-gray-700 font-bold mb-2"
           >
             Mise à jour le
           </label>
           <input
-            type="updateat"
-            id="updateat"
-            name="updateat"
+            type="datetime"
+            id="updated_at"
+            name="updated_at"
             className=" appearance-none  rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-none focus:shadow-outline"
             readOnly
             value={moment(user.updated_at, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
-              "DD/MM/YYYY à HH:mm:ss"
+              "DD/MM/YYYY  HH:mm:ss"
             )}
+            onChange={handleInputChange}
           />
         </div>
         <div className="flex justify-between">
@@ -200,9 +235,7 @@ function UserProfile({
           <div className="px-2">
             <button
               type="button"
-              onClick={() => {
-                navigate("/");
-              }}
+              onClick={backToHome()}
               className="bg-blueDuck-100 hover:bg-blueSimple-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Retour à l'accueil
@@ -214,10 +247,10 @@ function UserProfile({
     </div>
   );
 }
-UserProfile.propTypes = {
+UserProfileView.propTypes = {
   setShowModalBtns: PropTypes.func.isRequired,
   setShowModal: PropTypes.func.isRequired,
   setshowMessage: PropTypes.func.isRequired,
   setOnConfirm: PropTypes.func.isRequired,
 };
-export default UserProfile;
+export default UserProfileView;
