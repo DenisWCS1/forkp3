@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   // astuce pour éviter de toujours rentrer url http etc
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
-  //
+  const navigate = useNavigate();
   const [inputRegisterValue, setIinputRegisterValue] = useState({
     firstname: "",
     lastname: "",
@@ -17,7 +18,6 @@ function Register() {
       [name]: value,
     });
   };
-  // je déclare de cette façon car mes erreur sont renvoyés en tableau d'objet.
   const [errors, setErrors] = useState([]);
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -28,24 +28,24 @@ function Register() {
       },
       body: JSON.stringify(inputRegisterValue),
     })
-      // ici je vérifie le type de la "réponse , si la réponse n'est pas un json, on envoi une error"
       .then((r) => {
         const contentType = r.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
+          alert(
+            `Bienvenue, ${inputRegisterValue.firstname} ${inputRegisterValue.lastname} `
+          );
+          navigate("/");
           throw new TypeError("Oops, we haven't got JSON!");
         }
-        // si tt va bien , la response est renvoyé en format json
+
         return r.json();
       })
-      // si le statut de reponse n'est pas ok , je mets a jour mes erreurs en allant
-      // chercher la reponse.tableau d'ojets des erreurs
+
       .then((r) => {
         if (!r.ok) {
           setErrors(r.validationErrors);
-          // envoi d'un rejet de promesse car la requête http est incorrect (contenu etc)
-          return Promise.reject(new Error("erroors http"));
+          return Promise.reject(new Error("errors http"));
         }
-        // ici cela permet de déterminer qu'il n'y pas de connection internet
         return console.warn("error network");
       })
       .catch((e) => {

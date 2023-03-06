@@ -1,13 +1,16 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import SharedContext from "@assets/Context/sharedContext";
 
 function Login() {
+  const { setToken } = useContext(SharedContext);
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [error, setError] = useState(null);
 
@@ -34,10 +37,17 @@ function Login() {
         }
         return response.json();
       })
-      .then(() => {
-        alert(`Bienvenue, Candice Doe.`);
-        navigate("/");
+
+      .then((response) => {
+        if (response.token) {
+          localStorage.setItem("token", response.token);
+          setToken(response.token);
+          if (location.pathname === "/login") navigate("/");
+        } else {
+          throw new Error("Mot de passe ou email incorrect");
+        }
       })
+
       .catch((err) => {
         setError(err.message);
       });

@@ -120,16 +120,63 @@ function Charter() {
         <h1 className="text-white text-center text-xl p-5">
           Ces paramètres sont propres à chaque navigateur, et sont accessibles
           via le menu d’aide de votre navigateur Internet Explorer™ :<br />
-          http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies
+          <a
+            className="text-blueDuck-100"
+            href=" http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies"
+            target="_blank"
+            rel="noreferrer"
+          >
+            cliquer ici
+          </a>
           <br />
-          Pour Safari™ : https://support.apple.com/kb/ph21411?locale=fr_CA{" "}
           <br />
-          Pour Chrome™ :
-          http://support.google.com/chrome/bin/answer.py?hl=fr&hlrm=en&answer=95647
+          <div className="text-center">
+            Pour Safari™ :{" "}
+            <a
+              className="text-blueDuck-100"
+              href=" http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies"
+              target="_blank"
+              rel="noreferrer"
+            >
+              cliquer ici
+            </a>
+          </div>
           <br />
-          Pour Firefox™ :
-          http://support.mozilla.org/fr/kb/Activer%20et%20d%C3%A9sactiver%20les%20cookies
-          Pour Opera™ : http://help.opera.com/Windows/10.20/fr/cookies.html
+          <div className="text-center">
+            Pour Chrome™ :
+            <a
+              className="text-blueDuck-100"
+              href=" http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies"
+              target="_blank"
+              rel="noreferrer"
+            >
+              cliquer ici
+            </a>
+          </div>
+          <br />
+          <div className="text-center">
+            Pour Firefox™ :
+            <a
+              className="text-blueDuck-100"
+              href=" http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies"
+              target="_blank"
+              rel="noreferrer"
+            >
+              cliquer ici
+            </a>
+          </div>
+          <br />
+          <div className="text-center">
+            Pour Opera™ :{" "}
+            <a
+              className="text-blueDuck-100"
+              href=" http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies"
+              target="_blank"
+              rel="noreferrer"
+            >
+              cliquer ici
+            </a>
+          </div>
         </h1>
       </p>
     </div>

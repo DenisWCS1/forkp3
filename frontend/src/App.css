@@ -5,8 +5,8 @@
   display: block;
   position: absolute;
   width: 45vh;
-  height: 55vh;
-  top: 4rem;
+  height: 60vh;
+  top: 3.5rem;
   right: 0;
   background-color: #0c131f;
   z-index: 10;
@@ -27,8 +27,8 @@
 
 @media screen and (min-width: 1280px) {
   .showMenuNav {
-    width: 45vh;
-    height: 50vh;
+    width: 40vh;
+    height: 60vh;
     border-bottom-right-radius: 1rem /* 8px */;
     border-bottom-left-radius: 1rem /* 8px */;
   }
