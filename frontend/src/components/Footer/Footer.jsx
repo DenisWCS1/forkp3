@@ -4,6 +4,7 @@ import Teams from "../../assets/footer/Teams.svg";
 import Orfea from "../../assets/footer/Orfea.png";
 import Sncfconnect from "../../assets/footer/Sncfconnect.png";
 import Charter from "../../assets/logos/charter.png";
+import Team from "../../assets/logos/team.png";
 
 function Footer() {
   return (
@@ -28,12 +29,16 @@ function Footer() {
             <img className="w-34 h-8" src={Orfea} alt="orfea" />
           </a>
         </div>
-
-        <div className="flex flex-row text-white text-sm justify-center">
-          <div className="copyright">
+        <div className="flex flex-row text-white text-sm justify-center items-center pb-4">
+          <div className="">
+            <Link to="/Team">
+              <img className="max-h-8" src={Team} alt="charter" />
+            </Link>
+          </div>
+          <div className="copyright px-2">
             <p>&copy; Copyright by GDSalles API</p>
           </div>
-          <div className="pb-5">
+          <div className="">
             <Link to="/Charter">
               <img className="max-h-6" src={Charter} alt="charter" />
             </Link>

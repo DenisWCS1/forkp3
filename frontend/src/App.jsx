@@ -9,6 +9,7 @@ import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
 import Charter from "@components/Charter/Charter";
+import Team from "@components/Team/Team";
 
 // import ModalBtns from "@components/Modals/ModalBtns";
 
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/charter" element={<Charter />} />
+          <Route exact path="/Team" element={<Team />} />
           <Route
             exact
             path="/mesreservations"
