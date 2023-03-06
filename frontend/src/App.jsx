@@ -8,15 +8,15 @@ import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
-import Charter from "@components/Charter/Charter";
+//  import Charter from "@components/Charter/Charter";
 
-// import ModalBtns from "@components/Modals/ModalBtns";
+//  import ModalBtns from "@components/Modals/ModalBtns";
 
 import "./App.css";
 
 import SharedContext from "@assets/Context/sharedContext";
 
-import RoomDetails from "@components/RoomDetails/RoomDetails";
+//  import RoomDetails from "@components/RoomDetails/RoomDetails";
 
 function App() {
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
