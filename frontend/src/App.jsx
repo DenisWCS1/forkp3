@@ -146,8 +146,6 @@ function App() {
           onConfirm={onConfirm}
         />
       </div>
-
-        </div>
       </SharedContext.Provider>
     </div>
   );
