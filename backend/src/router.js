@@ -27,6 +27,7 @@ router.post(
   userControllers.register
 );
 router.delete("/user/:id", userControllers.destroy);
+router.put("/user/:id", userControllers.edit);
 
 router.get("/filtered", roomControllers.filtered);
 
@@ -53,5 +54,5 @@ router.delete("/reservation/:id", reservationControllers.destroy);
 router.get("/myReservations/:id", myReservationsControllers.readmy);
 
 router.use("/rooms", express.static("public/rooms"));
-
+router.use("/team", express.static("public/team"));
 module.exports = router;

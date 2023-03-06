@@ -1,3 +1,4 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "@components/Header/Header";
@@ -9,19 +10,16 @@ import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
 import Charter from "@components/Charter/Charter";
-
-// import ModalBtns from "@components/Modals/ModalBtns";
-
-import "./App.css";
+import ModalBtns from "@components/Modals/ModalBtns";
 import RoomDetails from "@components/RoomDetails/RoomDetails";
+import UserProfile from "@components/UserProfile/UserProfile";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setshowMessage] = useState("");
-  // const [showModalBtns, setShowModalBtns] = useState(false);
-
+  const [showModalBtns, setShowModalBtns] = useState(false);
+  const [onConfirm, setOnConfirm] = useState();
   // const [isLogged, setIsLogged] = useState(false);
-
   return (
     <div className="">
       <Header />
@@ -33,6 +31,19 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/RoomDetails" element={<RoomDetails />} />
           <Route exact path="/charter" element={<Charter />} />
+          <Route
+            exact
+            path="/profile"
+            element={
+              <UserProfile
+                isVisible={showModalBtns}
+                setShowModalBtns={setShowModalBtns}
+                setShowModal={setShowModal}
+                setshowMessage={setshowMessage}
+                setOnConfirm={setOnConfirm}
+              />
+            }
+          />
           <Route
             exact
             path="/mesreservations"
@@ -55,12 +66,12 @@ function App() {
           onClose={() => setShowModal(false)}
           message={showMessage}
         />
-        {/*
         <ModalBtns
           isVisible={showModalBtns}
           onClose={() => setShowModalBtns(false)}
-          message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
-        /> */}
+          message={showMessage}
+          onConfirm={onConfirm}
+        />
       </div>
     </div>
   );
