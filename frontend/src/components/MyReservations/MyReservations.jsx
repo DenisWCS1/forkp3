@@ -12,7 +12,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function Myreservations({ setShowModal, setshowMessage }) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
-  const { user, setUser, setToken, token } = useContext(SharedContext);
+  const { user, token } = useContext(SharedContext);
   useEffect(() => {
     async function fetchData() {
       await fetch(`${baseUrl}/myReservations/${user}`, {
