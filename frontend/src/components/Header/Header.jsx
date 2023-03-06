@@ -45,7 +45,10 @@ export default function Header() {
             <span className="block h-1 w-8 lg:w-[3rem] rounded lg:h-1.5 animate-pulse bg-turquoise-100" />
           </div>
 
-          <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+          <div
+            className={isNavOpen ? "showMenuNav" : "hideMenuNav"}
+            onMouseLeave={() => setIsNavOpen(false)}
+          >
             <div
               className="absolute top-0 right-0 px-6 py-6"
               role="presentation"
@@ -69,7 +72,7 @@ export default function Header() {
                     className="font-semibold text-turquoise-100 my-8 pb-6"
                   >
                     <NavLink to="/register">
-                      <FontAwesomeIcon icon={faPen} className="pr-2" />
+                      <FontAwesomeIcon icon={faPen} className="pr-1" />
                       S'inscrire
                     </NavLink>
                   </button>
