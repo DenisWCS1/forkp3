@@ -8,15 +8,12 @@ import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
-//  import Charter from "@components/Charter/Charter";
-
-//  import ModalBtns from "@components/Modals/ModalBtns";
-
+import RoomDetails from "@components/RoomDetails/RoomDetails";
+import SharedContext from "@assets/Context/sharedContext";
 import "./App.css";
 
-import SharedContext from "@assets/Context/sharedContext";
-
-//  import RoomDetails from "@components/RoomDetails/RoomDetails";
+//  import Charter from "@components/Charter/Charter";
+//  import ModalBtns from "@components/Modals/ModalBtns";
 
 function App() {
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -67,6 +64,7 @@ function App() {
             <Route exact path="/" element={<RoomsFiltered />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
+            <Route exact path="/RoomDetails" element={<RoomDetails />} />
             <Route
               exact
               path="/mesreservations"
