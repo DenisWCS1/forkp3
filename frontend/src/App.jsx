@@ -1,3 +1,4 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import Header from "@components/Header/Header";
@@ -8,18 +9,19 @@ import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
-
 import Charter from "@components/Charter/Charter";
-import Team from "@components/Team/Team";
+import ModalBtns from "@components/Modals/ModalBtns";
 import RoomDetails from "@components/RoomDetails/RoomDetails";
+import UserProfile from "@components/UserProfile/UserProfile";
+import Team from "@components/Team/Team";
 import SharedContext from "@assets/Context/sharedContext";
-import "./App.css";
-//  import ModalBtns from "@components/Modals/ModalBtns";
 
 function App() {
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setshowMessage] = useState("");
+  const [showModalBtns, setShowModalBtns] = useState(false);
+  const [onConfirm, setOnConfirm] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState();
 
@@ -55,6 +57,7 @@ function App() {
         });
     }
   }, [token]);
+
   return (
     <div className="">
       <SharedContext.Provider value={contextValues}>
@@ -68,6 +71,19 @@ function App() {
             <Route exact path="/RoomDetails" element={<RoomDetails />} />
             <Route exact path="/charter" element={<Charter />} />
             <Route exact path="/Team" element={<Team />} />
+            <Route
+              exact
+              path="/profile"
+              element={
+                <UserProfile
+                  isVisible={showModalBtns}
+                  setShowModalBtns={setShowModalBtns}
+                  setShowModal={setShowModal}
+                  setshowMessage={setshowMessage}
+                  setOnConfirm={setOnConfirm}
+                />
+              }
+            />
             <Route
               exact
               path="/mesreservations"
@@ -84,23 +100,22 @@ function App() {
               }
             />
             <Route path="/erreur" element={<ErrorPage />} />
-            {/* remplacer par une étoile ici */}
           </Routes>
+
           <div className="fixed bottom-0 w-full">
             <Footer />
-            <Modal
-              isVisible={showModal}
-              onClose={() => setShowModal(false)}
-              message={showMessage}
-            />
-            {/*
-
-        <ModalBtns
-          isVisible={showModalBtns}
-          onClose={() => setShowModalBtns(false)}
-          message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
-        /> */}
           </div>
+          <Modal
+            isVisible={showModal}
+            onClose={() => setShowModal(false)}
+            message={showMessage}
+          />
+          <ModalBtns
+            isVisible={showModalBtns}
+            onClose={() => setShowModalBtns(false)}
+            message={showMessage}
+            onConfirm={onConfirm}
+          />
         </div>
       </SharedContext.Provider>
     </div>

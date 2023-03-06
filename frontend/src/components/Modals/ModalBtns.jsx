@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-function ModalBtns({ isVisible, onClose, message }) {
+function ModalBtns({ isVisible, onClose, message, onConfirm }) {
   if (!isVisible) return null;
 
   const handleClose = (e) => {
@@ -30,12 +30,14 @@ function ModalBtns({ isVisible, onClose, message }) {
           <button
             type="button"
             className=" transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-greySimple-100 duration-150 mr-12"
+            onClick={() => onConfirm()}
           >
             Oui
           </button>
           <button
             type="button"
             className="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 hover:text-greySimple-100 duration-150"
+            onClick={() => onClose()}
           >
             Non
           </button>
@@ -49,6 +51,7 @@ ModalBtns.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   message: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };
 
 export default ModalBtns;

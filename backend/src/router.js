@@ -27,6 +27,7 @@ router.post(
   userControllers.register
 );
 router.delete("/user/:id", userControllers.destroy);
+router.put("/user/:id", userControllers.edit);
 
 router.get("/filtered", roomControllers.filtered);
 
@@ -64,5 +65,5 @@ router.use(
 );
 
 router.use("/rooms", express.static("public/rooms"));
-// route protégée avec cookie parser
+
 module.exports = router;

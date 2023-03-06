@@ -105,7 +105,7 @@ export default function Header() {
                 className="font-semibold text-turquoise-100 my-8 pb-6"
               >
                 <FontAwesomeIcon icon={faUserAstronaut} className="pr-2" />
-                <NavLink to="/Home">Mon profil</NavLink>
+                <NavLink to="/profile">Mon profil</NavLink>
               </button>
             </ul>
           </div>
