@@ -11,10 +11,6 @@ import Modal from "@components/Modals/Modal";
 
 import Charter from "@components/Charter/Charter";
 import Team from "@components/Team/Team";
-// import ModalBtns from "@components/Modals/ModalBtns";
-import "./App.css";
-
-
 import RoomDetails from "@components/RoomDetails/RoomDetails";
 import SharedContext from "@assets/Context/sharedContext";
 import "./App.css";
@@ -61,7 +57,6 @@ function App() {
   }, [token]);
   return (
     <div className="">
-
       <SharedContext.Provider value={contextValues}>
         <Header />
         {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
@@ -92,19 +87,20 @@ function App() {
             {/* remplacer par une étoile ici */}
           </Routes>
           <div className="fixed bottom-0 w-full">
-          <Footer />
-          <Modal
-            isVisible={showModal}
-            onClose={() => setShowModal(false)}
-            message={showMessage}
-          />
-          {/*
+            <Footer />
+            <Modal
+              isVisible={showModal}
+              onClose={() => setShowModal(false)}
+              message={showMessage}
+            />
+            {/*
 
         <ModalBtns
           isVisible={showModalBtns}
           onClose={() => setShowModalBtns(false)}
           message="Etes-vous sûr(e) de vouloir supprimer cette réservation ?"
         /> */}
+          </div>
         </div>
       </SharedContext.Provider>
     </div>
