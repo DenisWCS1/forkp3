@@ -20,7 +20,6 @@ class RoomManager extends AbstractManager {
             (r.end_datetime  BETWEEN STR_TO_DATE(?, '%d-%m-%Y %H:%i:%s') AND STR_TO_DATE(?, '%d-%m-%Y %H:%i:%s'))
             GROUP BY room.id)
           order by room.id asc`;
-
     if (location !== null) {
       sqlvalues.push(location, start, end, start, end);
     } else {

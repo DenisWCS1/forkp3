@@ -18,6 +18,13 @@
   border-bottom-left-radius: 1rem /* 8px */;
 }
 
+@media screen and (min-width: 500px) {
+  .map-containerd {
+    width: 300px;
+    height: 150px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .showMenuNav {
     width: 40vh;

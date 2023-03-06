@@ -26,7 +26,9 @@ module.exports = {
           100: "#f1eeee",
         },
       },
-      fontFamily: {},
+      fontFamily: {
+        avenir: ["AvenirLTStd-Heavy.otf"],
+      },
     },
   },
 

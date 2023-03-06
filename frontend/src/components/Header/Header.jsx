@@ -19,7 +19,7 @@ export default function Header() {
     setUser();
   };
   return (
-    <div className="mx-auto mb-4 pr-6 flex items-center justify-between  py-3 max-h-16 bg-dark-100">
+    <div className="h-14 mx-auto mb-4 pr-6 flex items-center justify-between py-3 bg-dark-100">
       <div className=" flex items-center justify-between lg:justify-evenly">
         <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/">
           <img src={logoSncf} alt="logoSncf" />

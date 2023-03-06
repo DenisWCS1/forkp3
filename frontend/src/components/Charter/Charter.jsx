@@ -2,33 +2,39 @@ import React from "react";
 
 function Charter() {
   return (
-    <div>
+    <div className="text-justify font-semibold bg-dark-100 text-blueDuck-100 text-1xl m-10 p-10">
+      <h1 className="text-white text-3xl">Introduction : </h1>
+      <br />
+
+      <h2 className="text-center">
+        La protection de votre vie privée est une priorité essentielle, et nous
+        utilisons ces données pour vous fournir les produits que vous achetez
+        sur nos sites. Sinon, vous ne pourriez pas acheter vos titres de
+        transport et abonnements !{" "}
+      </h2>
+      <br />
       <p>
-        Introduction :La protection de votre vie privée est une priorité
-        essentielle, et nous utilisons ces données pour vous fournir les
-        produits que vous achetez sur nos sites. Sinon, vous ne pourriez pas
-        acheter vos titres de transport et abonnements ! A ce titre, voici les
-        huit principes auxquels veillent l’entreprise GD_Salles et l’ensemble de
-        ses collaborateurs : Ne jamais collecter ou n’exploiter de données sans
-        une finalité précise et légitime ; Ne collecter des données que dans
-        l’un des cadres suivants : Les données sont nécessaires à l’exécution
-        des contrats et des prestations demandées Vous avez donné votre
-        consentement exprès et spécifique au traitement Nous avons un intérêt
-        légitime dûment justifié pour traiter vos données Ne collecter et
-        n’exploiter que les données strictement nécessaires aux traitements ; Ne
-        conserver les données que pour une durée limitée et cohérente avec les
-        services fournis ; Assurer en permanence la qualité et la sécurité des
-        données ; Ne réaliser de transferts de données que quand cela est
-        nécessaire, et dans le respect des règles légales et de sécurité ; Vous
-        fournir en permanence une information claire et transparente ; Veiller
-        au respect de vos droits et des conditions de leur exercice. La présente
-        charte de confidentialité s’applique à l’ensemble du site, application
-        mobile et services GD_Salles (ci-après les « services GD_Salles »).
-        GD_Salles est une société indépendante de GD_Salles , et, de fait, ces
-        deux sociétés sont responsables de leurs propres traitements de données
-        personnelles. GD_Salles a pour objet professionelle, la recherche de
-        salles de transpformations et leur réservation sous l’empire de la
-        présente charte de confidentialité.
+        A ce titre, voici les huit principes auxquels veillent l’entreprise
+        GD_Salles et l’ensemble de ses collaborateurs : Ne jamais collecter ou
+        n’exploiter de données sans une finalité précise et légitime ; Ne
+        collecter des données que dans l’un des cadres suivants : Les données
+        sont nécessaires à l’exécution des contrats et des prestations demandées
+        Vous avez donné votre consentement exprès et spécifique au traitement
+        Nous avons un intérêt légitime dûment justifié pour traiter vos données
+        Ne collecter et n’exploiter que les données strictement nécessaires aux
+        traitements ; Ne conserver les données que pour une durée limitée et
+        cohérente avec les services fournis ; Assurer en permanence la qualité
+        et la sécurité des données ; Ne réaliser de transferts de données que
+        quand cela est nécessaire, et dans le respect des règles légales et de
+        sécurité ; Vous fournir en permanence une information claire et
+        transparente ; Veiller au respect de vos droits et des conditions de
+        leur exercice. La présente charte de confidentialité s’applique à
+        l’ensemble du site, application mobile et services GD_Salles (ci-après
+        les « services GD_Salles »). GD_Salles est une société indépendante de
+        GD_Salles , et, de fait, ces deux sociétés sont responsables de leurs
+        propres traitements de données personnelles. GD_Salles a pour objet
+        professionelle, la recherche de salles de transpformations et leur
+        réservation sous l’empire de la présente charte de confidentialité.
       </p>
       <p>
         Quelle est la politique de GD_Salles en matière de cookies ? Quelle est
@@ -109,16 +115,22 @@ function Charter() {
         Soit via le menu de paramétrage (gestion des cookies) Soit avec votre
         navigateur : vous pouvez autoriser ou refuser l’enregistrement de
         cookies avec votre ordinateur ou votre terminal avec les paramètres
-        appropriés de votre logiciel de navigation. Ces paramètres sont propres
-        à chaque navigateur, et sont accessibles via le menu d’aide de votre
-        navigateur Internet Explorer™ :
-        http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies
-        Pour Safari™ : https://support.apple.com/kb/ph21411?locale=fr_CA Pour
-        Chrome™ :
-        http://support.google.com/chrome/bin/answer.py?hl=fr&hlrm=en&answer=95647
-        Pour Firefox™ :
-        http://support.mozilla.org/fr/kb/Activer%20et%20d%C3%A9sactiver%20les%20cookies
-        Pour Opera™ : http://help.opera.com/Windows/10.20/fr/cookies.html
+        appropriés de votre logiciel de navigation.
+        <br />
+        <h1 className="text-white text-center text-xl p-5">
+          Ces paramètres sont propres à chaque navigateur, et sont accessibles
+          via le menu d’aide de votre navigateur Internet Explorer™ :<br />
+          http://windows.microsoft.com/fr-FR/windows-vista/Block-or-allow-cookies
+          <br />
+          Pour Safari™ : https://support.apple.com/kb/ph21411?locale=fr_CA{" "}
+          <br />
+          Pour Chrome™ :
+          http://support.google.com/chrome/bin/answer.py?hl=fr&hlrm=en&answer=95647
+          <br />
+          Pour Firefox™ :
+          http://support.mozilla.org/fr/kb/Activer%20et%20d%C3%A9sactiver%20les%20cookies
+          Pour Opera™ : http://help.opera.com/Windows/10.20/fr/cookies.html
+        </h1>
       </p>
     </div>
   );
