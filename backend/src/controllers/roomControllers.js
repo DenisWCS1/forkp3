@@ -3,7 +3,12 @@ const models = require("../models");
 const filtered = (req, res) => {
   const start = req.query.start || null;
   const end = req.query.end || null;
-  const location = parseInt(req.query.location, 10) || null;
+  const location =
+    Number.isNaN(parseInt(req.query.location, 10)) ||
+    !Number.isInteger(parseInt(req.query.location, 10)) ||
+    parseInt(req.query.location, 10) === 1
+      ? null
+      : parseInt(req.query.location, 10);
 
   models.room
     .filter(start, end, location)
