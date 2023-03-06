@@ -14,6 +14,7 @@ import ModalBtns from "@components/Modals/ModalBtns";
 import RoomDetails from "@components/RoomDetails/RoomDetails";
 import UserProfile from "@components/UserProfile/UserProfile";
 import Team from "@components/Team/Team";
+import SharedContext from "@assets/Context/sharedContext";
 
 function App() {
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -72,6 +73,19 @@ function App() {
             <Route exact path="/Team" element={<Team />} />
             <Route
               exact
+              path="/profile"
+              element={
+                <UserProfile
+                  isVisible={showModalBtns}
+                  setShowModalBtns={setShowModalBtns}
+                  setShowModal={setShowModal}
+                  setshowMessage={setshowMessage}
+                  setOnConfirm={setOnConfirm}
+                />
+              }
+            />
+            <Route
+              exact
               path="/mesreservations"
               element={
                 user ? (
@@ -86,66 +100,23 @@ function App() {
               }
             />
             <Route path="/erreur" element={<ErrorPage />} />
-            {/* remplacer par une étoile ici */}
           </Routes>
+
           <div className="fixed bottom-0 w-full">
             <Footer />
-            <Modal
-              isVisible={showModal}
-              onClose={() => setShowModal(false)}
-              message={showMessage}
-            />
-            {/*
-
-      <div className="flex flex-col">
-        <Routes>
-          <Route exact path="/" element={<RoomsFiltered />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/RoomDetails" element={<RoomDetails />} />
-          <Route exact path="/charter" element={<Charter />} />
-          <Route
-            exact
-            path="/profile"
-            element={
-              <UserProfile
-                isVisible={showModalBtns}
-                setShowModalBtns={setShowModalBtns}
-                setShowModal={setShowModal}
-                setshowMessage={setshowMessage}
-                setOnConfirm={setOnConfirm}
-              />
-            }
+          </div>
+          <Modal
+            isVisible={showModal}
+            onClose={() => setShowModal(false)}
+            message={showMessage}
           />
-          <Route
-            exact
-            path="/mesreservations"
-            element={
-              <Myreservations
-                isVisible={showModal}
-                setShowModal={setShowModal}
-                setshowMessage={setshowMessage}
-              />
-            }
+          <ModalBtns
+            isVisible={showModalBtns}
+            onClose={() => setShowModalBtns(false)}
+            message={showMessage}
+            onConfirm={onConfirm}
           />
-          <Route path="/erreur" element={<ErrorPage />} />
-          {/* remplacer par une étoile ici */}
-        </Routes>
-        <div className="fixed bottom-0 w-full">
-          <Footer />
         </div>
-        <Modal
-          isVisible={showModal}
-          onClose={() => setShowModal(false)}
-          message={showMessage}
-        />
-        <ModalBtns
-          isVisible={showModalBtns}
-          onClose={() => setShowModalBtns(false)}
-          message={showMessage}
-          onConfirm={onConfirm}
-        />
-      </div>
       </SharedContext.Provider>
     </div>
   );
