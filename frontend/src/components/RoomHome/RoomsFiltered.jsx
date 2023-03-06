@@ -15,7 +15,7 @@ function RoomsFiltered() {
   const navigate = useNavigate();
   const [started, setStarted] = React.useState(new Date());
   const [ended, setEnded] = React.useState(new Date());
-  const [locationid, setLocationid] = React.useState();
+  const [locationid, setLocationid] = React.useState(null);
 
   const [rooms, setRooms] = React.useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -83,7 +83,7 @@ function RoomsFiltered() {
                       <NavLink to="/RoomDetails">
                         <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                           <button
-                            className="bg-greySimple-100 bg-opacity-50 text-whiteSimple-100 py-2 px-4 "
+                            className="bg-greySimple-100 bg-opacity-50 dark-100 py-2 px-4"
                             type="button"
                           >
                             Plus de détails

@@ -22,8 +22,8 @@ CREATE TABLE
 		`url_picture` varchar(255) NOT NULL,
 		`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-		`lat` decimal(25,6) DEFAULT NULL,
-  		`lng` decimal(25,6) DEFAULT NULL,
+		`lat` decimal(25, 6) DEFAULT NULL,
+		`lng` decimal(25, 6) DEFAULT NULL,
 		PRIMARY KEY (`id`)
 	);
 
@@ -294,6 +294,7 @@ VALUES
 INSERT INTO
 	location (`city_name`)
 VALUES
+	('Sélectionner une salle'),
 	('Nantes'),
 	('Angers'),
 	('Le Mans');
@@ -312,119 +313,135 @@ VALUES
 	('Vidéo projecteur');
 
 INSERT INTO
-
-	`room` (capacity, fk_location, name, adress, plan, url_picture, lat, lng)
-
-	VALUES 
-		(50,1,'Loire','9 avenue Carnot, 44000 Nantes','map','/rooms/salle1.png', 45.355353, -2.565650),
-		(34,1,'Sarthe','24 Bd de Berlin, 44000 Nantes','map','/rooms/salle2.png', 47.216780, -1.536550),
-		(29,2,'Acheneau','1 Esplanade de la Gare, 49100 Angers','map','/rooms/salle10.jpg', 47.464860, -0.555750),
-		(56,2,'Divatte','88 Pl la fayette, 49000 Angers','map','/rooms/salle4.jpg', 47.462550, -0.553610),
-		(35,3,'Sèvre','30 Bd Robert Jarry, 72000 Le Mans','map','/rooms/salle5.jpg', 48.995880, 0.187830),
-		(44,3,'Le Brivet','Chemin aux boeufs, 72100 Le Mans','map','/rooms/salle6.jpg', 48.954050, 0.219860),
-		(67,1,'Maine',"21 Bd Ernest d'Alby 44000 Nantes",'map','/rooms/salle7.jpg', 47.226600, -1.528660),
-		(68,2,'Namnettes','15 rue des 2 haies, 49100 Angers','map','/rooms/salle8.jpg', 47.471760, -0.552460),
-		(39,3,'Zen','2 Pl St Michel, 72000 Le Mans','map','/rooms/salle9.jpg', 48.009150, 0.197920);
+	`room` (
+		capacity,
+		fk_location,
+		name,
+		adress,
+		plan,
+		url_picture,
+		lat,
+		lng
+	)
+VALUES
+	(
+		50,
+		2,
+		'Loire',
+		'9 avenue Carnot, 44000 Nantes',
+		'map',
+		'/rooms/salle1.jpg',
+		45.355353,
+		-2.565650
+	),
+	(
+		34,
+		2,
+		'Sarthe',
+		'24 Bd de Berlin, 44000 Nantes',
+		'map',
+		'/rooms/salle2.jpg',
+		47.216780,
+		-1.536550
+	),
+	(
+		29,
+		3,
+		'Acheneau',
+		'1 Esplanade de la Gare, 49100 Angers',
+		'map',
+		'/rooms/salle10.jpg',
+		47.464860,
+		-0.555750
+	),
+	(
+		56,
+		3,
+		'Divatte',
+		'88 Pl la fayette, 49000 Angers',
+		'map',
+		'/rooms/salle4.jpg',
+		47.462550,
+		-0.553610
+	),
+	(
+		35,
+		4,
+		'Sèvre',
+		'30 Bd Robert Jarry, 72000 Le Mans',
+		'map',
+		'/rooms/salle5.jpg',
+		48.995880,
+		0.187830
+	),
+	(
+		44,
+		4,
+		'Le Brivet',
+		'Chemin aux boeufs, 72100 Le Mans',
+		'map',
+		'/rooms/salle6.jpg',
+		48.954050,
+		0.219860
+	),
+	(
+		67,
+		2,
+		'Maine',
+		"21 Bd Ernest d'Alby 44000 Nantes",
+		'map',
+		'/rooms/salle7.jpg',
+		47.226600,
+		-1.528660
+	),
+	(
+		68,
+		3,
+		'Namnettes',
+		'15 rue des 2 haies, 49100 Angers',
+		'map',
+		'/rooms/salle8.jpg',
+		47.471760,
+		-0.552460
+	),
+	(
+		39,
+		4,
+		'Zen',
+		'2 Pl St Michel, 72000 Le Mans',
+		'map',
+		'/rooms/salle9.jpg',
+		48.009150,
+		0.197920
+	);
 
 INSERT INTO
 	`room_material` (fk_room, fk_material)
 VALUES
-	(		
-		1,
-		1
-	),
-	(		
-		1,
-		2
-	),
-	(
-		1,
-		3
-	),
-	(
-		2,
-		1
-	),
-	(
-		2,
-		8
-	),
-	(
-		2,
-		6
-	),
-	(
-		3,
-		1
-	),
-	(
-		3,
-		2
-	),
-	(
-		3,
-		4
-	),
-	(
-		3,
-		6
-	),
-	(
-		4,
-		1
-	),
-	(
-		4,
-		8
-	),
-	(
-		5,
-		8
-	),
-	(
-		5,
-		7
-	),
-	(
-		5,
-		3
-	),
-	(
-		5,
-		6
-	),
-	(
-		7,
-		1
-	),
-	(
-		7,
-		4
-	),
-	(
-		7,
-		5
-	),
-	(
-		7,
-		6
-	),
-	(
-		8,
-		2
-	),
-	(
-		8,
-		3
-	),
-	(
-		8,
-		6
-	),
-	(
-		8,
-		8
-	);
+	(1, 1),
+	(1, 2),
+	(1, 3),
+	(2, 1),
+	(2, 8),
+	(2, 6),
+	(3, 1),
+	(3, 2),
+	(3, 4),
+	(3, 6),
+	(4, 1),
+	(4, 8),
+	(5, 8),
+	(5, 7),
+	(5, 3),
+	(5, 6),
+	(7, 1),
+	(7, 4),
+	(7, 5),
+	(7, 6),
+	(8, 2),
+	(8, 3),
+	(8, 6),
+	(8, 8);
 
 INSERT INTO
 	reservation (fk_user, fk_room, start_datetime, end_datetime)
@@ -4287,4 +4304,3 @@ VALUES
 		'2023-05-30 08:30:00',
 		'2023-05-30 12:00:00'
 	);
-
