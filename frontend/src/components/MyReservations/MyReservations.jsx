@@ -4,18 +4,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-
 import moment from "moment";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
-function Myreservations({ setShowModal, setshowMessage }) {
+function Myreservations({
+  setShowModalBtns,
+  setOnConfirm,
+  setshowMessage,
+  setShowModal,
+}) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
   const { user, token, setIsLoading } = useContext(SharedContext);
+  const [updateResa, setUpdateResa] = useState(0);
+
+  /** **********************************************
+Fetch return GET
+reservation.id
+reservation.start_datetime AS start
+reservation.end_datetime AS end
+location.city_name AS localisation, 
+room.name AS nom,       
+*********************************************** */
+
   useEffect(() => {
-    async function fetchData() {
-      await fetch(`${baseUrl}/myReservations/${user.id}`, {
+    function fetchData() {
+      fetch(`${baseUrl}/myReservations/${user.id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -34,9 +49,41 @@ function Myreservations({ setShowModal, setshowMessage }) {
           navigate("/erreur");
         });
     }
-
     fetchData();
-  }, [user]);
+  }, [user, updateResa]);
+
+  /** ****************************************************
+ Fetch return delete reservation in reservation table     
+***************************************************** */
+  const handleDelete = (id) => {
+    fetch(`${baseUrl}/reservation/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setShowModalBtns(false);
+          setShowModal(true);
+          setshowMessage("votre réservation à bien été supprimé");
+          setUpdateResa(!updateResa);
+        } else {
+          throw new Error("Impossible de supprimer votre réservation");
+        }
+      })
+
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  // Function protect auto execute delete at component render
+  const confirmDelete = (id) => {
+    return () => {
+      handleDelete(id);
+    };
+  };
   return (
     <>
       <div className="text-center text-2xl font-bold mb-5">
@@ -104,7 +151,7 @@ function Myreservations({ setShowModal, setshowMessage }) {
                   type="button"
                   onClick={() => {
                     return (
-                      setShowModal(true),
+                      setShowModalBtns(true) &&
                       setshowMessage("Disponible dans la V3")
                     );
                   }}
@@ -112,10 +159,22 @@ function Myreservations({ setShowModal, setshowMessage }) {
                 >
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
+
                 <button
                   type="button"
                   onClick={() => {
-                    setShowModal(true);
+                    setOnConfirm(() => confirmDelete(myresa.id));
+                    setShowModalBtns(true);
+                    setshowMessage(` Voulez-vous vraiment supprimer votre réservation du \n${moment(
+                      myresa.start,
+                      "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                    ).format("DD/MM/YYYY à HH:mm:ss")} \n au \n${moment(
+                      myresa.end,
+                      "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                    ).format("DD/MM/YYYY à HH:mm:ss")}\n pour la salle  ${
+                      myresa.nom
+                    } ?
+                    `);
                   }}
                   className="text-red-400 text-lg font-bold  ml-1 "
                 >
@@ -130,7 +189,9 @@ function Myreservations({ setShowModal, setshowMessage }) {
   );
 }
 Myreservations.propTypes = {
-  setShowModal: PropTypes.func.isRequired,
+  setShowModalBtns: PropTypes.func.isRequired,
   setshowMessage: PropTypes.func.isRequired,
+  setOnConfirm: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
 };
 export default Myreservations;

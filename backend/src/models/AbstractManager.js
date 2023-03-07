@@ -1,5 +1,3 @@
-// don't touch it , don't do it , never remove or copy.
-
 class AbstractManager {
   constructor({ table }) {
     this.table = table;
@@ -9,13 +7,6 @@ class AbstractManager {
     return this.database.query(`select * from  ${this.table} where id = ?`, [
       id,
     ]);
-  }
-
-  findfield(id) {
-    return this.database.query(
-      `select firstname, lastname,email,created_at,updated_at from  ${this.table} where id = ?`,
-      [id]
-    );
   }
 
   findAll() {
