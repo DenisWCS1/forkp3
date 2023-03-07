@@ -51,7 +51,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      //setIsLoading(true);
+      // setIsLoading(true);
       fetch(`${baseUrl}/me`, {
         method: "POST",
         headers: {
@@ -65,7 +65,7 @@ function App() {
           console.warn(err);
           setToken();
           localStorage.removeItem("token");
-          //setIsLoading(false);
+          // setIsLoading(false);
         });
     }
   }, [token]);
