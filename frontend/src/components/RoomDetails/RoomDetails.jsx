@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import MapContainer2 from "@components/GoogleMap/GoogleMap";
+import SharedContext from "@assets/Context/sharedContext";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -12,6 +13,7 @@ function RoomDetails() {
   const [longitude, setLongitude] = useState();
   const [adress, setAdress] = useState();
   const [name, setName] = useState();
+  const { setIsLoading } = useContext(SharedContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,8 +27,10 @@ function RoomDetails() {
           setLongitude(jsonData[0].lng);
           setAdress(jsonData[0].adress);
           setName(jsonData[0].name);
+          setIsLoading(false);
         })
         .catch(() => {
+          setIsLoading(false);
           navigate("/erreur");
         });
     }

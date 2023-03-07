@@ -14,6 +14,7 @@ import ModalBtns from "@components/Modals/ModalBtns";
 import RoomDetails from "@components/RoomDetails/RoomDetails";
 import UserProfile from "@components/UserProfile/UserProfile";
 import Team from "@components/Team/Team";
+import Loader from "@components/Loader/Loader";
 import SharedContext from "@assets/Context/sharedContext";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   const [onConfirm, setOnConfirm] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const contextValues = useMemo(
     () => ({
@@ -35,12 +37,21 @@ function App() {
       setShowModal,
       showMessage,
       setshowMessage,
+      isLoading,
+      setIsLoading,
     }),
-    [token, user, baseUrl, showMessage, baseUrl]
+    [token, user, baseUrl, showMessage, baseUrl, isLoading]
   );
 
   useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 4000);
+  }, []);
+
+  useEffect(() => {
     if (token) {
+      //setIsLoading(true);
       fetch(`${baseUrl}/me`, {
         method: "POST",
         headers: {
@@ -54,6 +65,7 @@ function App() {
           console.warn(err);
           setToken();
           localStorage.removeItem("token");
+          //setIsLoading(false);
         });
     }
   }, [token]);
@@ -121,6 +133,7 @@ function App() {
             message={showMessage}
             onConfirm={onConfirm}
           />
+          {isLoading ? <Loader /> : ""}
         </div>
       </SharedContext.Provider>
     </div>

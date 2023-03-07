@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
@@ -6,9 +6,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 
 import moment from "moment";
 import RoomFilter from "@components/RoomHome/RoomFilter";
-import Loading from "@assets/logos/loading.gif";
-
-// import Loader from "react-loader-spinner";
+import SharedContext from "@assets/Context/sharedContext";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function RoomsFiltered() {
@@ -16,9 +14,9 @@ function RoomsFiltered() {
   const [started, setStarted] = useState(new Date());
   const [ended, setEnded] = useState(new Date());
   const [locationid, setLocationid] = useState(1);
+  const { setIsLoading } = useContext(SharedContext);
 
   const [rooms, setRooms] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -39,6 +37,7 @@ function RoomsFiltered() {
         setRooms(jsonData);
       })
       .catch(() => {
+        setIsLoading(false);
         navigate("/erreur");
       });
 
@@ -58,81 +57,75 @@ function RoomsFiltered() {
           ended={ended}
           locationid={locationid}
         />
-        {isLoading ? (
-          <div className="flex flex-col justify-around items-center py-8">
-            <img className="animate" src={Loading} alt="loading" />
-            <p className="text-center font-bold">Chargement ...</p>
-          </div>
-        ) : (
-          <div className="flex flex-wrap -mx-1 lg:-mx-4 mt-10 ">
-            {rooms.map((value) => (
-              <div
-                className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4  transform transition duration-1000 hover:scale-95 hover:translate-y-0.5"
-                key={value.id}
-              >
-                <article className="overflow-hidden rounded-lg shadow-lg">
-                  <div className="w-full h-fit group">
-                    <div className="relative overflow-hidden">
-                      <div>
-                        <img
-                          className="h-48 w-full object-cover"
-                          src={`${baseUrl}${value.url_picture}`}
-                          alt={value.name}
-                        />
-                      </div>
-                      <NavLink to="/RoomDetails">
-                        <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                          <button
-                            className="bg-greySimple-100 bg-opacity-50 dark-100 py-2 px-4"
-                            type="button"
-                          >
-                            Plus de détails
-                          </button>
-                        </div>
-                      </NavLink>
+
+        <div className="flex flex-wrap -mx-1 lg:-mx-4 mt-10 ">
+          {rooms.map((value) => (
+            <div
+              className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4  transform transition duration-1000 hover:scale-95 hover:translate-y-0.5"
+              key={value.id}
+            >
+              <article className="overflow-hidden rounded-lg shadow-lg">
+                <div className="w-full h-fit group">
+                  <div className="relative overflow-hidden">
+                    <div>
+                      <img
+                        className="h-48 w-full object-cover"
+                        src={`${baseUrl}${value.url_picture}`}
+                        alt={value.name}
+                      />
                     </div>
-                  </div>
-
-                  <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                      <a
-                        className="no-underline hover:underline text-dark-100"
-                        href="/"
-                      >
-                        {value.name}
-                      </a>
-                    </h1>
-                    <p className="text-dark-100 text-sm" />
-                    {value.capacity} Places
-                  </header>
-
-                  <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a
-                      className="flex items-center no-underline hover:underline text-dark-100"
-                      href="/"
-                    >
-                      <FontAwesomeIcon icon={faLocationDot} />
-                      <p className="ml-2 text-sm">{value.city_name}</p>
-                    </a>
-                    <a
-                      className="no-underline text-dark-100 hover:text-red-dark"
-                      href="/"
-                    >
-                      <span className="text-white font-normal">
+                    <NavLink to="/RoomDetails">
+                      <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                         <button
+                          className="bg-greySimple-100 bg-opacity-50 dark-100 py-2 px-4"
                           type="button"
-                          className="bg-blueDuck-100  px-4 py-2 rounded-lg "
                         >
-                          Réserver
+                          Plus de détails
                         </button>
-                      </span>
+                      </div>
+                    </NavLink>
+                  </div>
+                </div>
+
+                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+                  <h1 className="text-lg">
+                    <a
+                      className="no-underline hover:underline text-dark-100"
+                      href="/"
+                    >
+                      {value.name}
                     </a>
-                  </footer>
-                </article>
-              </div>
-            ))}
-          </div>
-        )}
+                  </h1>
+                  <p className="text-dark-100 text-sm" />
+                  {value.capacity} Places
+                </header>
+
+                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
+                  <a
+                    className="flex items-center no-underline hover:underline text-dark-100"
+                    href="/"
+                  >
+                    <FontAwesomeIcon icon={faLocationDot} />
+                    <p className="ml-2 text-sm">{value.city_name}</p>
+                  </a>
+                  <a
+                    className="no-underline text-dark-100 hover:text-red-dark"
+                    href="/"
+                  >
+                    <span className="text-white font-normal">
+                      <button
+                        type="button"
+                        className="bg-blueDuck-100  px-4 py-2 rounded-lg "
+                      >
+                        Réserver
+                      </button>
+                    </span>
+                  </a>
+                </footer>
+              </article>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="h-28" />
     </div>

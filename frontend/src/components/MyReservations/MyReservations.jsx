@@ -12,7 +12,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function Myreservations({ setShowModal, setshowMessage }) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
-  const { user, token } = useContext(SharedContext);
+  const { user, token, setIsLoading } = useContext(SharedContext);
   useEffect(() => {
     async function fetchData() {
       await fetch(`${baseUrl}/myReservations/${user.id}`, {
@@ -27,8 +27,10 @@ function Myreservations({ setShowModal, setshowMessage }) {
         })
         .then((jsonData) => {
           setMyresas(jsonData);
+          setIsLoading(false);
         })
         .catch(() => {
+          setIsLoading(false);
           navigate("/erreur");
         });
     }

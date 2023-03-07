@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import SharedContext from "@assets/Context/sharedContext";
 
 function Login() {
-  const { setToken } = useContext(SharedContext);
+  const { setToken, setIsLoading } = useContext(SharedContext);
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -46,9 +46,11 @@ function Login() {
         } else {
           throw new Error("Mot de passe ou email incorrect");
         }
+        setIsLoading(false);
       })
 
       .catch((err) => {
+        setIsLoading(false);
         setError(err.message);
       });
   };
