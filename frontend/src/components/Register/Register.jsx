@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import SharedContext from "@assets/Context/sharedContext";
 
 function Register() {
   // astuce pour éviter de toujours rentrer url http etc
@@ -19,6 +20,8 @@ function Register() {
     });
   };
   const [errors, setErrors] = useState([]);
+  const { setIsLoading } = useContext(SharedContext);
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
     fetch(`${baseUrl}/user`, {
@@ -46,9 +49,11 @@ function Register() {
           setErrors(r.validationErrors);
           return Promise.reject(new Error("errors http"));
         }
+        setIsLoading(false);
         return console.warn("error network");
       })
       .catch((e) => {
+        setIsLoading(false);
         console.error(e);
       });
   };
