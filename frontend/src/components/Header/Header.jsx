@@ -6,6 +6,7 @@ import {
   faPen,
   faBook,
   faUserAstronaut,
+  faArrowRightToFile,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SharedContext from "@assets/Context/sharedContext";
@@ -72,7 +73,10 @@ export default function Header() {
                     className="font-semibold text-turquoise-100 my-8 pb-6"
                   >
                     <NavLink to="/register">
-                      <FontAwesomeIcon icon={faPen} className="pr-1" />
+                      <FontAwesomeIcon
+                        icon={faArrowRightToFile}
+                        className="pr-1"
+                      />
                       S'inscrire
                     </NavLink>
                   </button>
@@ -83,7 +87,11 @@ export default function Header() {
                     type="button"
                     className="font-semibold text-turquoise-100 my-8 pb-6"
                   >
-                    <NavLink to="/login">Se connecter</NavLink>
+                    <NavLink to="/login">
+                      {" "}
+                      <FontAwesomeIcon icon={faPen} className="pr-1" />
+                      Se connecter
+                    </NavLink>
                   </button>
                 </>
               )}
