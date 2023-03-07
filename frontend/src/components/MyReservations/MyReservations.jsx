@@ -16,7 +16,7 @@ function Myreservations({
 }) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
-  const { user, token } = useContext(SharedContext);
+  const { user, token, setIsLoading } = useContext(SharedContext);
   const [updateResa, setUpdateResa] = useState(0);
 
   /** **********************************************
@@ -27,6 +27,7 @@ reservation.end_datetime AS end
 location.city_name AS localisation, 
 room.name AS nom,       
 *********************************************** */
+
   useEffect(() => {
     function fetchData() {
       fetch(`${baseUrl}/myReservations/${user.id}`, {
@@ -41,8 +42,10 @@ room.name AS nom,
         })
         .then((jsonData) => {
           setMyresas(jsonData);
+          setIsLoading(false);
         })
         .catch(() => {
+          setIsLoading(false);
           navigate("/erreur");
         });
     }
