@@ -96,8 +96,10 @@ function App() {
                 user ? (
                   <Myreservations
                     isVisible={showModal}
-                    setShowModal={setShowModal}
+                    setShowModalBtns={setShowModalBtns}
                     setshowMessage={setshowMessage}
+                    setOnConfirm={setOnConfirm}
+                    setShowModal={setShowModal}
                   />
                 ) : (
                   <Login />

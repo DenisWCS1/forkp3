@@ -23,7 +23,7 @@ function ModalBtns({ isVisible, onClose, message, onConfirm }) {
         >
           X
         </button>
-        <div className=" text-turquoise-100 text-center font-medium mb-2 p-3 mx-5">
+        <div className=" text-turquoise-100 text-center font-medium mb-2 p-3 mx-5 whitespace-pre-wrap">
           {message}
         </div>
         <div className="text-turquoise-100 mb-8 flex justify-center">
