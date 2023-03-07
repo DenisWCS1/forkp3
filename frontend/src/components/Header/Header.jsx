@@ -24,7 +24,7 @@ export default function Header() {
         <NavLink className="w-[6rem] rounded-full lg:w-[8rem]" to="/">
           <img src={logoSncf} alt="logoSncf" />
         </NavLink>
-        <NavLink className="w-[7rem] rounded-full lg:w-[11rem]" to="/">
+        <NavLink className="w-[7rem] rounded-full lg:w-[9rem]" to="/">
           <img src={GdSallesTransparent} alt="GdSallesTransparent" />
         </NavLink>
       </div>

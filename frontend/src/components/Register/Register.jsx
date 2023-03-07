@@ -113,7 +113,7 @@ function Register() {
               className="w-full my-5 py-2 bg-teal-500 shadow-lg text-white font-semibold rounded-lg"
               type="submit"
             >
-              Register
+              S'inscrire
             </button>
           </form>
         </div>

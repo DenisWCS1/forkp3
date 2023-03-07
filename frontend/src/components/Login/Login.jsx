@@ -110,7 +110,9 @@ function Login() {
             <p className="flex items-center mt-4">Pas encore inscrit ? </p>
             <br />
             <div className="flex justify-between">
-              <NavLink className="flex items-center">Inscrivez vous</NavLink>
+              <NavLink to="/register" className="flex items-center">
+                Inscrivez vous
+              </NavLink>
             </div>
           </form>
         </div>
