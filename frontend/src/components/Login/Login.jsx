@@ -54,14 +54,14 @@ function Login() {
   };
 
   return (
-    <div>
-      <div className="flex justify-center items-center p-2 pt-24 sm:p-20 ">
+    <div className="pt-2">
+      <div className="flex justify-center items-center  ">
         {/* <div className="hidden sm:block" /> */}
 
         <div className=" flex flex-col items-center text-center w-3/4 max-w-[450px]">
           <form
             onSubmit={handleSubmit}
-            className="shadow-2xl w-full justify-center mb-auto  bg-greySimple-100 p-8 px-8"
+            className="shadow-2xl w-full justify-center mb-auto  bg-greySimple-100 p-8 px-8 rounded-xl"
           >
             <h2 className="text-4xl text-blueDuck-100 font-bold text-center">
               Connexion
@@ -79,7 +79,7 @@ function Login() {
                 placeholder="Adresse Email"
               />
             </div>
-            <div className="flex flex-col text-dark-100 py-2">
+            <div className="flex flex-col text-dark-100 py-1">
               <label htmlFor="Mot de passe">Mot de passe</label>
               <input
                 className="rounded-lg bg-whiteSimple-100 mt-2 p-2"
