@@ -170,6 +170,7 @@ function App() {
         </div>
       </Layout>
     </SharedContext.Provider>
+    </div>
   );
 }
 
