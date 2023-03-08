@@ -32,11 +32,8 @@ function App() {
       user,
       setUser,
       baseUrl,
-      setShowModal,
-      showMessage,
-      setshowMessage,
     }),
-    [token, user, baseUrl, showMessage, baseUrl]
+    [token, user, baseUrl]
   );
 
   useEffect(() => {

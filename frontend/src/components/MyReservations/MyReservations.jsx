@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import SharedContext from "@assets/Context/sharedContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import moment from "moment";
@@ -19,14 +19,14 @@ function Myreservations({
   const { user, token } = useContext(SharedContext);
   const [updateResa, setUpdateResa] = useState(0);
 
-  /** **********************************************
+  /** ***********************************************
 Fetch return GET
 reservation.id
 reservation.start_datetime AS start
 reservation.end_datetime AS end
 location.city_name AS localisation, 
 room.name AS nom,       
-*********************************************** */
+************************************************ */
   useEffect(() => {
     function fetchData() {
       fetch(`${baseUrl}/myReservations/${user.id}`, {
@@ -63,8 +63,8 @@ room.name AS nom,
       .then((response) => {
         if (response.ok) {
           setShowModalBtns(false);
-          setShowModal(true);
           setshowMessage("votre réservation à bien été supprimé");
+          setShowModal(true);
           setUpdateResa(!updateResa);
         } else {
           throw new Error("Impossible de supprimer votre réservation");
@@ -144,18 +144,6 @@ room.name AS nom,
                 <span className="inline-block w-1/3 md:hidden text-gray-900 font-light">
                   Actions
                 </span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    return (
-                      setShowModalBtns(true) &&
-                      setshowMessage("Disponible dans la V3")
-                    );
-                  }}
-                  className="text-blue-400 text-lg font-bold  mr-1 "
-                >
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
 
                 <button
                   type="button"
