@@ -28,6 +28,7 @@ location.city_name AS localisation,
 room.name AS nom,       
 ************************************************ */
   useEffect(() => {
+    setIsLoading(true);
     function fetchData() {
       fetch(`${baseUrl}/myReservations/${user.id}`, {
         method: "GET",

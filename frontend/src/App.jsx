@@ -34,8 +34,9 @@ function App() {
       user,
       setUser,
       baseUrl,
+      setIsLoading,
     }),
-    [token, user, baseUrl]
+    [token, user, baseUrl, setIsLoading]
   );
 
   useEffect(() => {
@@ -46,7 +47,6 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      // setIsLoading(true);
       fetch(`${baseUrl}/me`, {
         method: "POST",
         headers: {
@@ -60,7 +60,6 @@ function App() {
           console.warn(err);
           setToken();
           localStorage.removeItem("token");
-          // setIsLoading(false);
         });
     }
   }, [token]);
@@ -130,7 +129,7 @@ function App() {
             message={showMessage}
             onConfirm={onConfirm}
           />
-          {isLoading ? <Loader /> : ""}
+          {isLoading && <Loader />}
         </div>
       </SharedContext.Provider>
     </div>
