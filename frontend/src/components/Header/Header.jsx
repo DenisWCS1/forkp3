@@ -34,7 +34,7 @@ export default function Header() {
         {/* Mobile-Menu */}
         <section className="flex flex-end ">
           <div className="UserConnected pr-8  font-semibold text-turquoise-100">
-            {user ? `${user.firstname} ${user.lastname}` : "Invité"}
+            {user ? `${user.firstname} ${user.lastname}` : "Invité(e)"}
           </div>
           <div
             className="HAMBURGER-ICON space-y-2"
@@ -47,7 +47,11 @@ export default function Header() {
           </div>
 
           <div
-            className={isNavOpen ? "showMenuNav" : "hideMenuNav"}
+            className={
+              isNavOpen
+                ? "showMenuNav bg-dark-100  flex flex-col absolute w-[45vh] h-[60vh] top-[3.5rem] right-0 z-10 justify-evenly items-center rounded-b-lg lg:w-[45vh]"
+                : "hidden"
+            }
             onMouseLeave={() => setIsNavOpen(false)}
           >
             <div
