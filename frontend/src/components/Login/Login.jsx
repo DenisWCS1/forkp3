@@ -53,8 +53,6 @@ function Login() {
   return (
     <div className="pt-2">
       <div className="flex justify-center items-center  ">
-        {/* <div className="hidden sm:block" /> */}
-
         <div className=" flex flex-col items-center text-center w-3/4 max-w-[450px]">
           <form
             onSubmit={handleSubmit}
@@ -105,8 +103,8 @@ function Login() {
               Inscription
             </h2>
             <p className="flex items-center mt-4">Pas encore inscrit ? </p>
-            <br />
-            <div className="flex justify-between">
+
+            <div className="flex justify-between mt-1">
               <NavLink to="/register" className="flex items-center">
                 Inscrivez vous
               </NavLink>
@@ -118,7 +116,4 @@ function Login() {
   );
 }
 
-// Login.propTypes = {
-//   setToken: PropTypes.func,
-// };
 export default Login;
