@@ -9,7 +9,7 @@ function Team() {
     <div className="">
       <div className="shadow-2xltext-justify font-semibold bg-dark-100 text-blueDuck-100 text-1xl m-8 p-8">
         <h1 className="text-white text-3xl">
-          Les developpeurs de l'application :{" "}
+          Les développeurs de l'application :{" "}
         </h1>
       </div>
       <div className="flex justify-center ">
