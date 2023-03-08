@@ -1,13 +1,11 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
-import Header from "@components/Header/Header";
 import Login from "@components/Login/Login";
 import Register from "@components/Register/Register";
 import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
-import Footer from "@components/Footer/Footer";
 import Modal from "@components/Modals/Modal";
 import Charter from "@components/Charter/Charter";
 import ModalBtns from "@components/Modals/ModalBtns";
@@ -16,6 +14,7 @@ import UserProfile from "@components/UserProfile/UserProfile";
 import Team from "@components/Team/Team";
 import Loader from "@components/Loader/Loader";
 import SharedContext from "@assets/Context/sharedContext";
+import Layout from "@components/Layout/Layout";
 
 function App() {
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -38,6 +37,7 @@ function App() {
       user,
       setUser,
       baseUrl,
+
       isLoading,
       setIsLoading,
     }),
@@ -69,6 +69,7 @@ function App() {
   }, [token]);
 
   return (
+
     <div className="">
       <SharedContext.Provider value={contextValues}>
         <Header />
@@ -153,9 +154,6 @@ function App() {
             <Route path="/erreur" element={<ErrorPage />} />
           </Routes>
 
-          <div className="fixed bottom-0 w-full">
-            <Footer />
-          </div>
           <Modal
             isVisible={showModal}
             onClose={() => setShowModal(false)}
@@ -167,10 +165,10 @@ function App() {
             message={showMessage}
             onConfirm={onConfirm}
           />
-          {isLoading ? <Loader /> : ""}
+          {isLoading && <Loader />}
         </div>
-      </SharedContext.Provider>
-    </div>
+      </Layout>
+    </SharedContext.Provider>
   );
 }
 

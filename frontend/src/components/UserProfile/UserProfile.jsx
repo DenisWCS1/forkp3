@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import SharedContext from "@assets/Context/sharedContext";
 
-// penser à logout
 function UserProfileView({
   setShowModalBtns,
   setOnConfirm,
@@ -15,7 +14,7 @@ function UserProfileView({
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const { user, token, setUser, setToken } = useContext(SharedContext);
   const navigate = useNavigate();
-  // Function pour mettre à jour l'utilisateur dans le bandeau
+  // Function for update username and firstanme in header
   useEffect(() => {
     if (token) {
       fetch(`${baseUrl}/me`, {
@@ -34,7 +33,6 @@ function UserProfileView({
         });
     }
   }, [returnHome]);
-
   // Function récupération des champs à la frappe
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -62,14 +60,41 @@ function UserProfileView({
       .then((response) => {
         if (response.ok) {
           setShowModalBtns(false);
-          setShowModal(true);
           localStorage.removeItem("token");
           setToken();
           setUser();
           setshowMessage("votre profil à bien été supprimé");
+          setShowModal(true);
           navigate("/");
         } else {
-          throw new Error("Impossible de supprimer votre profil");
+          throw new Error(
+            setShowModalBtns(false) &&
+              setshowMessage("Impossible de supprimer votre profil") &&
+              setShowModal(true)
+          );
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const handleResaDelete = () => {
+    fetch(`${baseUrl}/resa/${user.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            setShowModalBtns(false) &&
+              setshowMessage(
+                "Impossible de supprimer les réservations liées à votre profil"
+              ) &&
+              setShowModal(true)
+          );
         }
       })
       .catch((error) => {
@@ -114,6 +139,7 @@ function UserProfileView({
   const confirmDelete = () => {
     return () => {
       handleDelete();
+      handleResaDelete();
     };
   };
 

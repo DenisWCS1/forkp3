@@ -2,7 +2,9 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
 import { useNavigate } from "react-router-dom";
+
 import moment from "moment";
 import RoomFilter from "@components/RoomHome/RoomFilter";
 import SharedContext from "@assets/Context/sharedContext";
@@ -22,7 +24,12 @@ function RoomsFiltered({
   setShowModalBtns,
 }) {
   const navigate = useNavigate();
+
   const { user, baseUrl, token, setIsLoading } = useContext(SharedContext);
+  const [started, setStarted] = useState(new Date());
+  const [ended, setEnded] = useState(new Date());
+  const [locationid, setLocationid] = useState(1);
+  const { setIsLoading } = useContext(SharedContext);
   const [rooms, setRooms] = useState([]);
   const [resaSalle, setResaSalle] = useState({});
   /** ***************************
@@ -51,6 +58,7 @@ function RoomsFiltered({
         navigate("/erreur");
       });
   }, [navigate, started, ended, locationid]);
+
   const confirmeidroom = (value) => {
     return () => {
       setRoomvalue(value);

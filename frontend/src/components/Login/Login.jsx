@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import SharedContext from "@assets/Context/sharedContext";
 
 function Login() {
-  const { setToken, setIsLoading } = useContext(SharedContext);
+  const { setToken } = useContext(SharedContext);
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -11,9 +11,7 @@ function Login() {
   });
   const navigate = useNavigate();
   const location = useLocation();
-
   const [error, setError] = useState(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -24,6 +22,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     fetch(`${baseUrl}/user/login`, {
       method: "POST",
       headers: {
@@ -37,7 +36,6 @@ function Login() {
         }
         return response.json();
       })
-
       .then((response) => {
         if (response.token) {
           localStorage.setItem("token", response.token);
@@ -46,11 +44,8 @@ function Login() {
         } else {
           throw new Error("Mot de passe ou email incorrect");
         }
-        setIsLoading(false);
       })
-
       .catch((err) => {
-        setIsLoading(false);
         setError(err.message);
       });
   };
@@ -58,8 +53,6 @@ function Login() {
   return (
     <div className="pt-2">
       <div className="flex justify-center items-center  ">
-        {/* <div className="hidden sm:block" /> */}
-
         <div className=" flex flex-col items-center text-center w-3/4 max-w-[450px]">
           <form
             onSubmit={handleSubmit}
@@ -110,8 +103,8 @@ function Login() {
               Inscription
             </h2>
             <p className="flex items-center mt-4">Pas encore inscrit ? </p>
-            <br />
-            <div className="flex justify-between">
+
+            <div className="flex justify-between mt-1">
               <NavLink to="/register" className="flex items-center">
                 Inscrivez vous
               </NavLink>
@@ -123,7 +116,4 @@ function Login() {
   );
 }
 
-// Login.propTypes = {
-//   setToken: PropTypes.func,
-// };
 export default Login;

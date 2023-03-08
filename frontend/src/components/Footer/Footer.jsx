@@ -8,7 +8,7 @@ import Team from "../../assets/logos/team.png";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="h-24 fixed bottom-0 w-full">
       <div className="bg-dark-100 mt-4">
         <div className="flex flex-row justify-around pt-1">
           <a

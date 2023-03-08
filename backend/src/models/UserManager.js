@@ -5,6 +5,10 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
+  deleteuserresa(id) {
+    return this.database.query(`delete from ${this.table} where id = ?`, [id]);
+  }
+
   find(id) {
     return this.database.query(
       `select id, firstname, lastname, email, role, created_at, updated_at from ${this.table} where id = ?`,
