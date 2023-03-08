@@ -1,30 +1,89 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import MapContainer2 from "@components/GoogleMap/GoogleMap";
 import SharedContext from "@assets/Context/sharedContext";
+import moment from "moment";
 
-const baseUrl = import.meta.env.VITE_BACKEND_URL;
-
-function RoomDetails() {
+function RoomDetails({
+  started,
+  ended,
+  setOnConfirm,
+  setshowMessage,
+  setShowModal,
+  setShowModalBtns,
+  roomvalue,
+}) {
   const navigate = useNavigate();
-
   const [detailState, setDetailState] = useState([]);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [adress, setAdress] = useState();
   const [name, setName] = useState();
-  const { setIsLoading } = useContext(SharedContext);
+  const { setIsLoading, user, token, baseUrl } = useContext(SharedContext);
+  const [resaSalle, setResaSalle] = useState({});
+  useEffect(() => {
+    setResaSalle({
+      fk_room: roomvalue.id,
+      fk_user: user ? user.id : "",
+      start_datetime: moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+        "YYYY-MM-DDTHH:mm:ss.SSSZ"
+      ),
+      end_datetime: moment(ended, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+        "YYYY-MM-DDTHH:mm:ss.SSSZ"
+      ),
+    });
+  }, []);
+
+  const confirmNavigate = (value) => {
+    return () => {
+      if (value === 1) {
+        setShowModalBtns(false);
+        navigate("/mesreservations");
+      } else if (value === 2) navigate("/login");
+      else if (value === 3) navigate("/register");
+    };
+  };
+  const handleReservation = () => {
+    fetch(`${baseUrl}/reservation`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(resaSalle),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setshowMessage("Voulez-vous consulter votre réservation ?");
+          setOnConfirm(() => confirmNavigate(1));
+          setShowModalBtns(true);
+        } else {
+          setshowMessage(
+            "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations ?"
+          );
+          setShowModal(true);
+        }
+      })
+      .catch(() => {
+        setshowMessage(
+          "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations ?"
+        );
+        setShowModal(true);
+      });
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      await fetch(`${baseUrl}/room_material/2`)
+    setIsLoading(true);
+    function fetchData() {
+      fetch(`${baseUrl}/room_material/${roomvalue.id}`)
         .then((response) => {
           return response.json();
         })
         .then((jsonData) => {
           setDetailState(jsonData);
-          setLatitude(jsonData[0].lat);
-          setLongitude(jsonData[0].lng);
+          setLatitude(jsonData[0].lat, 10);
+          setLongitude(jsonData[0].lng, 10);
           setAdress(jsonData[0].adress);
           setName(jsonData[0].name);
           setIsLoading(false);
@@ -36,7 +95,40 @@ function RoomDetails() {
     }
     fetchData();
   }, []);
-
+  const secureexecute = () => {
+    return () => {
+      handleReservation();
+      setShowModalBtns(false);
+    };
+  };
+  const validation = () => {
+    if (user) {
+      if (started >= ended) {
+        setshowMessage(
+          "Attention il y a une erreur dans vos dates de réservations !"
+        );
+        setShowModal(true);
+      } else {
+        setShowModalBtns(true);
+        setshowMessage(` Voulez-vous vraiment réserver la salle ${
+          roomvalue.name
+        } 
+        du \n${moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+          "DD/MM/YYYY à HH:mm:ss"
+        )} \n 
+        au \n${moment(ended, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+          "DD/MM/YYYY à HH:mm:ss"
+        )}\n  ?`);
+        setOnConfirm(() => secureexecute());
+      }
+    } else {
+      setshowMessage(
+        "Vous devez être connecté pour réserver une salle, souhaitez-vous vous rendre sur le formulaire de connexion  ?"
+      );
+      setOnConfirm(() => confirmNavigate(1));
+      setShowModalBtns(true);
+    }
+  };
   return (
     <div className="bg-dark-100 border-y-2">
       {detailState.map((elem) => (
@@ -89,6 +181,9 @@ function RoomDetails() {
                 <button
                   type="button"
                   className="bg-blueDuck-100 t px-4 py-2 rounded-lg text-blue-100 sm:text-2xl"
+                  onClick={() => {
+                    return validation();
+                  }}
                 >
                   Réserver
                 </button>
@@ -100,5 +195,18 @@ function RoomDetails() {
     </div>
   );
 }
+
+RoomDetails.propTypes = {
+  roomvalue: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
+  setOnConfirm: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  setShowModalBtns: PropTypes.func.isRequired,
+  setshowMessage: PropTypes.func.isRequired,
+  started: PropTypes.instanceOf(Date).isRequired,
+  ended: PropTypes.instanceOf(Date).isRequired,
+};
 
 export default RoomDetails;

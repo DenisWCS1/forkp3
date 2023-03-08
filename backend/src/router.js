@@ -43,7 +43,6 @@ router.get("/room_material/:id", roomMaterialControllers.detail);
 router.get("/reservation", reservationControllers.browse);
 router.get("/reservation/:id", reservationControllers.read);
 router.put("/reservation/:id", reservationControllers.edit);
-router.post("/reservation", reservationControllers.add);
 
 // ** protected routes **
 
@@ -53,7 +52,6 @@ router.delete("/user/:id", verifyToken, userControllers.destroy);
 router.put("/user/:id", verifyToken, userControllers.edit);
 // location
 router.post("/location", verifyToken, locationControllers.add);
-
 // My reservations
 router.get(
   "/myReservations/:id",
@@ -61,7 +59,8 @@ router.get(
   myReservationsControllers.readmy
 );
 router.delete("/reservation/:id", verifyToken, reservationControllers.destroy);
-
+// reservations
+router.post("/reservation", verifyToken, reservationControllers.add);
 //* * Static routes **
 router.use("/rooms", express.static("public/rooms"));
 

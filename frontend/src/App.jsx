@@ -26,6 +26,10 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [started, setStarted] = useState(new Date());
+  const [ended, setEnded] = useState(new Date());
+  const [locationid, setLocationid] = useState(1);
+  const [roomvalue, setRoomvalue] = useState({});
 
   const contextValues = useMemo(
     () => ({
@@ -34,15 +38,11 @@ function App() {
       user,
       setUser,
       baseUrl,
-      setShowModal,
-      showMessage,
-      setshowMessage,
       isLoading,
       setIsLoading,
     }),
-    [token, user, baseUrl, showMessage, baseUrl, isLoading]
+    [token, user, baseUrl, isLoading]
   );
-
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -51,7 +51,6 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      // setIsLoading(true);
       fetch(`${baseUrl}/me`, {
         method: "POST",
         headers: {
@@ -65,7 +64,6 @@ function App() {
           console.warn(err);
           setToken();
           localStorage.removeItem("token");
-          // setIsLoading(false);
         });
     }
   }, [token]);
@@ -74,13 +72,47 @@ function App() {
     <div className="">
       <SharedContext.Provider value={contextValues}>
         <Header />
-        {/* isLogged={isLogged} setIsLogged={setIsLogged}  */}
         <div className="flex flex-col h-screen">
           <Routes>
-            <Route exact path="/" element={<RoomsFiltered />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <RoomsFiltered
+                  started={started}
+                  ended={ended}
+                  setStarted={setStarted}
+                  setEnded={setEnded}
+                  locationid={locationid}
+                  setLocationid={setLocationid}
+                  setRoomvalue={setRoomvalue}
+                  setShowModalBtns={setShowModalBtns}
+                  setShowModal={setShowModal}
+                  setshowMessage={setshowMessage}
+                  setOnConfirm={setOnConfirm}
+                  onConfirm={onConfirm}
+                  roomvalue={roomvalue}
+                />
+              }
+            />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
-            <Route exact path="/RoomDetails" element={<RoomDetails />} />
+            <Route
+              exact
+              path="/RoomDetails"
+              element={
+                <RoomDetails
+                  started={started}
+                  ended={ended}
+                  setShowModalBtns={setShowModalBtns}
+                  setShowModal={setShowModal}
+                  setshowMessage={setshowMessage}
+                  setOnConfirm={setOnConfirm}
+                  onConfirm={onConfirm}
+                  roomvalue={roomvalue}
+                />
+              }
+            />
             <Route exact path="/charter" element={<Charter />} />
             <Route exact path="/Team" element={<Team />} />
             <Route
