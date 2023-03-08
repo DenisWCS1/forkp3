@@ -19,7 +19,7 @@ function Myreservations({
   const { user, token, setIsLoading } = useContext(SharedContext);
   const [updateResa, setUpdateResa] = useState(0);
 
-/*************************************************
+  /** ***********************************************
 Fetch return GET
 reservation.id
 reservation.start_datetime AS start
