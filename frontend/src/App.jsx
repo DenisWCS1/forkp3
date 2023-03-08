@@ -3,14 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import Login from "@components/Login/Login";
 import Register from "@components/Register/Register";
-import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
+import UserProfile from "@components/UserProfile/UserProfile";
 import Myreservations from "@components/MyReservations/MyReservations";
+import RoomDetails from "@components/RoomDetails/RoomDetails";
+import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import ErrorPage from "@components/error/Error";
+import ModalBtns from "@components/Modals/ModalBtns";
 import Modal from "@components/Modals/Modal";
 import Charter from "@components/Charter/Charter";
-import ModalBtns from "@components/Modals/ModalBtns";
-import RoomDetails from "@components/RoomDetails/RoomDetails";
-import UserProfile from "@components/UserProfile/UserProfile";
 import Team from "@components/Team/Team";
 import Loader from "@components/Loader/Loader";
 import SharedContext from "@assets/Context/sharedContext";
@@ -69,105 +69,104 @@ function App() {
   }, [token]);
 
   return (
-      <SharedContext.Provider value={contextValues}>
-        <Layout>
+    <SharedContext.Provider value={contextValues}>
+      <Layout>
         <div className="flex flex-col">
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <RoomsFiltered
-                    started={started}
-                    ended={ended}
-                    setStarted={setStarted}
-                    setEnded={setEnded}
-                    locationid={locationid}
-                    setLocationid={setLocationid}
-                    setRoomvalue={setRoomvalue}
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <RoomsFiltered
+                  started={started}
+                  ended={ended}
+                  setStarted={setStarted}
+                  setEnded={setEnded}
+                  locationid={locationid}
+                  setLocationid={setLocationid}
+                  setRoomvalue={setRoomvalue}
+                  setShowModalBtns={setShowModalBtns}
+                  setShowModal={setShowModal}
+                  setshowMessage={setshowMessage}
+                  setOnConfirm={setOnConfirm}
+                  onConfirm={onConfirm}
+                  roomvalue={roomvalue}
+                />
+              }
+            />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route
+              exact
+              path="/RoomDetails"
+              element={
+                <RoomDetails
+                  started={started}
+                  ended={ended}
+                  setShowModalBtns={setShowModalBtns}
+                  setShowModal={setShowModal}
+                  setshowMessage={setshowMessage}
+                  setOnConfirm={setOnConfirm}
+                  onConfirm={onConfirm}
+                  roomvalue={roomvalue}
+                />
+              }
+            />
+            <Route exact path="/charter" element={<Charter />} />
+            <Route exact path="/Team" element={<Team />} />
+            <Route
+              exact
+              path="/profile"
+              element={
+                user ? (
+                  <UserProfile
+                    isVisible={showModalBtns}
                     setShowModalBtns={setShowModalBtns}
                     setShowModal={setShowModal}
                     setshowMessage={setshowMessage}
                     setOnConfirm={setOnConfirm}
                     onConfirm={onConfirm}
-                    roomvalue={roomvalue}
                   />
-                }
-              />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/register" element={<Register />} />
-              <Route
-                exact
-                path="/RoomDetails"
-                element={
-                  <RoomDetails
-                    started={started}
-                    ended={ended}
+                ) : (
+                  <Login />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/mesreservations"
+              element={
+                user ? (
+                  <Myreservations
+                    isVisible={showModal}
                     setShowModalBtns={setShowModalBtns}
-                    setShowModal={setShowModal}
                     setshowMessage={setshowMessage}
                     setOnConfirm={setOnConfirm}
-                    onConfirm={onConfirm}
-                    roomvalue={roomvalue}
+                    setShowModal={setShowModal}
                   />
-                }
-              />
-              <Route exact path="/charter" element={<Charter />} />
-              <Route exact path="/Team" element={<Team />} />
-              <Route
-                exact
-                path="/profile"
-                element={
-                  user ? (
-                    <UserProfile
-                      isVisible={showModalBtns}
-                      setShowModalBtns={setShowModalBtns}
-                      setShowModal={setShowModal}
-                      setshowMessage={setshowMessage}
-                      setOnConfirm={setOnConfirm}
-                      onConfirm={onConfirm}
-                    />
-                  ) : (
-                    <Login />
-                  )
-                }
-              />
-              <Route
-                exact
-                path="/mesreservations"
-                element={
-                  user ? (
-                    <Myreservations
-                      isVisible={showModal}
-                      setShowModalBtns={setShowModalBtns}
-                      setshowMessage={setshowMessage}
-                      setOnConfirm={setOnConfirm}
-                      setShowModal={setShowModal}
-                    />
-                  ) : (
-                    <Login />
-                  )
-                }
-              />
-              <Route path="/erreur" element={<ErrorPage />} />
-            </Routes>
+                ) : (
+                  <Login />
+                )
+              }
+            />
+            <Route path="/erreur" element={<ErrorPage />} />
+          </Routes>
 
-            <Modal
-              isVisible={showModal}
-              onClose={() => setShowModal(false)}
-              message={showMessage}
-            />
-            <ModalBtns
-              isVisible={showModalBtns}
-              onClose={() => setShowModalBtns(false)}
-              message={showMessage}
-              onConfirm={onConfirm}
-            />
-            {isLoading && <Loader />}
+          <Modal
+            isVisible={showModal}
+            onClose={() => setShowModal(false)}
+            message={showMessage}
+          />
+          <ModalBtns
+            isVisible={showModalBtns}
+            onClose={() => setShowModalBtns(false)}
+            message={showMessage}
+            onConfirm={onConfirm}
+          />
+          {isLoading && <Loader />}
         </div>
-        </Layout>
-      </SharedContext.Provider>
-
+      </Layout>
+    </SharedContext.Provider>
   );
 }
 
