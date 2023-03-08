@@ -72,7 +72,7 @@ function RoomsFiltered({
         "YYYY-MM-DDTHH:mm:ss.SSSZ"
       ),
     });
-  }, []);
+  }, [roomvalue, user, started, ended]);
   const confirmNavigate = (value) => {
     return () => {
       if (value === 1) {
@@ -220,7 +220,8 @@ function RoomsFiltered({
                         className="bg-blueDuck-100  px-4 py-2 rounded-lg "
                         onClick={(e) => {
                           e.preventDefault();
-                          return validate();
+                          setRoomvalue(value);
+                          validate();
                         }}
                       >
                         Réserver
