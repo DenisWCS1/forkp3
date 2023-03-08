@@ -7,6 +7,8 @@ import RoomsFiltered from "@components/RoomHome/RoomsFiltered";
 import Myreservations from "@components/MyReservations/MyReservations";
 import ErrorPage from "@components/error/Error";
 import Modal from "@components/Modals/Modal";
+import Header from "@components/Header/Header";
+import Footer from "@components/Footer/Footer";
 import Charter from "@components/Charter/Charter";
 import ModalBtns from "@components/Modals/ModalBtns";
 import RoomDetails from "@components/RoomDetails/RoomDetails";
