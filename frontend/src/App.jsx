@@ -72,6 +72,7 @@ function App() {
 
     <div className="">
       <SharedContext.Provider value={contextValues}>
+          <Layout>
         <Header />
         <div className="flex flex-col h-screen">
           <Routes>
