@@ -69,107 +69,106 @@ function App() {
   }, [token]);
 
   return (
-
     <div className="">
       <SharedContext.Provider value={contextValues}>
-          <Layout>
-        <Header />
-        <div className="flex flex-col h-screen">
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <RoomsFiltered
-                  started={started}
-                  ended={ended}
-                  setStarted={setStarted}
-                  setEnded={setEnded}
-                  locationid={locationid}
-                  setLocationid={setLocationid}
-                  setRoomvalue={setRoomvalue}
-                  setShowModalBtns={setShowModalBtns}
-                  setShowModal={setShowModal}
-                  setshowMessage={setshowMessage}
-                  setOnConfirm={setOnConfirm}
-                  onConfirm={onConfirm}
-                  roomvalue={roomvalue}
-                />
-              }
-            />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route
-              exact
-              path="/RoomDetails"
-              element={
-                <RoomDetails
-                  started={started}
-                  ended={ended}
-                  setShowModalBtns={setShowModalBtns}
-                  setShowModal={setShowModal}
-                  setshowMessage={setshowMessage}
-                  setOnConfirm={setOnConfirm}
-                  onConfirm={onConfirm}
-                  roomvalue={roomvalue}
-                />
-              }
-            />
-            <Route exact path="/charter" element={<Charter />} />
-            <Route exact path="/Team" element={<Team />} />
-            <Route
-              exact
-              path="/profile"
-              element={
-                user ? (
-                  <UserProfile
-                    isVisible={showModalBtns}
+        <Layout>
+          <Header />
+          <div className="flex flex-col h-screen">
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <RoomsFiltered
+                    started={started}
+                    ended={ended}
+                    setStarted={setStarted}
+                    setEnded={setEnded}
+                    locationid={locationid}
+                    setLocationid={setLocationid}
+                    setRoomvalue={setRoomvalue}
                     setShowModalBtns={setShowModalBtns}
                     setShowModal={setShowModal}
                     setshowMessage={setshowMessage}
                     setOnConfirm={setOnConfirm}
                     onConfirm={onConfirm}
+                    roomvalue={roomvalue}
                   />
-                ) : (
-                  <Login />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/mesreservations"
-              element={
-                user ? (
-                  <Myreservations
-                    isVisible={showModal}
+                }
+              />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route
+                exact
+                path="/RoomDetails"
+                element={
+                  <RoomDetails
+                    started={started}
+                    ended={ended}
                     setShowModalBtns={setShowModalBtns}
+                    setShowModal={setShowModal}
                     setshowMessage={setshowMessage}
                     setOnConfirm={setOnConfirm}
-                    setShowModal={setShowModal}
+                    onConfirm={onConfirm}
+                    roomvalue={roomvalue}
                   />
-                ) : (
-                  <Login />
-                )
-              }
-            />
-            <Route path="/erreur" element={<ErrorPage />} />
-          </Routes>
+                }
+              />
+              <Route exact path="/charter" element={<Charter />} />
+              <Route exact path="/Team" element={<Team />} />
+              <Route
+                exact
+                path="/profile"
+                element={
+                  user ? (
+                    <UserProfile
+                      isVisible={showModalBtns}
+                      setShowModalBtns={setShowModalBtns}
+                      setShowModal={setShowModal}
+                      setshowMessage={setshowMessage}
+                      setOnConfirm={setOnConfirm}
+                      onConfirm={onConfirm}
+                    />
+                  ) : (
+                    <Login />
+                  )
+                }
+              />
+              <Route
+                exact
+                path="/mesreservations"
+                element={
+                  user ? (
+                    <Myreservations
+                      isVisible={showModal}
+                      setShowModalBtns={setShowModalBtns}
+                      setshowMessage={setshowMessage}
+                      setOnConfirm={setOnConfirm}
+                      setShowModal={setShowModal}
+                    />
+                  ) : (
+                    <Login />
+                  )
+                }
+              />
+              <Route path="/erreur" element={<ErrorPage />} />
+            </Routes>
 
-          <Modal
-            isVisible={showModal}
-            onClose={() => setShowModal(false)}
-            message={showMessage}
-          />
-          <ModalBtns
-            isVisible={showModalBtns}
-            onClose={() => setShowModalBtns(false)}
-            message={showMessage}
-            onConfirm={onConfirm}
-          />
-          {isLoading && <Loader />}
-        </div>
-      </Layout>
-    </SharedContext.Provider>
+            <Modal
+              isVisible={showModal}
+              onClose={() => setShowModal(false)}
+              message={showMessage}
+            />
+            <ModalBtns
+              isVisible={showModalBtns}
+              onClose={() => setShowModalBtns(false)}
+              message={showMessage}
+              onConfirm={onConfirm}
+            />
+            {isLoading && <Loader />}
+          </div>
+        </Layout>
+      </SharedContext.Provider>
     </div>
   );
 }
