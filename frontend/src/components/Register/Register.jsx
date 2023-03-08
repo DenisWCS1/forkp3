@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import SharedContext from "@assets/Context/sharedContext";
 
 function Register() {
   // astuce pour éviter de toujours rentrer url http etc
@@ -19,6 +20,8 @@ function Register() {
     });
   };
   const [errors, setErrors] = useState([]);
+  const { setIsLoading } = useContext(SharedContext);
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
     fetch(`${baseUrl}/user`, {
@@ -46,24 +49,26 @@ function Register() {
           setErrors(r.validationErrors);
           return Promise.reject(new Error("errors http"));
         }
+        setIsLoading(false);
         return console.warn("error network");
       })
       .catch((e) => {
+        setIsLoading(false);
         console.error(e);
       });
   };
   return (
     <div>
-      <div className="flex justify-center items-center p-2 pt-24 sm:p-20 ">
+      <div className="flex justify-center items-center  pt-2 ">
         <div className=" flex flex-col items-center text-center w-3/4 max-w-[450px]">
           <form
             onSubmit={handleSubmit}
-            className="shadow-2xl w-full justify-center mb-auto  bg-greySimple-100 p-8 px-8"
+            className="shadow-2xl w-full justify-center mb-auto  bg-greySimple-100 p-8 px-8 rounded-xl"
           >
             <h2 className="text-4xl text-blueDuck-100 font-bold text-center">
               Inscription
             </h2>
-            <div className="flex flex-col text-dark-100 py-2">
+            <div className="flex flex-col text-dark-100 py-1">
               <label htmlFor="firstname">Prénom</label>
               <input
                 className="rounded-lg bg-whiteSimple-100 mt-2 p-2"
@@ -73,7 +78,7 @@ function Register() {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col text-dark-100 py-2">
+            <div className="flex flex-col text-dark-100 py-1">
               <label htmlFor="lastname">Nom</label>
               <input
                 className="rounded-lg bg-whiteSimple-100 mt-2 p-2"
@@ -83,7 +88,7 @@ function Register() {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col text-dark-100 py-2">
+            <div className="flex flex-col text-dark-100 py-1">
               <label htmlFor="email">Email</label>
               <input
                 className="rounded-lg bg-whiteSimple-100 mt-2 p-2"
@@ -93,7 +98,7 @@ function Register() {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col text-dark-100 py-2">
+            <div className="flex flex-col text-dark-100 py-1">
               <label htmlFor="password">Mot de passe</label>
               <input
                 className="rounded-lg bg-whiteSimple-100 mt-2 p-2"

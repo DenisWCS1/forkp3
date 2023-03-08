@@ -16,10 +16,10 @@ function Myreservations({
 }) {
   const [myresas, setMyresas] = useState([]);
   const navigate = useNavigate();
-  const { user, token } = useContext(SharedContext);
+  const { user, token, setIsLoading } = useContext(SharedContext);
   const [updateResa, setUpdateResa] = useState(0);
 
-  /** ***********************************************
+/*************************************************
 Fetch return GET
 reservation.id
 reservation.start_datetime AS start
@@ -41,8 +41,10 @@ room.name AS nom,
         })
         .then((jsonData) => {
           setMyresas(jsonData);
+          setIsLoading(false);
         })
         .catch(() => {
+          setIsLoading(false);
           navigate("/erreur");
         });
     }
