@@ -26,10 +26,7 @@ function RoomsFiltered({
   const navigate = useNavigate();
 
   const { user, baseUrl, token, setIsLoading } = useContext(SharedContext);
-  const [started, setStarted] = useState(new Date());
-  const [ended, setEnded] = useState(new Date());
   const [locationid, setLocationid] = useState(1);
-  const { setIsLoading } = useContext(SharedContext);
   const [rooms, setRooms] = useState([]);
   const [resaSalle, setResaSalle] = useState({});
   /** ***************************
