@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import SharedContext from "@assets/Context/sharedContext";
 
 function Login() {
-  const { setToken, setIsLoading } = useContext(SharedContext);
+  const { setToken } = useContext(SharedContext);
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -11,9 +11,7 @@ function Login() {
   });
   const navigate = useNavigate();
   const location = useLocation();
-
   const [error, setError] = useState(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -24,6 +22,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     fetch(`${baseUrl}/user/login`, {
       method: "POST",
       headers: {
@@ -37,7 +36,6 @@ function Login() {
         }
         return response.json();
       })
-
       .then((response) => {
         if (response.token) {
           localStorage.setItem("token", response.token);
@@ -46,11 +44,8 @@ function Login() {
         } else {
           throw new Error("Mot de passe ou email incorrect");
         }
-        setIsLoading(false);
       })
-
       .catch((err) => {
-        setIsLoading(false);
         setError(err.message);
       });
   };
