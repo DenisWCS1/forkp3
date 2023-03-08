@@ -168,6 +168,7 @@ function App() {
             {isLoading && <Loader />}
         </Layout>
         </div>
+        </Layout>
       </SharedContext.Provider>
     </div>
   );
