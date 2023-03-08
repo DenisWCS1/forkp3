@@ -1,20 +1,36 @@
+import PropTypes from "prop-types";
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate, NavLink } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+
 import moment from "moment";
 import RoomFilter from "@components/RoomHome/RoomFilter";
 import SharedContext from "@assets/Context/sharedContext";
 
-const baseUrl = import.meta.env.VITE_BACKEND_URL;
-function RoomsFiltered() {
+function RoomsFiltered({
+  started,
+  setStarted,
+  ended,
+  setEnded,
+  locationid,
+  setLocationid,
+  setRoomvalue,
+  roomvalue,
+  setOnConfirm,
+  setshowMessage,
+  setShowModal,
+  setShowModalBtns,
+}) {
   const navigate = useNavigate();
-  const [started, setStarted] = useState(new Date());
-  const [ended, setEnded] = useState(new Date());
-  const [locationid, setLocationid] = useState(1);
-  const { setIsLoading } = useContext(SharedContext);
-  const [rooms, setRooms] = useState([]);
 
+  const { user, baseUrl, token, setIsLoading } = useContext(SharedContext);
+  const [rooms, setRooms] = useState([]);
+  const [resaSalle, setResaSalle] = useState({});
+  /** ***************************
+   * filter rooms
+   ****************************** */
   useEffect(() => {
     setIsLoading(true);
     fetch(
@@ -38,6 +54,99 @@ function RoomsFiltered() {
         navigate("/erreur");
       });
   }, [navigate, started, ended, locationid]);
+
+  const confirmeidroom = (value) => {
+    return () => {
+      setRoomvalue(value);
+      navigate("/RoomDetails");
+    };
+  };
+  useEffect(() => {
+    setResaSalle({
+      fk_room: roomvalue.id,
+      fk_user: user ? user.id : "",
+      start_datetime: moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+        "YYYY-MM-DDTHH:mm:ss.SSSZ"
+      ),
+      end_datetime: moment(ended, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+        "YYYY-MM-DDTHH:mm:ss.SSSZ"
+      ),
+    });
+  }, []);
+  const confirmNavigate = (value) => {
+    return () => {
+      if (value === 1) {
+        setShowModalBtns(false);
+        navigate("/mesreservations");
+      } else if (value === 2) navigate("/login");
+      else if (value === 3) navigate("/register");
+    };
+  };
+
+  const handleResa = () => {
+    fetch(`${baseUrl}/reservation`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(resaSalle),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setshowMessage("Voulez-vous consulter votre réservation ?");
+          setOnConfirm(() => confirmNavigate(1));
+          setShowModalBtns(true);
+        } else {
+          setshowMessage(
+            "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations ?"
+          );
+          setShowModal(true);
+        }
+      })
+      .catch(() => {
+        setshowMessage(
+          "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations ?"
+        );
+        setShowModal(true);
+      });
+  };
+
+  const securexecute = () => {
+    return () => {
+      handleResa();
+      setShowModalBtns(false);
+    };
+  };
+
+  const validate = () => {
+    if (user) {
+      if (started >= ended) {
+        setshowMessage(
+          "Attention il y a une erreur dans vos dates de réservations !"
+        );
+        setShowModal(true);
+      } else {
+        setShowModalBtns(true);
+        setshowMessage(` Voulez-vous vraiment réserver la salle ${
+          roomvalue.name
+        } 
+        du \n${moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+          "DD/MM/YYYY à HH:mm:ss"
+        )} \n 
+        au \n${moment(ended, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+          "DD/MM/YYYY à HH:mm:ss"
+        )}\n  ?`);
+        setOnConfirm(() => securexecute());
+      }
+    } else {
+      setshowMessage(
+        "Vous devez être connecté pour réserver une salle, souhaitez-vous vous rendre sur le formulaire de connexion  ?"
+      );
+      setOnConfirm(() => confirmNavigate(1));
+      setShowModalBtns(true);
+    }
+  };
 
   return (
     <div className="">
@@ -67,16 +176,16 @@ function RoomsFiltered() {
                         alt={value.name}
                       />
                     </div>
-                    <NavLink to="/RoomDetails">
-                      <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <button
-                          className="bg-greySimple-100 bg-opacity-50 dark-100 py-2 px-4"
-                          type="button"
-                        >
-                          Plus de détails
-                        </button>
-                      </div>
-                    </NavLink>
+
+                    <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <button
+                        className="bg-greySimple-100 bg-opacity-50 dark-100 py-2 px-4"
+                        type="button"
+                        onClick={confirmeidroom(value)}
+                      >
+                        Plus de détails
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -109,6 +218,10 @@ function RoomsFiltered() {
                       <button
                         type="button"
                         className="bg-blueDuck-100  px-4 py-2 rounded-lg "
+                        onClick={(e) => {
+                          e.preventDefault();
+                          return validate();
+                        }}
                       >
                         Réserver
                       </button>
@@ -124,5 +237,23 @@ function RoomsFiltered() {
     </div>
   );
 }
+
+RoomsFiltered.propTypes = {
+  ended: PropTypes.instanceOf().isRequired,
+  locationid: PropTypes.node.isRequired,
+  roomvalue: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }).isRequired,
+  setEnded: PropTypes.func.isRequired,
+  setLocationid: PropTypes.func.isRequired,
+  setOnConfirm: PropTypes.func.isRequired,
+  setRoomvalue: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  setShowModalBtns: PropTypes.func.isRequired,
+  setStarted: PropTypes.func.isRequired,
+  setshowMessage: PropTypes.func.isRequired,
+  started: PropTypes.instanceOf().isRequired,
+};
 
 export default RoomsFiltered;

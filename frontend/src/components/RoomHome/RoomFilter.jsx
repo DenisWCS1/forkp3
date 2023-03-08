@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import fr from "date-fns/locale/fr";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
-
 registerLocale("fr", fr);
 setDefaultLocale("fr");
 
@@ -25,6 +24,7 @@ function RoomFilter({
   const handleChange = (e) => {
     setStarted(started);
     setEnded(ended);
+
     setLocationid(e.target.value);
   };
 
@@ -101,11 +101,11 @@ function RoomFilter({
   );
 }
 RoomFilter.propTypes = {
+  started: PropTypes.instanceOf(Date).isRequired,
   ended: PropTypes.instanceOf(Date).isRequired,
   setEnded: PropTypes.func.isRequired,
   setLocationid: PropTypes.func.isRequired,
   setStarted: PropTypes.func.isRequired,
-  started: PropTypes.instanceOf(Date).isRequired,
   locationid: PropTypes.node.isRequired,
 };
 export default RoomFilter;

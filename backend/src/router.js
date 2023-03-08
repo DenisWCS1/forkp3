@@ -27,6 +27,7 @@ router.get("/room_material/:id", roomMaterialControllers.detail);
 router.post("/reservation", verifyToken, reservationControllers.add);
 router.get("/reservation", reservationControllers.browse);
 router.get("/reservation/:id", reservationControllers.read);
+router.put("/reservation/:id", reservationControllers.edit);
 router.post("/reservation", reservationControllers.add);
 
 /** ************************************
@@ -51,18 +52,21 @@ router.put("/user/:id", verifyToken, userControllers.edit);
 router.delete("/user/:id", verifyToken, userControllers.destroy);
 router.delete("/resa/:id", verifyToken, userControllers.deleteresa);
 router.post("/location", verifyToken, locationControllers.add);
+
 router.get(
   "/myReservations/:id",
   verifyToken,
   myReservationsControllers.readmy
 );
-/* @David tu peux ajouter ta route ici */
+
 router.put("/reservation/:id", verifyToken, reservationControllers.edit);
 router.delete("/reservation/:id", verifyToken, reservationControllers.destroy);
+router.post("/reservation", verifyToken, reservationControllers.add);
 
 /** ************************************
  ************ Statics routers ********
  ************************************* */
+
 router.use("/rooms", express.static("public/rooms"));
 
 module.exports = router;

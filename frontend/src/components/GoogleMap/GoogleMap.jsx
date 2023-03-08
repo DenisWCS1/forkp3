@@ -79,8 +79,8 @@ function MapContainer2({ latitude, longitude, adress, name }) {
 
 MapContainer2.propTypes = {
   adress: PropTypes.string.isRequired,
-  latitude: PropTypes.number.isRequired,
-  longitude: PropTypes.number.isRequired,
+  latitude: PropTypes.string.isRequired,
+  longitude: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
 
