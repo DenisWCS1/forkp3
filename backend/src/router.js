@@ -30,7 +30,6 @@ router.get("/reservation/:id", reservationControllers.read);
 router.put("/reservation/:id", reservationControllers.edit);
 router.post("/reservation", reservationControllers.add);
 
-
 /** ************************************
  ************ publics routers ********
  ************************************* */
