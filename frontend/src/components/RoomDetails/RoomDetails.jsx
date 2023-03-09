@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MapContainer2 from "@components/GoogleMap/GoogleMap";
 import SharedContext from "@assets/Context/sharedContext";
 import moment from "moment";
@@ -130,64 +130,65 @@ function RoomDetails({
     }
   };
   return (
-    <div className="bg-dark-100 border-y-2">
+    <div className="w-7/8 mx-auto h-auto">
       {detailState.map((elem) => (
-        <div key={elem} className=" justify-evenly">
-          <NavLink to="/">
-            <div className="absolute right-6 text-[4rem] text-blueDuck-100 Ouline-black">
-              X
-            </div>
-          </NavLink>
-          <div>
-            <div>
+        <div
+          key={elem}
+          className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2"
+        >
+          <div className="my-1 flex flex-row items-start justify-center">
+            <div className="w-4/6 h-8/9">
               <img
-                className="h-[18rem] w-full object-cover"
+                className="h-auto max-w-full rounded-3xl drop-shadow-2xl"
                 src={`${baseUrl}${elem.url_picture}`}
                 alt={elem.name}
               />
-            </div>
-            <div className=" flex-wrap mb-2 sm:flex sm:justify-between  bg-blueDuck-100 h-[4.5rem] border-b-[2px]  items-center font-normal text-whiteSimple-100 ">
-              <div className="flex items-baseline">
-                <h3 className="ml-5 mr-5 sm:text-[1.7rem] ">{elem.name}</h3>
-                <div>
-                  <h3 className="sm:text-[1.2rem]">{elem.adress}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 text-center items-center">
+                <div className="mb-2 md:mb-0">
+                  <p className="text-3xl md:text-4xl tracking-tight leading-none font-extrabold text-blueDuck-100">
+                    {elem.name}
+                  </p>
                 </div>
-              </div>
-              <div className="mr-5 sm:text-[1.7rem] ml-80">
-                Places : {elem.capacity}
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="flex flex-wrap justify-around bg-dark-100 mt-5 mb-14">
-              <div className="">
-                <MapContainer2
-                  latitude={latitude}
-                  longitude={longitude}
-                  adress={adress}
-                  name={name}
-                />
-              </div>
-
-              <div className="text-whiteSimple-100 sm:text-2xl">
-                <h3 className="mb-10 sm:mb-5">Équipements de la salle :</h3>
-                <ul className="text-whiteSimple-100 ">
+                <div className="text-base md:text-xl tracking-tight leading-none text-blueDuck-100 whitespace-nowrap">
+                  {elem.capacity} Places
+                  <h3 className="tracking-tight font-light text-gray-500 text-2xl md:text-3xl">
+                    <p className="text-base md:text-lg lg:text-xl text-gray-500 mt-2 text-center break-words">
+                      {elem.adress}.
+                    </p>
+                  </h3>
+                </div>
+                <ul className="text-sm md:text-lg tracking-tight leading-none text-gray-600 flex flex-wrap">
                   {elem.material.map((value) => (
-                    <li key={value}>-{value}</li>
+                    <li key={value} className="w-full md:w-1/3 p-2">
+                      <div className="max-w-xs rounded overflow-hidden shadow-lg bg-white hover:bg-gray-100 transition-colors duration-300 h-full">
+                        <div className="px-2 py-2 h-full">
+                          <div className="font-bold text-xl mb-2">{value}</div>
+                        </div>
+                      </div>
+                    </li>
                   ))}
                 </ul>
               </div>
-              <div className="animate-pulse flex-col flex justify-end mb-7 mt-7">
-                <button
-                  type="button"
-                  className="bg-blueDuck-100 t px-4 py-2 rounded-lg text-blue-100 sm:text-2xl"
-                  onClick={() => {
-                    return validation();
-                  }}
-                >
-                  Réserver
-                </button>
-              </div>
+            </div>
+          </div>
+          <div className="flex flex-col justify-top w-full overflow-auto touch-auto">
+            <MapContainer2
+              latitude={latitude}
+              longitude={longitude}
+              adress={adress}
+              name={name}
+              style={{ width: "100%", height: "100%" }}
+            />
+            <div className="text-right flex flex-col">
+              <button
+                type="button"
+                className="my-4 bg-blueDuck-100  hover:bg-blueSimple-100 text-white font-bold py-2 px-4 rounded"
+                onClick={() => {
+                  return validation();
+                }}
+              >
+                Réserver
+              </button>
             </div>
           </div>
         </div>
