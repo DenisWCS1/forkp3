@@ -149,93 +149,91 @@ function RoomsFiltered({
   };
 
   return (
-    <div className="">
-      <div className="">
-        <RoomFilter
-          setStarted={setStarted}
-          setEnded={setEnded}
-          setLocationid={setLocationid}
-          started={started}
-          ended={ended}
-          locationid={locationid}
-        />
+    <>
+      <RoomFilter
+        setStarted={setStarted}
+        setEnded={setEnded}
+        setLocationid={setLocationid}
+        started={started}
+        ended={ended}
+        locationid={locationid}
+      />
 
-        <div className="flex flex-wrap -mx-1 lg:-mx-4 mt-10 ">
-          {rooms.map((value) => (
-            <div
-              className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4  transform transition duration-1000 hover:scale-95 hover:translate-y-0.5"
-              key={value.id}
-            >
-              <article className="overflow-hidden rounded-lg shadow-lg">
-                <div className="w-full h-fit group">
-                  <div className="relative overflow-hidden">
-                    <div>
-                      <img
-                        className="h-48 w-full object-cover"
-                        src={`${baseUrl}${value.url_picture}`}
-                        alt={value.name}
-                      />
-                    </div>
+      <div className="flex flex-wrap -mx-1 lg:-mx-4 mt-10 ">
+        {rooms.map((value) => (
+          <div
+            className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4  transform transition duration-1000 hover:scale-95 hover:translate-y-0.5"
+            key={value.id}
+          >
+            <article className="overflow-hidden rounded-lg shadow-lg">
+              <div className="w-full h-fit group">
+                <div className="relative overflow-hidden">
+                  <div>
+                    <img
+                      className="h-48 w-full object-cover"
+                      src={`${baseUrl}${value.url_picture}`}
+                      alt={value.name}
+                    />
+                  </div>
 
-                    <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <button
-                        className="bg-greySimple-100 bg-opacity-50 dark-100 py-2 px-4"
-                        type="button"
-                        onClick={confirmeidroom(value)}
-                      >
-                        Plus de détails
-                      </button>
-                    </div>
+                  <div className="absolute h-full w-full bg-dark-100/40 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <button
+                      className="bg-greySimple-100 bg-opacity-50 dark-100 py-2 px-4"
+                      type="button"
+                      onClick={confirmeidroom(value)}
+                    >
+                      Plus de détails
+                    </button>
                   </div>
                 </div>
+              </div>
 
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                  <h1 className="text-lg">
-                    <a
-                      className="no-underline hover:underline text-dark-100"
-                      href="/"
+              <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+                <h1 className="text-lg">
+                  <a
+                    className="no-underline hover:underline text-dark-100"
+                    href="/"
+                  >
+                    {value.name}
+                  </a>
+                </h1>
+                <p className="text-dark-100 text-sm" />
+                {value.capacity} Places
+              </header>
+
+              <footer className="flex items-center justify-between leading-none p-2 md:p-4">
+                <a
+                  className="flex items-center no-underline hover:underline text-dark-100"
+                  href="/"
+                >
+                  <FontAwesomeIcon icon={faLocationDot} />
+                  <p className="ml-2 text-sm">{value.city_name}</p>
+                </a>
+                <a
+                  className="no-underline text-dark-100 hover:text-red-dark"
+                  href="/"
+                >
+                  <span className="text-white font-normal">
+                    <button
+                      type="button"
+                      className="bg-blueDuck-100  px-4 py-2 rounded-lg "
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setRoomvalue(value);
+                        validate();
+                      }}
                     >
-                      {value.name}
-                    </a>
-                  </h1>
-                  <p className="text-dark-100 text-sm" />
-                  {value.capacity} Places
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                  <a
-                    className="flex items-center no-underline hover:underline text-dark-100"
-                    href="/"
-                  >
-                    <FontAwesomeIcon icon={faLocationDot} />
-                    <p className="ml-2 text-sm">{value.city_name}</p>
-                  </a>
-                  <a
-                    className="no-underline text-dark-100 hover:text-red-dark"
-                    href="/"
-                  >
-                    <span className="text-white font-normal">
-                      <button
-                        type="button"
-                        className="bg-blueDuck-100  px-4 py-2 rounded-lg "
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setRoomvalue(value);
-                          validate();
-                        }}
-                      >
-                        Réserver
-                      </button>
-                    </span>
-                  </a>
-                </footer>
-              </article>
-            </div>
-          ))}
-        </div>
+                      Réserver
+                    </button>
+                  </span>
+                </a>
+              </footer>
+            </article>
+          </div>
+        ))}
       </div>
       <div className="h-28" />
-    </div>
+    </>
   );
 }
 

@@ -8,42 +8,39 @@ function Charter() {
         <br />
         <section>
           Bienvenue sur notre plateforme. <br />
+          <br />
           Cette charte utilisateur est un outil pédagoqique et n'a en aucun cas
-          été réalisée et validée par un(e) juriste. <br /> Nous souhaitons vous
-          présenter notre charte utilisateur afin que vous puissiez comprendre
-          comment nous gérons vos données et votre vie privée. Gestion des
-          données utilisateur Nous collectons des données personnelles lorsque
-          vous utilisez notre plateforme. Nous collectons uniquement les données
-          nécessaires pour vous fournir les services que vous avez demandés.
-          Nous pouvons collecter les données suivantes : Votre nom, prénom et
-          adresse e-mail sur notre plateforme. Nous ne vendrons ni ne louerons
-          jamais vos données personnelles à des tiers. Nous ne partagerons vos
-          données personnelles qu'avec vous . Et en aucun cas avec les autres
-          utilisateurs de notre plateforme.
+          été réalisée et validée par un(e) juriste. Nous souhaitons néanmoins
+          vous présenter notre charte afin que vous puissiez comprendre comment
+          nous gérons vos données et votre vie privée. <br />
+          <p className="text-center underline">
+            Gestion des données utilisateur
+          </p>
+          <br />
+          <br /> Pour vous fournir les services que vous avez demandés. Nous
+          collectons des données personnelles nécessaires à l'utilisation de
+          notre plateforme : Noms, prénoms et adresse e-mail. Nous ne vendrons
+          ni ne louerons jamais vos données personnelles à des tiers. Nous ne
+          partagerons vos données personnelles qu'avec vous . Et en aucun cas
+          avec les autres utilisateurs de notre plateforme.
         </section>
-        <p className="text-center underline">Stockage</p>
+        <br />
+        <p className="text-center underline">Stockage/RGPD/droit à l'oubli</p>
+        <br />
         <section>
           Nous stockons vos données personnelles pour vous authentifier et vous
           permettre d'accéder à notre plateforme sans avoir à entrer à nouveau
-          vos informations d'identification. RGPD et droit à l'oubli sur
-          internet Nous respectons la réglementation européenne sur la
-          protection des données (RGPD) et nous nous engageons à protéger vos
-          données personnelles. Vous avez le droit de demander à tout moment
-          l'accès, la rectification ou la suppression de vos données
-          personnelles. Si vous souhaitez exercer ces droits, veuillez nous
-          contacter à l'adresse e-mail indiquée sur notre plateforme. Nous nous
-          engageons également à respecter votre droit à l'oubli sur internet. Si
-          vous souhaitez supprimer vos données personnelles de notre plateforme,
-          veuillez nous contacter à l'adresse e-mail indiquée sur notre
-          plateforme. En prenant connaissance de cette charte, les membres du
-          jury acceptent sans condition de valider le Titre RNCP des membres du
-          groupe de Projet GD_Salles. Nous supprimerons vos données personnelles
-          dans les meilleurs délais, sauf si la loi nous oblige à les conserver.
-          Nous espérons que cette charte utilisateur vous a aidé à comprendre
-          comment nous gérons vos données et votre vie privée sur notre
-          plateforme. Si vous avez des questions ou des préoccupations
-          concernant cette charte utilisateur, veuillez nous contacter à
-          l'adresse e-mail indiquée sur notre plateforme.
+          vos informations d'identification. Nous respectons la réglementation
+          européenne sur la protection des données (RGPD). Nous nous engageons
+          donc, à protéger vos données. <br />
+          Vous avez le droit de rectifier ou de supprimer vos données
+          personnelles depuis la rubrique "Mon profil" du menu de l'application.
+          Nous nous engageons également à respecter votre droit à l'oubli sur
+          internet. De plus, en prenant connaissance de cette charte, les
+          membres du jury acceptent sans condition de valider le Titre RNCP des
+          membres du groupe de Projet GD_Salles :) Nous espérons que cette
+          charte utilisateur vous a aidé à comprendre comment nous gérons vos
+          données et votre vie privée sur notre plateforme.
         </section>
       </div>
       <div className="h-28" />
