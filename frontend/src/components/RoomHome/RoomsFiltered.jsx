@@ -238,7 +238,7 @@ function RoomsFiltered({
 }
 
 RoomsFiltered.propTypes = {
-  ended: PropTypes.instanceOf().isRequired,
+  ended: PropTypes.instanceOf(Date).isRequired,
   locationid: PropTypes.node.isRequired,
   roomvalue: PropTypes.shape({
     id: PropTypes.number,
@@ -252,7 +252,7 @@ RoomsFiltered.propTypes = {
   setShowModalBtns: PropTypes.func.isRequired,
   setStarted: PropTypes.func.isRequired,
   setshowMessage: PropTypes.func.isRequired,
-  started: PropTypes.instanceOf().isRequired,
+  started: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default RoomsFiltered;
