@@ -205,7 +205,7 @@ VALUES
 		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
-	('Jo', 'Holt', 'jo.holt@yopmail.com', '0', 'user'),
+	('Jo', 'Holt', 'jo.holt@yopmail.com','$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs', 'user'),
 	(
 		'Guistino',
 		'Ladaguini',
@@ -331,8 +331,8 @@ VALUES
 		'9 avenue Carnot, 44000 Nantes',
 		'map',
 		'/rooms/salle1.jpg',
-		45.355353,
-		-2.565650
+		47.21450,
+		-1.54510
 	),
 	(
 		34,
@@ -378,11 +378,11 @@ VALUES
 		44,
 		4,
 		'Le Brivet',
-		'Chemin aux boeufs, 72100 Le Mans',
+		'Place du 8 mai 1945, 72100 Le Mans',
 		'map',
 		'/rooms/salle6.jpg',
-		48.954050,
-		0.219860
+		47.99604,
+		0.19231
 	),
 	(
 		67,
@@ -434,6 +434,11 @@ VALUES
 	(5, 7),
 	(5, 3),
 	(5, 6),
+	(6, 8),
+	(6, 5),
+	(6, 1),
+	(6, 2),
+	(6, 9),
 	(7, 1),
 	(7, 4),
 	(7, 5),
@@ -441,7 +446,12 @@ VALUES
 	(8, 2),
 	(8, 3),
 	(8, 6),
-	(8, 8);
+	(8, 8),
+	(9, 6),
+	(9, 7),
+	(9, 8),
+	(9, 9),
+	(9, 1);
 
 INSERT INTO
 	reservation (fk_user, fk_room, start_datetime, end_datetime)

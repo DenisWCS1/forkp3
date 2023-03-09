@@ -2,9 +2,9 @@ import React from "react";
 
 function Charter() {
   return (
-    <div>
+    <div className="absolute top-[14%]">
       <div className="text-justify font-semibold bg-dark-100 text-blueDuck-100 text-1xl mx-6 px-5 py-20 ">
-        <h1 className="text-white text-3xl py-1">Introduction : </h1>
+        <h1 className="text-white text-3xl py-1">Charte d'utilisation : </h1>
         <br />
         <section>
           Bienvenue sur notre plateforme. <br />

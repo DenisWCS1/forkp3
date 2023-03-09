@@ -34,7 +34,7 @@ export default function Header() {
         {/* Mobile-Menu */}
         <section className="flex flex-end ">
           <div className="UserConnected pr-8  font-semibold text-turquoise-100">
-            {user ? `${user.firstname} ${user.lastname}` : "Invité(e)"}
+            {user ? `${user.firstname}` : "Invité(e)"}
           </div>
           <div
             className="HAMBURGER-ICON space-y-2"
