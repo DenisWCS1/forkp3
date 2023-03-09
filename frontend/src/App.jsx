@@ -71,7 +71,7 @@ function App() {
   return (
     <SharedContext.Provider value={contextValues}>
       <Layout>
-        <div className="flex flex-col">
+        <>
           <Routes>
             <Route
               exact
@@ -164,7 +164,7 @@ function App() {
             onConfirm={onConfirm}
           />
           {isLoading && <Loader />}
-        </div>
+        </>
       </Layout>
     </SharedContext.Provider>
   );
