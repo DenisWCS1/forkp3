@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   GoogleMap,
   InfoWindow,
@@ -16,36 +16,19 @@ function MapContainer2({ latitude, longitude, adress, name }) {
     libraries,
   });
 
-  const [mapContainerStyle, setMapContainerStyle] = useState({
+  const [mapContainerStyle] = useState({
     width: "100%",
-    height: "100%",
-    borderRadius: 8,
+    height: "600px",
   });
 
   const [infoWindowVisible, setInfoWindowVisible] = useState(true);
-
+  const toggleInfoWindow = () => {
+    setInfoWindowVisible(!infoWindowVisible);
+  };
   const center = {
     lat: Number(latitude),
     lng: Number(longitude),
   };
-  const marker = {
-    lat: Number(latitude),
-    lng: Number(longitude),
-  };
-  useEffect(() => {
-    function updateSize() {
-      setMapContainerStyle({
-        width: window.innerWidth / 2,
-        height: window.innerHeight / 3,
-        borderRadius: 8,
-      });
-    }
-
-    window.addEventListener("resize", updateSize);
-
-    updateSize(); // Appel initial pour définir la taille de la carte
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
 
   return (
     <div>
@@ -54,20 +37,30 @@ function MapContainer2({ latitude, longitude, adress, name }) {
           mapContainerStyle={mapContainerStyle}
           center={center}
           zoom={14}
+          onClick={() => setInfoWindowVisible(false)}
         >
           <MarkerF
             position={center}
             opacity={1}
             onMouseUp={() => setInfoWindowVisible(!infoWindowVisible)}
           >
-            <InfoWindow
-              position={marker}
-              onCloseClick={() => setInfoWindowVisible(false)}
-              visible={infoWindowVisible}
-            >
+            <InfoWindow position={center} onCloseClick={toggleInfoWindow}>
               <div className="text-[15px]">
                 <div>{name}</div>
                 <div>{adress}</div>
+                <div>
+                  <button
+                    type="button"
+                    className="bg-blueDuck-100 hover:bg-blueSimple-100 text-white font-bold py-2 px-4 mt-2 rounded text-center"
+                    onClick={() =>
+                      window.open(
+                        `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`
+                      )
+                    }
+                  >
+                    Naviguer
+                  </button>
+                </div>
               </div>
             </InfoWindow>
           </MarkerF>
