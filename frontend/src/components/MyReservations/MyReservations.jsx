@@ -96,7 +96,7 @@ room.name AS nom,
               Salle
             </th>
             <th className=" p-2 text-dark-100 font-bold md:border md:border-grey-500 text-left block md:table-cell">
-              Localisation
+              localisation
             </th>
             <th className=" p-2 text-dark-100 font-bold md:border md:border-grey-500 text-left block md:table-cell">
               Début
