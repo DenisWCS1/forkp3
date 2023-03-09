@@ -157,13 +157,11 @@ function RoomDetails({
                     </p>
                   </h3>
                 </div>
-                <ul className="text-sm md:text-lg tracking-tight leading-none text-gray-600 flex flex-wrap">
+                <ul className="text-xs grid grid-cols-1 md:grid-cols-2 gap-4 font-bold items-center text-gray-600">
                   {elem.material.map((value) => (
-                    <li key={value} className="w-full md:w-1/3 p-2">
-                      <div className="max-w-xs rounded overflow-hidden shadow-lg bg-white hover:bg-gray-100 transition-colors duration-300 h-full">
-                        <div className="px-2 py-2 h-full">
-                          <div className="font-bold text-xl mb-2">{value}</div>
-                        </div>
+                    <li key={value} className="m-1">
+                      <div className="max-w-xs rounded overflow-hidden shadow-lg bg-white hover:bg-gray-100 transition-colors duration-300 h-full p-4">
+                        {value}
                       </div>
                     </li>
                   ))}
