@@ -203,7 +203,7 @@ function UserProfileView({
             htmlFor="created_at"
             className="block text-gray-700 font-bold mb-2"
           >
-            Créer le
+            Créé le
           </label>
           <input
             type="datetime"
