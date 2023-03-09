@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import {
   GoogleMap,
-  InfoWindow,
+  InfoWindowF,
   MarkerF,
   useJsApiLoader,
 } from "@react-google-maps/api";
@@ -43,8 +43,9 @@ function MapContainer2({ latitude, longitude, adress, name }) {
             position={center}
             opacity={1}
             onMouseUp={() => setInfoWindowVisible(!infoWindowVisible)}
+            zIndex={1000}
           >
-            <InfoWindow position={center} onCloseClick={toggleInfoWindow}>
+            <InfoWindowF position={center} onCloseClick={toggleInfoWindow}>
               <div className="text-[15px]">
                 <div>{name}</div>
                 <div>{adress}</div>
@@ -62,7 +63,7 @@ function MapContainer2({ latitude, longitude, adress, name }) {
                   </button>
                 </div>
               </div>
-            </InfoWindow>
+            </InfoWindowF>
           </MarkerF>
         </GoogleMap>
       )}
