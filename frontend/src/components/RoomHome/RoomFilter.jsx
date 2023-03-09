@@ -24,7 +24,6 @@ function RoomFilter({
   const handleChange = (e) => {
     setStarted(started);
     setEnded(ended);
-
     setLocationid(e.target.value);
   };
 
@@ -32,6 +31,7 @@ function RoomFilter({
     setStarted(new Date());
     setEnded(new Date());
     setLocationid(1);
+    setAllLocation([]);
   };
   useEffect(() => {
     fetch(`${baseUrl}/location`)
@@ -41,7 +41,7 @@ function RoomFilter({
       .then((jsonData) => {
         setAllLocation(jsonData);
       });
-  }, [locationid]);
+  }, [locationid, allLocation]);
 
   return (
     <div className="flex flex-wrap rounded-lg bg-dark-100 border-b px-4 py-2 sm:flex flex-row justify-center ">
