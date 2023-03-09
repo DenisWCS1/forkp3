@@ -205,7 +205,7 @@ VALUES
 		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
-	('Jo', 'Holt', 'jo.holt@yopmail.com', '0', 'user'),
+	('Jo', 'Holt', 'jo.holt@yopmail.com','$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs', 'user'),
 	(
 		'Guistino',
 		'Ladaguini',
