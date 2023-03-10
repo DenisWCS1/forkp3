@@ -44,16 +44,16 @@ Show the details of a room (address, plan, available equipment ...)</li>
 
   <ol>
   <li>
-  Clone the repository
+Clone the repository
 
 ```sh
-   git clone https://github.com/WildCodeSchool/2022-09-js-nantes-sncf-gd-salles-p3.git
+git clone https://github.com/WildCodeSchool/2022-09-js-nantes-sncf-gd-salles-p3.git
    ```
   </li>
 <li>
 
 ```sh
- cd Projet GD_Salles/backend
+cd Projet GD_Salles/backend
 ```
 </li>
 <li>
