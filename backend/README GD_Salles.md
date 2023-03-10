@@ -67,7 +67,7 @@ npm run dev
 <h2  align="left">API Routes</h2>
 <h3  align="left">Routes "Location"</h3>
 <p  align="left"><ins>Get/location<ins>:</p>
-click here to show
+
 <p>Response:</p>
 <details>
 <p>
@@ -84,11 +84,21 @@ click here to show
 ]
 ```
 </p>
-<details>
-  <summary>Routes "Material</summary>
+
+</details>
+
+<h3  align="left">Routes "Material"</h3>
+<p  align="left"><ins>Get/Material<ins>:</p>
+
+<p>Response:</p>
 
  <h3  align="left">Routes "Material"</h3>
 <p  align="left"><ins>Get/Material<ins>:</p>
+
+<p>
+ <details>
+ 
+<p>
 
 ```json
 
