@@ -64,7 +64,10 @@ npm run dev
 </li>
 </ol>
 
-<h2  align="left">API Routes</h2>
+
+
+<h1  align="left">API Routes</h1>
+<h2>Public routes</h2>
 <h3  align="left">Routes "Location"</h3>
 <p  align="left"><ins>Get/location<ins>:</p>
 
@@ -77,9 +80,9 @@ npm run dev
 [
 {
 "id":  number ,
-"city_name":  "string",
-"created_at":  "string",
-"updated_at":  "string"
+"city_name":  string,
+"created_at": string,
+"updated_at": string
 }
 ]
 ```
@@ -88,13 +91,9 @@ npm run dev
 </details>
 
 <h3  align="left">Routes "Material"</h3>
-<p  align="left"><ins>Get/Material<ins>:</p>
+<p  align="left"><ins>Get/material<ins>:</p>
 
 <p>Response:</p>
-
- <h3  align="left">Routes "Material"</h3>
-<p  align="left"><ins>Get/Material<ins>:</p>
-
 <p>
  <details>
  
@@ -104,12 +103,39 @@ npm run dev
 
 [
 {
-"id":  1,
-"name":  "Câble VGA",
-"created_at":  "2023-03-09T12:44:16.000Z",
-"updated_at":  "2023-03-09T12:44:16.000Z"
+"id":  number ,
+"name":  string,
+"created_at":  string,
+"updated_at":  string
 }
 ]
 ```
 
  </details>
+
+<h3  align="left">Routes "Filtered"</h3>
+<p  align="left"><ins>Get/filtered<ins>:</p>
+
+<p>Response:</p>
+<p>
+ <details>
+ 
+<p>
+
+```json
+
+[
+{
+"id":  number ,
+"capacity":  number ,
+"name":  string,
+"plan":  string,
+"url_picture":  string,
+"city_name":  string
+}
+]
+```
+
+ </details>
+
+
