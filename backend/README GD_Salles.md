@@ -44,24 +44,24 @@ Show the details of a room (address, plan, available equipment ...)</li>
 
   <ol>
 <li>
-```bash 
+
  cd Projet GD_Salles/backend
-```
+
 </li>
 <li>
-```bash 
+
 npm install
-```
+
 </li>
 <li>
-```bash 
+
 npm run migrate
-```
+
 </li>
 <li>
-```bash 
+
 npm run dev
-```
+
 </li>
 </ol>
 
@@ -138,4 +138,5 @@ npm run dev
 ```
 
  </details>
+
 
