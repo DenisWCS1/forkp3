@@ -17,13 +17,13 @@ CREATE TABLE
 		`capacity` INT NOT NULL,
 		`fk_location` INT NOT NULL,
 		`name` varchar(45) NOT NULL,
-		`adress` varchar(100) NOT NULL,
-		`plan` varchar(255) NOT NULL,
-		`url_picture` varchar(255) NOT NULL,
-		`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-		`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		`adress` varchar(100) NOT NULL,		
+		`url_picture` varchar(100) NOT NULL,
 		`lat` decimal(25, 6) DEFAULT NULL,
 		`lng` decimal(25, 6) DEFAULT NULL,
+		`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
 		PRIMARY KEY (`id`)
 	);
 
