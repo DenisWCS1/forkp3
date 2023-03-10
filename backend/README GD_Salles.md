@@ -1,3 +1,4 @@
+
 <h1  align="center">Hi , Welcome to GD_Salles</h1>
 <h2>How it began</h2>
 <p>Following a final project within the WILD CODE SCHOOL, we looked for an interesting project idea.
@@ -16,6 +17,10 @@ User management, their registration to the modification of their account. and so
 
 <p  align="left"> <a  href="https://expressjs.com"  target="_blank"  rel="noreferrer"> <img  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg"  alt="express"  width="40"  height="40"/> </a>  <a  href="https://git-scm.com/"  target="_blank"  rel="noreferrer"> <img  src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"  alt="git"  width="40"  height="40"/> </a> <a  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"  target="_blank"  rel="noreferrer"> <img  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"  alt="javascript"  width="40"  height="40"/> </a> <a  href="https://www.mysql.com/"  target="_blank"  rel="noreferrer"> <img  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"  alt="mysql"  width="40"  height="40"/> </a> <a  href="https://nodejs.org"  target="_blank"  rel="noreferrer"> <img  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"  alt="nodejs"  width="40"  height="40"/> </a> <a  href="https://postman.com"  target="_blank"  rel="noreferrer"> <img  src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"  alt="postman"  width="40"  height="40"/> </a> <a  href="https://reactjs.org/"  target="_blank"  rel="noreferrer"> <img  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"  alt="react"  width="40"  height="40"/> </a> <a  href="https://tailwindcss.com/"  target="_blank"  rel="noreferrer"> <img  src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"  alt="tailwind"  width="40"  height="40"/> </a> </p>
 
+
+
+
+
 <section>
 <h2>Features</h2>
 <p>Here is the list of features contained in our application</p>
@@ -28,6 +33,7 @@ User management, their registration to the modification of their account. and so
 <li>  
 Show the details of a room (address, plan, available equipment ...)</li>
 
+
 </ul>
 </section>
 
@@ -37,35 +43,63 @@ Show the details of a room (address, plan, available equipment ...)</li>
 
   <ol>
 <li>
- cd Projet GD_Salles/backend</li>
-<li>``npm install``</li>
-<li>npm run migrate</li>
-<li>npm run dev</li>
+```bash 
+ cd Projet GD_Salles/backend
+```
+</li>
+<li>
+```bash 
+npm install
+```
+</li>
+<li>
+```bash 
+npm run migrate
+```
+</li>
+<li>
+```bash 
+npm run dev
+```
+</li>
 </ol>
 
 <h2  align="left">API Routes</h2>
 <h3  align="left">Routes "Location"</h3>
 <p  align="left"><ins>Get/location<ins>:</p>
+click here to show
 <p>Response:</p>
+<details>
 <p>
-[
 
+```json
+
+[
 {
-"id": **number** ,
-"city_name": "**string**",
-"created_at": "**string**",
-"updated_at": "**string**"
+"id":  number ,
+"city_name":  "string",
+"created_at":  "string",
+"updated_at":  "string"
 }
-]</p>
+]
+```
+</p>
+<details>
+  <summary>Routes "Material</summary>
 
  <h3  align="left">Routes "Material"</h3>
 <p  align="left"><ins>Get/Material<ins>:</p>
-[
 
+```json
+
+[
 {
-"id": 1,
-"name": "Câble VGA",
-"created_at": "2023-03-09T12:44:16.000Z",
-"updated_at": "2023-03-09T12:44:16.000Z"
+"id":  1,
+"name":  "Câble VGA",
+"created_at":  "2023-03-09T12:44:16.000Z",
+"updated_at":  "2023-03-09T12:44:16.000Z"
 }
 ]
+```
+
+ </details>
