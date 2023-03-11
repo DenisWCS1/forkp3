@@ -1,13 +1,13 @@
-
-<h1  align="center">Hi , Welcome to GD_Salles</h1>
 <a name="readme-top"></a>
+<h1  align="center">Hi , Welcome to GD_Salles</h1>
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ul>
     <li>
-      <a href="#how-it-began">How it Began</a>
+      <a href="#how-it-started">How it started</a>
       </li>
         <li>
         <a href="#features">Features</a>
@@ -22,24 +22,22 @@
     
 </details>
 
-<!-- HOW IT BEGAN -->
-## How it began
+<!-- HOW IT STARTED -->
+## How it started
 
 
 
-<p>Following a final project within the WILD CODE SCHOOL, we looked for an interesting project idea.
-A member of our team had already created a room reservation application in power apps.
-So we decided to take this idea and adapt it as a Single Page Application developped with React.
+<p>Following a final project within the WILD CODE SCHOOL, we looked for an interesting project idea. A member of our team had already created a room reservation application in power apps. So we decided to take this idea and adapt it as a Single Page Application developed with React.
 </p>
 <p>  
 This application meets a specific need in our company (SNCF). 
-<br/> To know: the  <strong>rapid search</strong> for a training room available even for a very short time (from 15 minutes to several days).</p>
+<br/> To know: the  <strong>quick search</strong> for a training room available even for a very short time (from 15 minutes to several days).</p>
 
 
 <h4>What have we learned ?</h4>
 <p>We were able to put a lot of theoretical knowledge into practice. In addition, we have learned to implement a standardized agile method.
- Also learned the implementation of data of any kind, in the database.
-Manage the "MVC" model (Model View Controller).
+We also learned the implementation of data of any kind, in the database.
+We succeeded in managing the "MVC" model (Model View Controller).
 User management, their registration to the modification of their account. 
 And so many other things.</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -55,7 +53,7 @@ And so many other things.</p>
 ## Features
 
 <section>
-<p>Here is the list of features contained in our application</p>
+<p>Here is the list of features contained in our application :</p>
 <ul>
 <li>Creation of a user account (register)</li>
 <li>Login and Logout of a user</li>
