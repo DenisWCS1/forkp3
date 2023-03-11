@@ -88,7 +88,7 @@ git clone https://github.com/WildCodeSchool/2022-09-js-nantes-sncf-gd-salles-p3.
 <li>
 
 ```sh
- cd Projet GD_Salles/backend
+cd Projet GD_Salles/backend
 ```
 </li>
 <li>
