@@ -24,6 +24,9 @@ CREATE TABLE
 		`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 		`lat` decimal(25, 6) DEFAULT NULL,
 		`lng` decimal(25, 6) DEFAULT NULL,
+		`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
 		PRIMARY KEY (`id`)
 	);
 
@@ -318,7 +321,6 @@ INSERT INTO
 		fk_location,
 		name,
 		address,
-		plan,
 		url_picture,
 		lat,
 		lng
@@ -329,7 +331,6 @@ VALUES
 		2,
 		'Loire',
 		'9 avenue Carnot, 44000 Nantes',
-		'map',
 		'/rooms/salle1.jpg',
 		47.21450,
 		-1.54510
@@ -339,7 +340,6 @@ VALUES
 		2,
 		'Sarthe',
 		'24 Bd de Berlin, 44000 Nantes',
-		'map',
 		'/rooms/salle2.jpg',
 		47.216780,
 		-1.536550
@@ -349,7 +349,6 @@ VALUES
 		3,
 		'Acheneau',
 		'1 Esplanade de la Gare, 49100 Angers',
-		'map',
 		'/rooms/salle10.jpg',
 		47.464860,
 		-0.555750
@@ -359,7 +358,6 @@ VALUES
 		3,
 		'Divatte',
 		'88 Pl la fayette, 49000 Angers',
-		'map',
 		'/rooms/salle4.jpg',
 		47.462550,
 		-0.553610
@@ -369,7 +367,6 @@ VALUES
 		4,
 		'Sèvre',
 		'30 Bd Robert Jarry, 72000 Le Mans',
-		'map',
 		'/rooms/salle5.jpg',
 		48.995880,
 		0.187830
@@ -379,7 +376,6 @@ VALUES
 		4,
 		'Le Brivet',
 		'Place du 8 mai 1945, 72100 Le Mans',
-		'map',
 		'/rooms/salle6.jpg',
 		47.99604,
 		0.19231
@@ -389,7 +385,6 @@ VALUES
 		2,
 		'Maine',
 		"21 Bd Ernest d'Alby 44000 Nantes",
-		'map',
 		'/rooms/salle7.jpg',
 		47.226600,
 		-1.528660
@@ -399,7 +394,6 @@ VALUES
 		3,
 		'Namnettes',
 		'15 rue des 2 haies, 49100 Angers',
-		'map',
 		'/rooms/salle8.jpg',
 		47.471760,
 		-0.552460
@@ -409,7 +403,6 @@ VALUES
 		4,
 		'Zen',
 		'2 Pl St Michel, 72000 Le Mans',
-		'map',
 		'/rooms/salle9.jpg',
 		48.009150,
 		0.197920
