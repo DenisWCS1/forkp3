@@ -7,7 +7,7 @@ class RoomManager extends AbstractManager {
 
   filter(start, end, location) {
     const sqlvalues = [];
-    const sql = ` SELECT room.id, room.capacity, room.name, room.plan, room.url_picture, location.city_name FROM ${
+    const sql = ` SELECT room.id, room.capacity, room.name, room.url_picture, location.city_name FROM ${
       this.table
     } 
         LEFT JOIN location ON room.fk_location = location.id 

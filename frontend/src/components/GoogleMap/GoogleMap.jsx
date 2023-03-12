@@ -9,7 +9,7 @@ import {
 
 const apiKeyEnv = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
 const libraries = ["geometry", "drawing"];
-function MapContainer2({ latitude, longitude, adress, name }) {
+function MapContainer2({ latitude, longitude, address, name }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKeyEnv,
@@ -48,7 +48,7 @@ function MapContainer2({ latitude, longitude, adress, name }) {
             <InfoWindowF position={center} onCloseClick={toggleInfoWindow}>
               <div className="text-[15px]">
                 <div>{name}</div>
-                <div>{adress}</div>
+                <div>{address}</div>
                 <div>
                   <button
                     type="button"
@@ -72,7 +72,7 @@ function MapContainer2({ latitude, longitude, adress, name }) {
 }
 
 MapContainer2.propTypes = {
-  adress: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
   latitude: PropTypes.string.isRequired,
   longitude: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

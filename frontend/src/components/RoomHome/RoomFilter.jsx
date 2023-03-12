@@ -44,11 +44,13 @@ function RoomFilter({
   }, [locationid, allLocation]);
 
   return (
-    <div className="flex flex-wrap rounded-lg bg-dark-100 border-b px-4 py-2 sm:flex flex-row justify-center ">
-      <div className="flex flex-col text-white ml-5 w-64 mb-5">
-        <p> Début :</p>
+    <div className=" flex flex-wrap rounded-lg bg-dark-100 border-b justify-around lg:justify-center ">
+      <div className="flex flex-col text-white w-[200] md:mb-6 ">
+        <div>
+          <p> Début :</p>
+        </div>
         <ReactDatePicker
-          className="bg-blueDuck-100 text-white px-4 py-2 rounded-lg"
+          className="bg-blueDuck-100 text-white rounded-lg h-8 text-center lg:mr-6"
           id="start"
           selected={started}
           onChange={(str) => setStarted(str)}
@@ -57,10 +59,12 @@ function RoomFilter({
           dateFormat="dd-MM-yyyy HH:mm:ss"
         />
       </div>
-      <div className="flex flex-col text-white ml-5 w-64 mb-5">
-        <p> Fin :</p>
+      <div className="flex flex-col text-white w-[200]">
+        <div>
+          <p>Fin :</p>
+        </div>
         <ReactDatePicker
-          className="bg-blueDuck-100 text-white px-4 py-2 rounded-lg"
+          className="bg-blueDuck-100 text-white rounded-lg  h-8 text-center lg:mr-6"
           id="end"
           selected={ended}
           onChange={(end) => setEnded(end)}
@@ -69,13 +73,13 @@ function RoomFilter({
           dateFormat="dd-MM-yyyy HH:mm:ss"
         />
       </div>
-      <div className="flex justify-center px-2 py-5 w-60 h-20">
+      <div className="mt-6">
         <select
           name="loc"
           selected={allLocation}
           onChange={handleChange}
           id="loc"
-          className="Localisation bg-blueDuck-100 text-white text-center flex flex-col w-72 h-11 rounded-lg sm:px-5 p-2"
+          className="Localisation bg-blueDuck-100 text-white rounded-lg min-w-[183px] h-8 py-[0.3rem] lg:mr-6"
         >
           {allLocation.map((location) => (
             <option
@@ -88,10 +92,10 @@ function RoomFilter({
           ))}
         </select>
       </div>
-      <div className="flex flex-col px-2 py-5 w-60 h-20 sm: mt-1">
+      <div className="flex flex-col min-w-[182px] mt-6">
         <button
           type="button"
-          className="button bg-blueDuck-100 text-white rounded-lg sm:px-2 py-2"
+          className="button bg-blueDuck-100 text-white rounded-lg h-8 mb-4"
           onClick={reset}
         >
           Reset

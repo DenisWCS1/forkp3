@@ -84,7 +84,7 @@ function RoomDetails({
           setDetailState(jsonData);
           setLatitude(jsonData[0].lat, 10);
           setLongitude(jsonData[0].lng, 10);
-          setAdress(jsonData[0].adress);
+          setAdress(jsonData[0].address);
           setName(jsonData[0].name);
           setIsLoading(false);
         })
@@ -153,7 +153,7 @@ function RoomDetails({
                   {elem.capacity} Places
                   <h3 className="tracking-tight font-light text-gray-500 text-2xl md:text-3xl">
                     <p className="text-base md:text-lg lg:text-xl text-gray-500 mt-2 text-center break-words">
-                      {elem.adress}.
+                      {elem.address}.
                     </p>
                   </h3>
                 </div>
@@ -173,7 +173,7 @@ function RoomDetails({
             <MapContainer2
               latitude={latitude}
               longitude={longitude}
-              adress={adress}
+              address={adress}
               name={name}
               style={{ width: "100%", height: "100%" }}
             />

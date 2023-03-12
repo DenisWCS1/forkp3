@@ -88,9 +88,7 @@ function Login() {
             <h2 className="text-red-500 font-semibold animate-bounce">
               {error && <div>{error}</div>}
             </h2>
-            <NavLink className="flex justify-between text-gray-400 py-2">
-              Mot de passe oublié ?
-            </NavLink>
+
 
             <button
               type="submit"
