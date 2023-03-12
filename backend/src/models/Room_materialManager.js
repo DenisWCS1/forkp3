@@ -7,7 +7,7 @@ class RoomMaterialManager extends AbstractManager {
 
   roomdetails(id) {
     return this.database.query(
-      ` SELECT JSON_ARRAYAGG(material.name) as material, room.name, room.url_picture, adress, room.lat, room.lng, capacity
+      ` SELECT JSON_ARRAYAGG(material.name) as material, room.name, room.url_picture, address, room.lat, room.lng, capacity
       FROM ${this.table}
       INNER JOIN room 
       ON room.id = fk_room

@@ -66,7 +66,7 @@ room.name AS nom,
       .then((response) => {
         if (response.ok) {
           setShowModalBtns(false);
-          setshowMessage("Votre réservation à bien été supprimée");
+          setshowMessage("Votre réservation a bien été supprimée");
           setShowModal(true);
           setUpdateResa(!updateResa);
         } else {
