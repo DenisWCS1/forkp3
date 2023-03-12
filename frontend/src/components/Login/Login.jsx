@@ -89,7 +89,6 @@ function Login() {
               {error && <div>{error}</div>}
             </h2>
 
-
             <button
               type="submit"
               className="w-full my-5 py-2 bg-teal-500 shadow-lg text-white font-semibold rounded-lg"
