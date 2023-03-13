@@ -5,8 +5,10 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
-  deleteuserresa(id) {
-    return this.database.query(`delete from ${this.table} where id = ?`, [id]);
+  findAll() {
+    return this.database.query(
+      `select id, firstname, lastname, email, role from ${this.table}`
+    );
   }
 
   find(id) {
@@ -16,9 +18,16 @@ class UserManager extends AbstractManager {
     );
   }
 
-  findAll() {
+  findByEmail(email) {
+    return this.database.query(`select * from ${this.table} where email = ? `, [
+      email,
+    ]);
+  }
+
+  update(user) {
     return this.database.query(
-      `select id, firstname, lastname, email, role from ${this.table}`
+      `update ${this.table} set firstname = ?, lastname = ?, email = ?  where id = ?`,
+      [user.firstname, user.lastname, user.email, user.id]
     );
   }
 
@@ -38,17 +47,8 @@ class UserManager extends AbstractManager {
       });
   }
 
-  findByEmail(email) {
-    return this.database.query(`select * from ${this.table} where email = ? `, [
-      email,
-    ]);
-  }
-
-  update(user) {
-    return this.database.query(
-      `update ${this.table} set firstname = ?, lastname = ?, email = ?  where id = ?`,
-      [user.firstname, user.lastname, user.email, user.id]
-    );
+  eraseUserRes(id) {
+    return this.database.query(`delete from ${this.table} where id = ?`, [id]);
   }
 }
 

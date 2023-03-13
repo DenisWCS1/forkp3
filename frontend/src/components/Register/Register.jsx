@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import SharedContext from "@assets/Context/sharedContext";
 
 function Register() {
-  // astuce pour éviter de toujours rentrer url http etc
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const [inputRegisterValue, setIinputRegisterValue] = useState({

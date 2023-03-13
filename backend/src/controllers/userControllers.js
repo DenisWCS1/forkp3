@@ -1,4 +1,3 @@
-// this is the controller file
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
@@ -8,7 +7,6 @@ const browse = (req, res) => {
   models.user
     .findAll()
     .then(([rows]) => {
-      // with this line , i throw a response to the client
       res.send(rows);
     })
     .catch((err) => {
@@ -16,7 +14,6 @@ const browse = (req, res) => {
       res.sendStatus(500);
     });
 };
-
 const read = (req, res) => {
   models.user
     .find(req.params.id)
@@ -32,23 +29,6 @@ const read = (req, res) => {
       res.sendStatus(500);
     });
 };
-
-const me = (req, res) => {
-  models.user
-    .find(req.payload.sub)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows[0]);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const edit = (req, res) => {
   const user = req.body;
   user.id = parseInt(req.params.id, 10);
@@ -80,7 +60,36 @@ const add = (req, res) => {
       res.sendStatus(500);
     });
 };
-
+const destroy = (req, res) => {
+  models.user
+    .delete(req.params.id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+const me = (req, res) => {
+  models.user
+    .find(req.payload.sub)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 const login = (req, res) => {
   const { email, password } = req.body;
   models.user
@@ -117,7 +126,35 @@ const login = (req, res) => {
       res.status(500).send("Error retrieving data from database");
     });
 };
-
+const register = (req, res) => {
+  const user = req.body;
+  models.user
+    .insert(user)
+    .then(([result]) => {
+      res.location(`/user/register/${result.insertId}`).sendStatus(201);
+    })
+    .catch(() => {
+      res.status(401).send("Email déjà enregistré");
+    });
+};
+const deleteUserRes = (req, res) => {
+  models.user
+    .eraseUserRes(req.params.id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+/** ************************************************************************************** */
+/** ******************Check register form fields with Express Validator ******************* */
+/** **************************************************************************************** */
 const validateUser = [
   body("firstname")
     .isLength({ min: 3 })
@@ -140,58 +177,15 @@ const validateUser = [
     }
   },
 ];
-
-const register = (req, res) => {
-  const user = req.body;
-  models.user
-    .insert(user)
-    .then(([result]) => {
-      res.location(`/user/register/${result.insertId}`).sendStatus(201);
-    })
-    .catch(() => {
-      res.status(401).send("Email déjà enregistré");
-    });
-};
-
-const destroy = (req, res) => {
-  models.user
-    .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-const deleteresa = (req, res) => {
-  models.user
-    .deleteuserresa(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
 module.exports = {
   browse,
   read,
   edit,
   add,
+  destroy,
+  me,
   login,
   register,
-  me,
+  deleteUserRes,
   validateUser,
-  destroy,
-  deleteresa,
 };

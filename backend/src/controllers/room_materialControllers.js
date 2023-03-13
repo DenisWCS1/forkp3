@@ -1,4 +1,3 @@
-// this is the controller file
 const models = require("../models");
 
 const detail = (req, res) => {

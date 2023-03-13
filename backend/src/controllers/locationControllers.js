@@ -1,11 +1,9 @@
-// this is the controller file
 const models = require("../models");
 
 const browse = (req, res) => {
   models.location
     .findAll()
     .then(([rows]) => {
-      // with this line , i throw a response to the client
       res.send(rows);
     })
     .catch((err) => {
@@ -32,11 +30,7 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const location = req.body;
-
-  // TODO validations (length, format...)
-
   location.id = parseInt(req.params.id, 10);
-
   models.location
     .update(location)
     .then(([result]) => {
@@ -54,9 +48,6 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const location = req.body;
-
-  // TODO validations (length, format...)
-
   models.location
     .insert(location)
     .then(([result]) => {
