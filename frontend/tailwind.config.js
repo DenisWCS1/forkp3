@@ -30,7 +30,6 @@ module.exports = {
         avenir: ["AvenirLTStd-Heavy.otf"],
       },
     },
-
   },
 
   plugins: [],
