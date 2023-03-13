@@ -74,6 +74,21 @@ const destroy = (req, res) => {
       res.sendStatus(500);
     });
 };
+const readmy = (req, res) => {
+  models.reservation
+    .findmy(req.params.id)
+    .then(([rows]) => {
+      if (rows == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   browse,
@@ -81,4 +96,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  readmy,
 };

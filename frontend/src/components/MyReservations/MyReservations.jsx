@@ -30,7 +30,7 @@ room.name AS nom,
   useEffect(() => {
     setIsLoading(true);
     function fetchData() {
-      fetch(`${baseUrl}/myReservations/${user.id}`, {
+      fetch(`${baseUrl}/reservations/${user.id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
