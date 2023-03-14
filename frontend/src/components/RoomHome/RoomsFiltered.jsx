@@ -123,7 +123,7 @@ function RoomsFiltered({
     if (user) {
       if (started >= ended) {
         setshowMessage(
-          "Attention il y a une erreur dans vos dates de réservations !"
+          "Attention, il y a une erreur dans vos dates de réservations !"
         );
         setShowModal(true);
       } else {
@@ -141,7 +141,7 @@ function RoomsFiltered({
       }
     } else {
       setshowMessage(
-        "Vous devez être connecté pour réserver une salle, souhaitez-vous vous rendre sur le formulaire de connexion  ?"
+        "Vous devez être connecté(e) pour réserver une salle, souhaitez-vous vous rendre sur le formulaire de connexion  ?"
       );
       setOnConfirm(() => confirmNavigate(1));
       setShowModalBtns(true);

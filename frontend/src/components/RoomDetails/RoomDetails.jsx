@@ -105,12 +105,12 @@ function RoomDetails({
     if (user) {
       if (started >= ended) {
         setshowMessage(
-          "Attention il y a une erreur dans vos dates de réservations !"
+          "Attention, il y a une erreur dans vos dates de réservations !"
         );
         setShowModal(true);
       } else {
         setShowModalBtns(true);
-        setshowMessage(` Voulez-vous vraiment réserver la salle ${
+        setshowMessage(`Voulez-vous vraiment réserver la salle ${
           roomvalue.name
         } 
         du \n${moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
@@ -123,7 +123,7 @@ function RoomDetails({
       }
     } else {
       setshowMessage(
-        "Vous devez être connecté pour réserver une salle, souhaitez-vous vous rendre sur le formulaire de connexion  ?"
+        "Vous devez être connecté(e) pour réserver une salle. Souhaitez-vous vous connecter ?"
       );
       setOnConfirm(() => confirmNavigate(1));
       setShowModalBtns(true);
@@ -191,6 +191,7 @@ function RoomDetails({
           </div>
         </div>
       ))}
+      <div className="h-28" />
     </div>
   );
 }

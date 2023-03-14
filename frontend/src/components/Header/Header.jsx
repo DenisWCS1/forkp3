@@ -31,7 +31,6 @@ export default function Header() {
       </div>
 
       <nav>
-        {/* Mobile-Menu */}
         <section className="flex flex-end ">
           <div className="UserConnected pr-8  font-semibold text-turquoise-100">
             {user ? `${user.firstname}` : "Invité(e)"}
@@ -66,7 +65,7 @@ export default function Header() {
                   className="font-semibold text-turquoise-100 my-8 pb-6"
                 >
                   <NavLink to="#" onClick={handleDisconnect}>
-                    Se Déconnecter
+                    Se déconnecter
                   </NavLink>
                 </button>
               ) : (

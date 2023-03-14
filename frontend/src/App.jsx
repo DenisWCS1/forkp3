@@ -37,7 +37,6 @@ function App() {
       user,
       setUser,
       baseUrl,
-
       isLoading,
       setIsLoading,
     }),
@@ -70,8 +69,8 @@ function App() {
 
   return (
     <SharedContext.Provider value={contextValues}>
-      <Layout>
-        <>
+      <div>
+        <Layout>
           <Routes>
             <Route
               exact
@@ -152,20 +151,20 @@ function App() {
             <Route path="/erreur" element={<ErrorPage />} />
           </Routes>
 
-          <Modal
-            isVisible={showModal}
-            onClose={() => setShowModal(false)}
-            message={showMessage}
-          />
-          <ModalBtns
-            isVisible={showModalBtns}
-            onClose={() => setShowModalBtns(false)}
-            message={showMessage}
-            onConfirm={onConfirm}
-          />
           {isLoading && <Loader />}
-        </>
-      </Layout>
+        </Layout>
+      </div>
+      <Modal
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+        message={showMessage}
+      />
+      <ModalBtns
+        isVisible={showModalBtns}
+        onClose={() => setShowModalBtns(false)}
+        message={showMessage}
+        onConfirm={onConfirm}
+      />
     </SharedContext.Provider>
   );
 }
