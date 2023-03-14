@@ -14,7 +14,9 @@ function UserProfileView({
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const { user, token, setUser, setToken } = useContext(SharedContext);
   const navigate = useNavigate();
-  // Function for update username and firstanme in header
+  /** ******************************************* */
+  /** ***** Function update username ************ */
+  /** ****************************************** */
   useEffect(() => {
     if (token) {
       fetch(`${baseUrl}/me`, {
@@ -33,7 +35,9 @@ function UserProfileView({
         });
     }
   }, [returnHome]);
-  // Function récupération des champs à la frappe
+  /** ****************************************** */
+  /** * Function update username field when type */
+  /** ****************************************** */
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser((prevUser) => ({
@@ -41,14 +45,16 @@ function UserProfileView({
       [name]: value,
     }));
   };
-  // Fonction pour éviter l'utilisation de la fonction au render du composant
   const confirmReturn = () => {
     return () => {
       setShowModalBtns(false);
       navigate("/");
     };
   };
-  // Function supprimer un utilisateur dans la bdd, le déconnecté et supprimer le token
+  /** ******************************************* */
+  /** ***** Function delete user in bdd ********* */
+  /** ***** and token in local storage ******** * */
+  /** ****************************************** */
   const handleDelete = () => {
     fetch(`${baseUrl}/user/${user.id}`, {
       method: "DELETE",
@@ -78,6 +84,9 @@ function UserProfileView({
         console.error(error);
       });
   };
+  /** ******************************************* */
+  /** * Function delete reservation in bdd ******* */
+  /** ******************************************* */
   const handleResaDelete = () => {
     fetch(`${baseUrl}/resa/${user.id}`, {
       method: "DELETE",
@@ -101,7 +110,9 @@ function UserProfileView({
         console.error(error);
       });
   };
-  // Function mettre à jour l'utilisateur dans la bdd
+  /** ******************************************* */
+  /** ******** Function update user in bdd ******* */
+  /** ******************************************* */
   const handleEdit = () => {
     fetch(`${baseUrl}/user/${user.id}`, {
       method: "PUT",
@@ -118,8 +129,7 @@ function UserProfileView({
 
           setOnConfirm(() => confirmReturn());
           setshowMessage(
-            `Votre profil à bien été modifié.
-             Voulez vous retourner à l'acceuil  ?`
+            `Votre profil à bien été modifié. Voulez-vous retourner à l'acceuil ?`
           );
         } else {
           throw new Error("Une erreur s'est produite");
@@ -135,7 +145,10 @@ function UserProfileView({
       navigate("/");
     }, 200);
   };
-  // Fonction pour éviter l'utilisation de la fonction au render du composant
+  /** ****************************************** */
+  /** * Function use to doesn't execute function */
+  /** ********* at component render     ********* */
+  /** ****************************************** */
   const confirmDelete = () => {
     return () => {
       handleDelete();
@@ -236,14 +249,14 @@ function UserProfileView({
             onChange={handleInputChange}
           />
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-center my-1 md:justify-end">
           <div className="px-2">
             <button
               type="button"
               className="bg-blueDuck-100 hover:bg-blueSimple-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               onClick={() => handleEdit()}
             >
-              Mettre à jour
+              Modifier
             </button>
           </div>
           <div className="px-2">
@@ -269,7 +282,7 @@ function UserProfileView({
               onClick={confirmBacktohome()}
               className="bg-blueDuck-100 hover:bg-blueSimple-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              Retour à l'accueil
+              Accueil
             </button>
           </div>
         </div>

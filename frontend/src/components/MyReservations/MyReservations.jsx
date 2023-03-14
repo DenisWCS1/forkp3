@@ -21,11 +21,11 @@ function Myreservations({
 
   /** ***********************************************
 Fetch return GET
-reservation.id
-reservation.start_datetime AS start
-reservation.end_datetime AS end
-location.city_name AS localisation, 
-room.name AS nom,       
+reservation.id int
+start timestamp
+end timestamp
+localisation int
+nom string
 ************************************************ */
   useEffect(() => {
     setIsLoading(true);
@@ -173,6 +173,7 @@ room.name AS nom,
           ))}
         </tbody>
       </table>
+      <div className="h-28" />
     </>
   );
 }
