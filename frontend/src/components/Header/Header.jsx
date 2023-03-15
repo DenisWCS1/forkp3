@@ -66,7 +66,7 @@ export default function Header() {
                   className="font-semibold text-turquoise-100 my-8 pb-6"
                 >
                   <NavLink to="#" onClick={handleDisconnect}>
-                    Se Déconnecter
+                    Se déconnecter
                   </NavLink>
                 </button>
               ) : (

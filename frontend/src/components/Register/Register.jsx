@@ -58,7 +58,7 @@ function Register() {
   };
   return (
     <div>
-      <div className="flex justify-center items-center  pt-2 ">
+      <div className="flex justify-center items-center pt-[7rem]">
         <div className=" flex flex-col items-center text-center w-3/4 max-w-[450px]">
           <form
             onSubmit={handleSubmit}
