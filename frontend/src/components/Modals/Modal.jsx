@@ -13,7 +13,7 @@ function Modal({ isVisible, onClose, message }) {
       id="wrapper"
       onMouseDown={handleClose}
       role="presentation"
-      className="fixed inset-0 bg-greySimple-100 bg-opacity-25 backdrop-blur-sm flex w-full h-full justify-center items-center"
+      className="fixed inset-0 bg-greySimple-100 bg-opacity-25 backdrop-blur-sm flex w-full h-full justify-center items-center body-font font-AvenirNormal"
     >
       <div className="w-[600px] flex flex-col bg-dark-100 rounded-2xl m-3">
         <button
