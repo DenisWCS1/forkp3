@@ -33,6 +33,12 @@ function RoomFilter({
     setLocationid(1);
     setAllLocation([]);
   };
+  /** ****************************************************
+Fetch return GET reservation in reservation table
+city_name varchar
+created_at timestamp
+updated_at timestamp
+****************************************************** */
   useEffect(() => {
     fetch(`${baseUrl}/location`)
       .then((response) => {
@@ -44,8 +50,8 @@ function RoomFilter({
   }, [locationid, allLocation]);
 
   return (
-    <div className=" flex flex-wrap rounded-lg bg-dark-100 border-b justify-around lg:justify-center ">
-      <div className="flex flex-col text-white w-[200] md:mb-6 ">
+    <div className=" flex flex-wrap rounded-lg bg-dark-100 border-b justify-around lg:justify-center pt-[1.1rem]">
+      <div className="flex flex-col text-white w-[200] md:mb-6 mb-2 sm:mb-none">
         <div>
           <p> Début :</p>
         </div>

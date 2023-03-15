@@ -44,6 +44,13 @@ function RoomDetails({
       else if (value === 3) navigate("/register");
     };
   };
+  /** ****************************************************
+Fetch return POST reservation in reservation table
+user.id int
+room.id int
+start_datetime timestamp
+end_datetime timestamp
+************************************************ */
   const handleReservation = () => {
     fetch(`${baseUrl}/reservation`, {
       method: "POST",
@@ -72,7 +79,16 @@ function RoomDetails({
         setShowModal(true);
       });
   };
-
+  /** ****************************************************
+Fetch return GET room_material in room_material table
+name varchar
+capacity int
+address varchar
+materials varchar
+lat decimal
+lng decimal
+url_picture varchar
+************************************************ */
   useEffect(() => {
     setIsLoading(true);
     function fetchData() {
@@ -151,11 +167,11 @@ function RoomDetails({
                 </div>
                 <div className="text-base md:text-xl tracking-tight leading-none text-blueDuck-100 whitespace-nowrap">
                   {elem.capacity} Places
-                  <h3 className="tracking-tight font-light text-gray-500 text-2xl md:text-3xl">
+                  <span className="tracking-tight font-light text-gray-500 text-2xl md:text-3xl">
                     <p className="text-base md:text-lg lg:text-xl text-gray-500 mt-2 text-center break-words">
                       {elem.address}.
                     </p>
-                  </h3>
+                  </span>
                 </div>
                 <ul className="text-xs grid grid-cols-1 md:grid-cols-2 gap-4 font-bold items-center text-gray-600">
                   {elem.material.map((value) => (

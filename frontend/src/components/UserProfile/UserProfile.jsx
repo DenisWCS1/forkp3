@@ -14,9 +14,12 @@ function UserProfileView({
   const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const { user, token, setUser, setToken } = useContext(SharedContext);
   const navigate = useNavigate();
-  /** ******************************************* */
-  /** ***** Function update username ************ */
-  /** ****************************************** */
+  /** ******************************************* 
+  Fetch return POST reservation in reservation table
+  first_name varchar
+  last_name varchar
+  email varchar
+  /******************************************** */
   useEffect(() => {
     if (token) {
       fetch(`${baseUrl}/me`, {
@@ -51,10 +54,16 @@ function UserProfileView({
       navigate("/");
     };
   };
-  /** ******************************************* */
-  /** ***** Function delete user in bdd ********* */
-  /** ***** and token in local storage ******** * */
-  /** ****************************************** */
+  /** ******************************************* 
+  Fetch return DELETE room_material in room_material table
+  name varchar
+  capacity int
+  address varchar
+  materials varchar
+  lat decimal
+  lng decimal
+  url_picture varchar
+   ****************************************** */
   const handleDelete = () => {
     fetch(`${baseUrl}/user/${user.id}`, {
       method: "DELETE",
@@ -84,9 +93,7 @@ function UserProfileView({
         console.error(error);
       });
   };
-  /** ******************************************* */
-  /** * Function delete reservation in bdd ******* */
-  /** ******************************************* */
+
   const handleResaDelete = () => {
     fetch(`${baseUrl}/resa/${user.id}`, {
       method: "DELETE",
@@ -110,9 +117,12 @@ function UserProfileView({
         console.error(error);
       });
   };
-  /** ******************************************* */
-  /** ******** Function update user in bdd ******* */
-  /** ******************************************* */
+  /** ******************************************* 
+  Fetch return PUT user in user table
+  first_name varchar
+  last_name varchar
+  email varchar
+  /******************************************** */
   const handleEdit = () => {
     fetch(`${baseUrl}/user/${user.id}`, {
       method: "PUT",
