@@ -26,20 +26,7 @@ function RoomFilter({
     setEnded(ended);
     setLocationid(e.target.value);
   };
-
-  const reset = () => {
-    setStarted(new Date());
-    setEnded(new Date());
-    setLocationid(1);
-    setAllLocation([]);
-  };
-  /** ****************************************************
-Fetch return GET reservation in reservation table
-city_name varchar
-created_at timestamp
-updated_at timestamp
-****************************************************** */
-  useEffect(() => {
+  const getLocation = () => {
     fetch(`${baseUrl}/location`)
       .then((response) => {
         return response.json();
@@ -47,7 +34,25 @@ updated_at timestamp
       .then((jsonData) => {
         setAllLocation(jsonData);
       });
-  }, [locationid, allLocation]);
+  };
+
+  const reset = () => {
+    setStarted(new Date());
+    setEnded(new Date());
+    setLocationid(1);
+    setAllLocation([]);
+    getLocation();
+  };
+
+  /** ****************************************************
+Fetch return GET reservation in reservation table
+city_name varchar
+created_at timestamp
+updated_at timestamp
+****************************************************** */
+  useEffect(() => {
+    getLocation();
+  }, [locationid]);
 
   return (
     <div className=" flex flex-wrap rounded-lg bg-dark-100 border-b justify-around lg:justify-center pt-[1.1rem]">
