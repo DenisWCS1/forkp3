@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-
 import { useNavigate } from "react-router-dom";
-
 import moment from "moment";
 import RoomFilter from "@components/RoomHome/RoomFilter";
 import SharedContext from "@assets/Context/sharedContext";
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 function RoomsFiltered({
   started,
   setStarted,
@@ -16,16 +15,14 @@ function RoomsFiltered({
   setEnded,
   locationid,
   setLocationid,
-  setRoomvalue,
-  roomvalue,
   setOnConfirm,
   setshowMessage,
   setShowModal,
   setShowModalBtns,
 }) {
   const navigate = useNavigate();
-
-  const { user, baseUrl, token, setIsLoading } = useContext(SharedContext);
+  const [roomValue, setRoomValue] = useState(0);
+  const { user, token, setIsLoading } = useContext(SharedContext);
   const [rooms, setRooms] = useState([]);
   const [resaSalle, setResaSalle] = useState({});
   /** ***************************
@@ -57,13 +54,12 @@ function RoomsFiltered({
 
   const confirmeidroom = (value) => {
     return () => {
-      setRoomvalue(value);
-      navigate("/RoomDetails");
+      navigate(`/RoomDetails/${value.id}`);
     };
   };
   useEffect(() => {
     setResaSalle({
-      fk_room: roomvalue.id,
+      fk_room: roomValue,
       fk_user: user ? user.id : "",
       start_datetime: moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
         "YYYY-MM-DDTHH:mm:ss.SSSZ"
@@ -72,7 +68,7 @@ function RoomsFiltered({
         "YYYY-MM-DDTHH:mm:ss.SSSZ"
       ),
     });
-  }, [roomvalue, user, started, ended]);
+  }, [roomValue, user, started, ended]);
   const confirmNavigate = (value) => {
     return () => {
       if (value === 1) {
@@ -129,7 +125,7 @@ function RoomsFiltered({
       } else {
         setShowModalBtns(true);
         setshowMessage(` Voulez-vous vraiment réserver la salle ${
-          roomvalue.name
+          rooms.find((room) => room.id === roomValue).name
         } 
         du \n${moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
           "DD/MM/YYYY à HH:mm:ss"
@@ -219,7 +215,7 @@ function RoomsFiltered({
                       className="bg-blueDuck-100  px-4 py-2 rounded-lg "
                       onClick={(e) => {
                         e.preventDefault();
-                        setRoomvalue(value);
+                        setRoomValue(value.id);
                         validate();
                       }}
                     >
@@ -240,14 +236,9 @@ function RoomsFiltered({
 RoomsFiltered.propTypes = {
   ended: PropTypes.instanceOf(Date).isRequired,
   locationid: PropTypes.node.isRequired,
-  roomvalue: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  }).isRequired,
   setEnded: PropTypes.func.isRequired,
   setLocationid: PropTypes.func.isRequired,
   setOnConfirm: PropTypes.func.isRequired,
-  setRoomvalue: PropTypes.func.isRequired,
   setShowModal: PropTypes.func.isRequired,
   setShowModalBtns: PropTypes.func.isRequired,
   setStarted: PropTypes.func.isRequired,
