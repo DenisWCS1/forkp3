@@ -41,7 +41,7 @@ function RoomDetails({
       else if (value === 3) navigate("/register");
     };
   };
-  /** ****************************************************
+  /* ****************************************************
 Fetch return POST reservation in reservation table
 user.id int
 room.id int
