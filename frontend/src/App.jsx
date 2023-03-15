@@ -28,7 +28,6 @@ function App() {
   const [started, setStarted] = useState(new Date());
   const [ended, setEnded] = useState(new Date());
   const [locationid, setLocationid] = useState(1);
-  const [roomvalue, setRoomvalue] = useState({});
 
   const contextValues = useMemo(
     () => ({
@@ -36,12 +35,10 @@ function App() {
       setToken,
       user,
       setUser,
-      baseUrl,
-
       isLoading,
       setIsLoading,
     }),
-    [token, user, baseUrl, isLoading]
+    [token, user, isLoading]
   );
   useEffect(() => {
     setTimeout(() => {
@@ -70,8 +67,8 @@ function App() {
 
   return (
     <SharedContext.Provider value={contextValues}>
-      <Layout>
-        <>
+      <div className="body-font font-AvenirNormal">
+        <Layout>
           <Routes>
             <Route
               exact
@@ -84,13 +81,11 @@ function App() {
                   setEnded={setEnded}
                   locationid={locationid}
                   setLocationid={setLocationid}
-                  setRoomvalue={setRoomvalue}
                   setShowModalBtns={setShowModalBtns}
                   setShowModal={setShowModal}
                   setshowMessage={setshowMessage}
                   setOnConfirm={setOnConfirm}
                   onConfirm={onConfirm}
-                  roomvalue={roomvalue}
                 />
               }
             />
@@ -98,7 +93,7 @@ function App() {
             <Route exact path="/register" element={<Register />} />
             <Route
               exact
-              path="/RoomDetails"
+              path="/RoomDetails/:id"
               element={
                 <RoomDetails
                   started={started}
@@ -108,7 +103,6 @@ function App() {
                   setshowMessage={setshowMessage}
                   setOnConfirm={setOnConfirm}
                   onConfirm={onConfirm}
-                  roomvalue={roomvalue}
                 />
               }
             />
@@ -152,20 +146,20 @@ function App() {
             <Route path="/erreur" element={<ErrorPage />} />
           </Routes>
 
-          <Modal
-            isVisible={showModal}
-            onClose={() => setShowModal(false)}
-            message={showMessage}
-          />
-          <ModalBtns
-            isVisible={showModalBtns}
-            onClose={() => setShowModalBtns(false)}
-            message={showMessage}
-            onConfirm={onConfirm}
-          />
           {isLoading && <Loader />}
-        </>
-      </Layout>
+        </Layout>
+      </div>
+      <Modal
+        isVisible={showModal}
+        onClose={() => setShowModal(false)}
+        message={showMessage}
+      />
+      <ModalBtns
+        isVisible={showModalBtns}
+        onClose={() => setShowModalBtns(false)}
+        message={showMessage}
+        onConfirm={onConfirm}
+      />
     </SharedContext.Provider>
   );
 }

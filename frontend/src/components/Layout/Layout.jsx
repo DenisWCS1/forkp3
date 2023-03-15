@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import React from "react";
 import Header from "@components/Header/Header";
 import Footer from "@components/Footer/Footer";
 import "./Layout.css";
-/* eslint-disable react/prop-types */
+
 function Layout({ children }) {
   return (
     <>
@@ -12,5 +13,9 @@ function Layout({ children }) {
     </>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.symbol.isRequired,
+};
 
 export default Layout;

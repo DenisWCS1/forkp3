@@ -26,14 +26,7 @@ function RoomFilter({
     setEnded(ended);
     setLocationid(e.target.value);
   };
-
-  const reset = () => {
-    setStarted(new Date());
-    setEnded(new Date());
-    setLocationid(1);
-    setAllLocation([]);
-  };
-  useEffect(() => {
+  const getLocation = () => {
     fetch(`${baseUrl}/location`)
       .then((response) => {
         return response.json();
@@ -41,7 +34,19 @@ function RoomFilter({
       .then((jsonData) => {
         setAllLocation(jsonData);
       });
-  }, [locationid, allLocation]);
+  };
+
+  const reset = () => {
+    setStarted(new Date());
+    setEnded(new Date());
+    setLocationid(1);
+    setAllLocation([]);
+    getLocation();
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, [locationid]);
 
   return (
     <div className=" flex flex-wrap rounded-lg bg-dark-100 border-b justify-around lg:justify-center ">
