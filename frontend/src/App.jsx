@@ -35,11 +35,10 @@ function App() {
       setToken,
       user,
       setUser,
-      baseUrl,
       isLoading,
       setIsLoading,
     }),
-    [token, user, baseUrl, isLoading]
+    [token, user, isLoading]
   );
   useEffect(() => {
     setTimeout(() => {
