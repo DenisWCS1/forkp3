@@ -53,8 +53,13 @@ nom string
   }, [user, updateResa]);
 
   /** ****************************************************
- Fetch return delete reservation in reservation table     
-***************************************************** */
+Fetch return DELETE reservation in reservation table
+reservation.id int
+localisation int
+start timestamp
+end timestamp
+nom string
+************************************************ */
   const handleDelete = (id) => {
     fetch(`${baseUrl}/reservation/${id}`, {
       method: "DELETE",

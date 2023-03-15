@@ -6,12 +6,12 @@ import Marion from "@assets/avatar/marione.jpg";
 
 function Team() {
   return (
-    <>
-      <h1 className="shadow-2xl text-justify font-semibold bg-dark-100 text-white text-3xl m-8 p-8">
+    <div>
+      <h1 className="shadow-2xl text-start font-semibold bg-dark-100 text-white text-3xl m-4 p-8">
         Les développeurs de l'application :{" "}
       </h1>
 
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap justify-center xl:flex-nowrap">
         <div className="m-4 max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-1000 hover:scale-95 hover:translate-y-0.5">
           <img className="rounded-t-lg" src={Alban} alt="Alban" />
           <div className="text-justify font-semibold bg-dark-100 text-blueDuck-100 text-1xl m-10 p-10">
@@ -44,7 +44,7 @@ function Team() {
         </div>
       </div>
       <div className="h-28" />
-    </>
+    </div>
   );
 }
 

@@ -21,6 +21,14 @@ function Register() {
   const [errors, setErrors] = useState([]);
   const { setIsLoading } = useContext(SharedContext);
 
+  /** ****************************************************
+Fetch return POST user in user table
+firstname varchar
+lastname varchar
+email varchar
+password varchar
+************************************************ */
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
     fetch(`${baseUrl}/user`, {

@@ -80,7 +80,13 @@ function RoomsFiltered({
       else if (value === 3) navigate("/register");
     };
   };
-
+  /** ****************************************************
+  Fetch return POST reservation in reservation table
+  user.id int
+  room.id int
+  start_datetime timestamp
+  end_datetime timestamp  
+  ****************************************************** */
   const handleResa = () => {
     fetch(`${baseUrl}/reservation`, {
       method: "POST",
@@ -187,14 +193,14 @@ function RoomsFiltered({
               </div>
 
               <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                <h1 className="text-lg">
+                <span className="text-lg">
                   <a
                     className="no-underline hover:underline text-dark-100"
                     href="/"
                   >
                     {value.name}
                   </a>
-                </h1>
+                </span>
                 <p className="text-dark-100 text-sm" />
                 {value.capacity} Places
               </header>
