@@ -27,6 +27,8 @@ function RoomsFiltered({
   const [resaSalle, setResaSalle] = useState({});
   /** ***************************
    * filter rooms
+   * query in url filtered?start="datetime",end="datetime",location="number"
+   * return room.id, room.capacity, room.name, room.url_picture, location.city_name
    ****************************** */
   useEffect(() => {
     setIsLoading(true);
