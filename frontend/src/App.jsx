@@ -28,7 +28,6 @@ function App() {
   const [started, setStarted] = useState(new Date());
   const [ended, setEnded] = useState(new Date());
   const [locationid, setLocationid] = useState(1);
-  const [roomvalue, setRoomvalue] = useState({});
 
   const contextValues = useMemo(
     () => ({
@@ -83,13 +82,11 @@ function App() {
                   setEnded={setEnded}
                   locationid={locationid}
                   setLocationid={setLocationid}
-                  setRoomvalue={setRoomvalue}
                   setShowModalBtns={setShowModalBtns}
                   setShowModal={setShowModal}
                   setshowMessage={setshowMessage}
                   setOnConfirm={setOnConfirm}
                   onConfirm={onConfirm}
-                  roomvalue={roomvalue}
                 />
               }
             />
@@ -97,7 +94,7 @@ function App() {
             <Route exact path="/register" element={<Register />} />
             <Route
               exact
-              path="/RoomDetails"
+              path="/RoomDetails/:id"
               element={
                 <RoomDetails
                   started={started}
@@ -107,7 +104,6 @@ function App() {
                   setshowMessage={setshowMessage}
                   setOnConfirm={setOnConfirm}
                   onConfirm={onConfirm}
-                  roomvalue={roomvalue}
                 />
               }
             />
