@@ -76,7 +76,7 @@ end_datetime timestamp
         setShowModal(true);
       });
   };
-  /*******************************************************
+/* ******************************************************
 Fetch return GET room_material in room_material table
 name varchar
 capacity int
@@ -158,14 +158,6 @@ url_picture varchar
                 <span className="tracking-tight font-light text-gray-500 text-2xl md:text-3xl">
                   <p className="text-base md:text-lg lg:text-xl text-gray-500 mt-2 text-center break-words">
                     {detailState.address}.
-                  </p>
-                </span>
-              </div>
-              <div className="text-base md:text-xl tracking-tight leading-none text-blueDuck-100 whitespace-nowrap">
-                {elem.capacity} Places
-                <span className="tracking-tight font-light text-gray-500 text-2xl md:text-3xl">
-                  <p className="text-base md:text-lg lg:text-xl text-gray-500 mt-2 text-center break-words">
-                    {elem.address}.
                   </p>
                 </span>
               </div>
