@@ -25,6 +25,7 @@ function RoomsFiltered({
   const { user, token, setIsLoading } = useContext(SharedContext);
   const [rooms, setRooms] = useState([]);
   const [resaSalle, setResaSalle] = useState({});
+  const [noRoom, setNoRoom] = useState("hidden");
   /** ***************************
    * filter rooms
    * query in url filtered?start="datetime",end="datetime",location="number"
@@ -47,6 +48,11 @@ function RoomsFiltered({
       .then((jsonData) => {
         setIsLoading(false);
         setRooms(jsonData);
+        if (Object.keys(jsonData).length === 0) {
+          setNoRoom("");
+        } else {
+          setNoRoom("hidden");
+        }
       })
       .catch(() => {
         setIsLoading(false);
@@ -236,7 +242,16 @@ function RoomsFiltered({
           </div>
         ))}
       </div>
+
       <div className="h-28" />
+      <div
+        className={`flex flex-row item-center justify-center sm:mt-28${noRoom}`}
+      >
+        <div className={` text-2xl text-center ${noRoom}`}>
+          Aucune sélection ne correspond à votre demande, merci de modifier vos
+          critères de recherche.
+        </div>
+      </div>
     </>
   );
 }
