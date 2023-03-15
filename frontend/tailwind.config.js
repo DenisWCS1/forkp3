@@ -27,7 +27,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        avenir: ["AvenirLTStd-Heavy.otf"],
+        AvenirBold: ["AvenirBold"],
+        AvenirNormal: ["AvenirNormal"],
       },
     },
   },

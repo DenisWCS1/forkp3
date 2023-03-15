@@ -67,7 +67,7 @@ function App() {
 
   return (
     <SharedContext.Provider value={contextValues}>
-      <div>
+      <div className="body-font font-AvenirNormal">
         <Layout>
           <Routes>
             <Route
