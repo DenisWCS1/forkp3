@@ -51,8 +51,8 @@ function Login() {
   };
 
   return (
-    <div className="pt-2">
-      <div className="flex justify-center items-center">
+    <div className="pt-[7rem] ">
+      <div className="flex  flex-col justify-center items-center ">
         <div className=" flex flex-col items-center text-center w-3/4 max-w-[450px]">
           <form
             onSubmit={handleSubmit}
@@ -88,10 +88,11 @@ function Login() {
             <h2 className="text-red-500 font-semibold animate-bounce">
               {error && <div>{error}</div>}
             </h2>
-
             <button
               type="submit"
               className="w-full my-5 py-2 bg-teal-500 shadow-lg text-white font-semibold rounded-lg"
+              onClick={() => navigate(-1)}
+              to="/"
             >
               Se Connecter
             </button>
