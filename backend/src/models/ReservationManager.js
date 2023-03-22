@@ -25,8 +25,8 @@ class ReservationManager extends AbstractManager {
         reservation.fk_room,
         reservation.start_datetime,
         reservation.end_datetime,
-        reservation.updated_on,
-        reservation.created_on,
+        reservation.updated_at,
+        reservation.created_at,
       ]
     );
   }
