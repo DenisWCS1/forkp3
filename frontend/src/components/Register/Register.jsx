@@ -42,22 +42,21 @@ password varchar
         const contentType = r.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
           alert(
-            `Bienvenue, ${inputRegisterValue.firstname} ${inputRegisterValue.lastname} `
+            `Bienvenue, ${inputRegisterValue.firstname} ${inputRegisterValue.lastname}, pour valider votre compte veuillez vous connecter `
           );
-          navigate("/");
-          throw new TypeError("Oops, we haven't got JSON!");
+          navigate("/login");
+          return r;
         }
 
         return r.json();
       })
 
       .then((r) => {
-        if (!r.ok) {
+        if (r && !r.ok) {
           setErrors(r.validationErrors);
           return Promise.reject(new Error("errors http"));
         }
-        setIsLoading(false);
-        return console.warn("error network");
+        return r;
       })
       .catch((e) => {
         setIsLoading(false);
@@ -116,9 +115,7 @@ password varchar
               />
             </div>
             <ul className="text-red-500 font-semibold">
-              {errors.map((error) => (
-                <li>{error.msg}</li>
-              ))}
+              {errors && errors.map((error) => <li>{error.msg}</li>)}
             </ul>
 
             <button
