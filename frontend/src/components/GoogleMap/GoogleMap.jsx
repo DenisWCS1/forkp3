@@ -2,18 +2,17 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import {
   GoogleMap,
-  InfoWindowF,
+  InfoBoxF,
   MarkerF,
   useJsApiLoader,
 } from "@react-google-maps/api";
 
 const apiKeyEnv = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
-const libraries = ["geometry", "drawing"];
 function MapContainer2({ latitude, longitude, address, name }) {
+  const [infoboxVisibility, setInfoboxVisibility] = useState(true);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKeyEnv,
-    libraries,
   });
 
   const [mapContainerStyle] = useState({
@@ -21,15 +20,24 @@ function MapContainer2({ latitude, longitude, address, name }) {
     height: "600px",
   });
 
-  const [infoWindowVisible, setInfoWindowVisible] = useState(true);
-  const toggleInfoWindow = () => {
-    setInfoWindowVisible(!infoWindowVisible);
-  };
   const center = {
     lat: Number(latitude),
     lng: Number(longitude),
   };
+  const options = {
+    closeBoxURL: "", // Hide cross to close infobox
+    /* 
+     By enabling event bubbling with this method, map events can be captured by parent DOM elements
+    the event will not be propagated to the map's parent DOM elements, meaning any event attached to those elements will not be fired.
+    */
+    enableEventPropagation: true,
+    position: center,
+    pixelOffset: { width: center.lat - 200, height: center.lng - 180 },
+  };
 
+  const showInfoboxvisible = () => {
+    setInfoboxVisibility(!infoboxVisibility);
+  };
   return (
     <div>
       {isLoaded && (
@@ -37,33 +45,39 @@ function MapContainer2({ latitude, longitude, address, name }) {
           mapContainerStyle={mapContainerStyle}
           center={center}
           zoom={14}
-          onClick={() => setInfoWindowVisible(false)}
+          onClick={showInfoboxvisible}
         >
           <MarkerF
             position={center}
             opacity={1}
-            onMouseUp={() => setInfoWindowVisible(!infoWindowVisible)}
             zIndex={1000}
+            onClick={showInfoboxvisible}
           >
-            <InfoWindowF position={center} onCloseClick={toggleInfoWindow}>
-              <div className="text-[15px]">
-                <div>{name}</div>
-                <div>{address}</div>
-                <div>
-                  <button
-                    type="button"
-                    className="bg-blueDuck-100 hover:bg-blueSimple-100 text-white font-bold py-2 px-4 mt-2 rounded text-center"
-                    onClick={() =>
-                      window.open(
-                        `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`
-                      )
-                    }
-                  >
-                    Naviguer
-                  </button>
+            {infoboxVisibility && (
+              <InfoBoxF
+                options={options}
+                onClick={showInfoboxvisible}
+                onCloseClick={() => setInfoboxVisibility(!infoboxVisibility)}
+              >
+                <div className="bg-white px-3 py-4  border border-neutral-600 border-solid rounded-xl text-[18px] text-left flex flex-col flex-wrap">
+                  <div className="font-bold"> {name} </div>
+                  <div> {address}</div>
+                  <div className="text-right">
+                    <button
+                      type="button"
+                      className="bg-blueDuck-100 hover:bg-blueSimple-100 text-white font-bold py-2 px-4 mt-2 rounded text-center $"
+                      onClick={() =>
+                        window.open(
+                          `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`
+                        )
+                      }
+                    >
+                      Naviguer
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </InfoWindowF>
+              </InfoBoxF>
+            )}
           </MarkerF>
         </GoogleMap>
       )}

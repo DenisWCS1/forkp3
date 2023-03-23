@@ -19,6 +19,7 @@ function RoomDetails({
   const [detailState, setDetailState] = useState([]);
   const { setIsLoading, user, token } = useContext(SharedContext);
   const [resaSalle, setResaSalle] = useState({});
+
   useEffect(() => {
     setResaSalle({
       fk_room: id,
