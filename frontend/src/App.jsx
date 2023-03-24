@@ -122,7 +122,7 @@ function App() {
                     onConfirm={onConfirm}
                   />
                 ) : (
-                  <Login />
+                  <Login started={started} ended={ended} />
                 )
               }
             />

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactDatePicker, {
   registerLocale,
   setDefaultLocale,
@@ -7,7 +7,6 @@ import ReactDatePicker, {
 import "react-datepicker/dist/react-datepicker.css";
 import fr from "date-fns/locale/fr";
 
-const baseUrl = import.meta.env.VITE_BACKEND_URL;
 registerLocale("fr", fr);
 setDefaultLocale("fr");
 
@@ -18,22 +17,14 @@ function RoomFilter({
   setEnded,
   setLocationid,
   locationid,
+  getLocation,
+  setAllLocation,
+  allLocation,
 }) {
-  const [allLocation, setAllLocation] = useState([]);
-
   const handleChange = (e) => {
     setStarted(started);
     setEnded(ended);
     setLocationid(e.target.value);
-  };
-  const getLocation = () => {
-    fetch(`${baseUrl}/location`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((jsonData) => {
-        setAllLocation(jsonData);
-      });
   };
 
   const reset = () => {
@@ -121,6 +112,16 @@ RoomFilter.propTypes = {
   setEnded: PropTypes.func.isRequired,
   setLocationid: PropTypes.func.isRequired,
   setStarted: PropTypes.func.isRequired,
+  setAllLocation: PropTypes.func.isRequired,
+  getLocation: PropTypes.func.isRequired,
+  allLocation: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      city_name: PropTypes.string,
+      created_at: PropTypes.string,
+      updated_at: PropTypes.string,
+    })
+  ).isRequired,
   locationid: PropTypes.node.isRequired,
 };
 export default RoomFilter;
