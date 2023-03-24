@@ -79,15 +79,16 @@ function RoomsFiltered({
         setAllLocation(jsonData);
       });
   };
+
   // Create object with reservation informations, send to bdd for reserve room.
   useEffect(() => {
     setResaSalle({
       fk_room: roomValue,
       fk_user: user ? user.id : "",
-      start_datetime: moment(started, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+      start_datetime: moment(started, "DD-MM-YYYYTHH:mm:ss.SSSZ").format(
         "YYYY-MM-DDTHH:mm:ss.SSSZ"
       ),
-      end_datetime: moment(ended, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
+      end_datetime: moment(ended, "DD-MM-YYYYTHH:mm:ss.SSSZ").format(
         "YYYY-MM-DDTHH:mm:ss.SSSZ"
       ),
     });
@@ -123,14 +124,15 @@ function RoomsFiltered({
   start_datetime timestamp
   end_datetime timestamp  
   ****************************************************** */
-  const handleResa = () => {
+  const handleResa = (params) => {
+    setResaSalle({ ...resaSalle, fk_room: params });
     fetch(`${baseUrl}/reservation`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(resaSalle),
+      body: JSON.stringify({ ...resaSalle, fk_room: params }),
     })
       .then((response) => {
         if (response.ok) {
@@ -139,23 +141,23 @@ function RoomsFiltered({
           setShowModalBtns(true);
         } else {
           setshowMessage(
-            "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations 1?"
+            "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations ?"
           );
           setShowModal(true);
         }
       })
       .catch(() => {
         setshowMessage(
-          "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations 2 ?"
+          "Impossible d'ajouter votre réservation, veuillez contacter la police des réservations  ?"
         );
         setShowModal(true);
       });
   };
 
   // Here use effect it's trick to store function to prevent execute at render
-  const securexecute = () => {
+  const securexecute = (params) => {
     return () => {
-      handleResa();
+      handleResa(params);
       setShowModalBtns(false);
     };
   };
@@ -197,7 +199,7 @@ function RoomsFiltered({
         au \n${moment(end, "YYYY-MM-DDTHH:mm:ss.SSSZ").format(
           "DD/MM/YYYY à HH:mm:ss"
         )}\n  ?`);
-        setOnConfirm(() => securexecute());
+        setOnConfirm(() => securexecute(idroomValue));
       }
     } else {
       setshowMessage(
