@@ -24,7 +24,7 @@ class RoomManager extends AbstractManager {
     } else {
       sqlvalues.push(end, start);
     }
-
+    // The "query" method called on the database object takes two parameters, the query (sql) and the values(sqlvalues). It returns a promise that will be resolved in the controller.
     return this.database.query(sql, sqlvalues);
   }
 }
