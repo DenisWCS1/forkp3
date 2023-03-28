@@ -14,6 +14,7 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+
 const router = require("./router");
 
 app.use(router);

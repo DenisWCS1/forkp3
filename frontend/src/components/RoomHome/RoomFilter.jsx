@@ -58,6 +58,8 @@ updated_at timestamp
           onChange={(str) => setStarted(str)}
           showTimeSelect
           timeIntervals={15}
+          aria-labelledby="set-start date time"
+          title="set-start date time"
           dateFormat="dd-MM-yyyy HH:mm:ss"
         />
       </div>
@@ -72,6 +74,7 @@ updated_at timestamp
           onChange={(end) => setEnded(end)}
           showTimeSelect
           timeIntervals={15}
+          aria-labelledby="set-end date time"
           dateFormat="dd-MM-yyyy HH:mm:ss"
         />
       </div>

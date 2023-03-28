@@ -17,13 +17,12 @@ CREATE TABLE
 		`capacity` INT NOT NULL,
 		`fk_location` INT NOT NULL,
 		`name` varchar(45) NOT NULL,
-		`address` varchar(100) NOT NULL,		
+		`address` varchar(100) NOT NULL,
 		`url_picture` varchar(255) NOT NULL,
 		`lat` decimal(25, 6) DEFAULT NULL,
 		`lng` decimal(25, 6) DEFAULT NULL,
 		`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
 		PRIMARY KEY (`id`)
 	);
 
@@ -205,7 +204,13 @@ VALUES
 		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
 		'user'
 	),
-	('Jo', 'Holt', 'jo.holt@yopmail.com','$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs', 'user'),
+	(
+		'Jo',
+		'Holt',
+		'jo.holt@yopmail.com',
+		'$argon2id$v=19$m=65536,t=3,p=4$UuXl4bkXRBGV3eadgUE5RA$1pAx2kyuLRyS61ANSaE7opyz6eYt3U5LTyuT1rJVfrs',
+		'user'
+	),
 	(
 		'Guistino',
 		'Ladaguini',
@@ -328,7 +333,7 @@ VALUES
 		2,
 		'Loire',
 		'9 avenue Carnot, 44000 Nantes',
-		'/rooms/salle1.jpg',
+		'/rooms/salle1.webp',
 		47.21450,
 		-1.54510
 	),
@@ -337,7 +342,7 @@ VALUES
 		2,
 		'Sarthe',
 		'24 Bd de Berlin, 44000 Nantes',
-		'/rooms/salle2.jpg',
+		'/rooms/salle2.webp',
 		47.216780,
 		-1.536550
 	),
@@ -346,7 +351,7 @@ VALUES
 		3,
 		'Acheneau',
 		'1 Esplanade de la Gare, 49100 Angers',
-		'/rooms/salle10.jpg',
+		'/rooms/salle10.webp',
 		47.464860,
 		-0.555750
 	),
@@ -355,7 +360,7 @@ VALUES
 		3,
 		'Divatte',
 		'88 Pl la fayette, 49000 Angers',
-		'/rooms/salle4.jpg',
+		'/rooms/salle4.webp',
 		47.462550,
 		-0.553610
 	),
@@ -364,7 +369,7 @@ VALUES
 		4,
 		'Sèvre',
 		'30 Bd Robert Jarry, 72000 Le Mans',
-		'/rooms/salle5.jpg',
+		'/rooms/salle5.webp',
 		48.995880,
 		0.187830
 	),
@@ -373,7 +378,7 @@ VALUES
 		4,
 		'Le Brivet',
 		'Place du 8 mai 1945, 72100 Le Mans',
-		'/rooms/salle6.jpg',
+		'/rooms/salle6.webp',
 		47.99604,
 		0.19231
 	),
@@ -382,7 +387,7 @@ VALUES
 		2,
 		'Maine',
 		"21 Bd Ernest d'Alby 44000 Nantes",
-		'/rooms/salle7.jpg',
+		'/rooms/salle7.webp',
 		47.226600,
 		-1.528660
 	),
@@ -391,7 +396,7 @@ VALUES
 		3,
 		'Namnettes',
 		'15 rue des 2 haies, 49100 Angers',
-		'/rooms/salle8.jpg',
+		'/rooms/salle8.webp',
 		47.471760,
 		-0.552460
 	),
@@ -400,7 +405,7 @@ VALUES
 		4,
 		'Zen',
 		'2 Pl St Michel, 72000 Le Mans',
-		'/rooms/salle9.jpg',
+		'/rooms/salle9.webp',
 		48.009150,
 		0.197920
 	);
