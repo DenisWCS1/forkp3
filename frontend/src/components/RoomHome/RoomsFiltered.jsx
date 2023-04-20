@@ -138,6 +138,9 @@ function RoomsFiltered({
         if (response.ok) {
           setshowMessage("Voulez-vous consulter votre réservation ?");
           setOnConfirm(() => confirmNavigate(1));
+          if (!setOnConfirm()) {
+            reset();
+          }
           setShowModalBtns(true);
         } else {
           setshowMessage(
