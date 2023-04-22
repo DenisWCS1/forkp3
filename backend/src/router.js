@@ -1,3 +1,4 @@
+const rateLimit = require("express-rate-limit");
 const express = require("express");
 const cors = require("cors");
 const { hashPassword, verifyToken } = require("./controllers/auth");
@@ -5,6 +6,15 @@ require("dotenv").config();
 
 const router = express.Router();
 router.use(cors());
+// Use global rate limit
+router.use(
+  rateLimit({
+    max: 120, // 120 requêtes maximum
+    windowMs: 60 * 1000, // for 60 minutes (
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers (old headers)
+  })
+);
 
 const userControllers = require("./controllers/userControllers");
 const roomControllers = require("./controllers/roomControllers");

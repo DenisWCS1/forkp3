@@ -128,13 +128,25 @@ const login = (req, res) => {
 };
 const register = (req, res) => {
   const user = req.body;
+  console.info(req.body);
+
+  console.info(user);
   models.user
     .insert(user)
     .then(([result]) => {
       res.location(`/user/register/${result.insertId}`).sendStatus(201);
     })
     .catch(() => {
-      res.status(401).send("Email déjà enregistré");
+      res.status(401).json({
+        validationErrors: [
+          {
+            location: "body",
+            msg: "Action interdite",
+            param: "xss",
+            value: "Action interdite",
+          },
+        ],
+      });
     });
 };
 const deleteUserRes = (req, res) => {
@@ -155,18 +167,38 @@ const deleteUserRes = (req, res) => {
 /** ************************************************************************************** */
 /** ******************Check register form fields with Express Validator ******************* */
 /** **************************************************************************************** */
+
+// Trim trims characters (whitespace by default) at the beginning and at the end of a string
+// escape replaces <, >, &, ', " and / with their corresponding HTML entities
+// REGEX PASSWORD
+// ((?=.*\d)) password contains at least one digit
+// ((?=.[A-Z])) one uppercase letter
+// ((?=.[!@#$%^&()_+}{"':;?/>.<,])) one special character
+// .+ at the end is used to ensure there is at least one character in the password.
 const validateUser = [
   body("firstname")
     .isLength({ min: 3 })
+    .trim()
+    .escape()
     .withMessage("Un prénom doit contenir au moins 3 caractères"),
   body("lastname")
     .isLength({ min: 3 })
+    .trim()
+    .escape()
     .withMessage("Un nom doit contenir au moins 3 caractères"),
-  body("email").notEmpty().withMessage("un email est obligatoire"),
+  body("email")
+    .notEmpty()
+    .normalizeEmail()
+    .trim()
+    .escape()
+    .withMessage("un email est obligatoire"),
   body("password")
+    .matches(
+      /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{"':;?/>.<,])(?=.*[a-z]).{9,}$/
+    )
     .isLength({ min: 9 })
     .withMessage(
-      "Un mot de passe doit contenir au moins 9 caractères, dont au moins un chiffre"
+      "Le mot de passe doit contenir au moins un chiffre, un caractère spécial et une lettre majuscule et avoir une longueur de 9 caractères minimum"
     ),
   (req, res, next) => {
     const emailvalidate = req.body.email;
