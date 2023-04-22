@@ -169,12 +169,29 @@ const validateUser = [
       "Un mot de passe doit contenir au moins 9 caractères, dont au moins un chiffre"
     ),
   (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.status(422).json({ validationErrors: errors.array() });
-    } else {
-      next();
-    }
+    const emailvalidate = req.body.email;
+
+    models.user.findByEmail(emailvalidate).then(([email]) => {
+      if (email[0] != null) {
+        res.status(422).json({
+          validationErrors: [
+            {
+              location: "body",
+              msg: "email déjà utilisé",
+              param: "email",
+              value: emailvalidate,
+            },
+          ],
+        });
+      } else {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          res.status(422).json({ validationErrors: errors.array() });
+        } else {
+          next();
+        }
+      }
+    });
   },
 ];
 module.exports = {
