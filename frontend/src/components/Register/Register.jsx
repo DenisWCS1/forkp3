@@ -42,7 +42,7 @@ password varchar
         const contentType = r.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
           alert(
-            `Bienvenue, ${inputRegisterValue.firstname} ${inputRegisterValue.lastname}, pour valider votre compte veuillez vous connecter `
+            `Bienvenue, ${inputRegisterValue.firstname} ${inputRegisterValue.lastname}, Votre compte a bien été créé. Vous pouvez maintenant vous connecter.   `
           );
           navigate("/login");
           return r;
