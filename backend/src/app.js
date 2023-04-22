@@ -3,12 +3,13 @@ const rateLimit = require("express-rate-limit");
 const fs = require("node:fs");
 const path = require("node:path");
 const express = require("express");
+const helmet = require("helmet");
 
 const app = express();
 const cors = require("cors");
 
 app.use(express.json());
-
+app.use(helmet());
 app.use(
   cors({
     origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
