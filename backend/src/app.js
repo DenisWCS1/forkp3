@@ -1,4 +1,5 @@
 require("dotenv").config();
+const rateLimit = require("express-rate-limit");
 const fs = require("node:fs");
 const path = require("node:path");
 const express = require("express");
@@ -14,7 +15,14 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
-
+app.use(
+  rateLimit({
+    max: 120, // 120 requêtes maximum
+    windowMs: 60 * 1000, // for 60 minutes (
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers (old headers)
+  })
+);
 const router = require("./router");
 
 app.use(router);
